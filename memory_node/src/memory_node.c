@@ -12,16 +12,21 @@
 
 static s16 MEMNODE_init(MemoryNode *node);
 static s16 MEMNODE_reset(MemoryNode *node);
+static s16 MEMNODE_free (MemoryNode *node);
 static void* MEMNODE_data(MemoryNode *node); // returns a reference to data
 static u16 MEMNODE_size(MemoryNode *node); // returns data size
-
 static s16 MEMNODE_setData(MemoryNode *node, void *src, u16 bytes);
+static s16 MEMNODE_memCopy(MemoryNode *node, void *src, u16 bytes);
 
 struct memory_node_ops_s memory_node_ops =
 {
 	.init = MEMNODE_init,
+	.reset = MEMNODE_reset,
+	.free = MEMNODE_free,
 	.data = MEMNODE_data,
 	.size = MEMNODE_size,
+	.setData = MEMNODE_setData,
+	.memCopy = MEMNODE_memCopy
 };
 
 
@@ -71,12 +76,24 @@ static s16 MEMNODE_reset(MemoryNode *node){
 	return kErrorCode_Ok;
 }
 
+s16 MEMNODE_free (MemoryNode *node){
+	//We don't need to check if node is null as reset will do it
+	s16 status = MEMNODE_reset(node);
+	if(kErrorCode_Null_Pointer_Received == status){
+		//The node is already null, so it's already free.	
+		return kErrorCode_Ok;
+	}
+	free(node);
+	node = NULL;
+	return kErrorCode_Ok;
+}
+
 void* MEMNODE_data(MemoryNode *node) // returns a reference to data
 {
 	if(NULL == node){
-		#ifdef VERBOSE_
+#ifdef VERBOSE_
 			printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
-		#endif
+#endif
 			return NULL;
 	}
 	return node->data_;
@@ -85,9 +102,9 @@ void* MEMNODE_data(MemoryNode *node) // returns a reference to data
 u16	MEMNODE_size(MemoryNode *node) // returns data size
 {
 	if(NULL == node){
-		#ifdef VERBOSE_
+#ifdef VERBOSE_
 			printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
-		#endif
+#endif
 			return 0;
 	}
 	return node->size_;
@@ -96,17 +113,35 @@ u16	MEMNODE_size(MemoryNode *node) // returns data size
 s16	MEMNODE_setData(MemoryNode *node, void *src, u16 bytes) 
 {
 	s16 status = MEMNODE_reset(node);
-	if(status == kErrorCode_Null_Pointer_Received){
-		#ifdef VERBOSE_
+	if(kErrorCode_Null_Pointer_Received == status){
+#ifdef VERBOSE_
 			printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
-		#endif
+#endif
 			return status;
 	}
 	node->size_ = bytes; 
 	node->data_ = src;
 	return kErrorCode_Ok;
+}
 
-	//return node->size_;
+s16 MEMNODE_memCopy(MemoryNode *node, void *src, u16 bytes){
+	//We don't need to check if node is null as reset will do it
+	s16 status = MEMNODE_reset(node);
+	if(kErrorCode_Null_Pointer_Received == status){
+#ifdef VERBOSE_
+		printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
+#endif
+		return kErrorCode_Null_Pointer_Received;
+	}
+	node->data_	= malloc(sizeof(bytes));
+	if(NULL == node->data_){
+#ifdef VERBOSE_
+		printf("Error: [%s] malloc failed\n", __FUNCTION__);
+#endif
+		return kErrorCode_Error_Trying_To_Allocate_Memory;
+	}
+	node->data_ = src;
+	return kErrorCode_Ok;
 }
 
 int main(){
