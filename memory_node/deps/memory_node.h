@@ -19,7 +19,7 @@ struct memory_node_ops_s
 {
 	s16(*init) (MemoryNode *node);		// init memory node
 	s16(*reset) (MemoryNode *node);		// reset content of memory node
-	s16(*free) (MemoryNode *node);		// free memory, both data and node
+	s16(*free) (MemoryNode **node);		// free memory, both data and node
 	void*(*data) (MemoryNode *node);	// returns a reference to data
 	u16(*size) (MemoryNode *node);		// returns data size
 	s16 (*setData) (MemoryNode *node, void *src, u16 bytes);

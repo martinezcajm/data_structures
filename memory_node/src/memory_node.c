@@ -13,13 +13,14 @@
 
 static s16 MEMNODE_init(MemoryNode *node);
 static s16 MEMNODE_reset(MemoryNode *node);
-static s16 MEMNODE_free (MemoryNode *node);
+static s16 MEMNODE_free (MemoryNode **node);
 static void* MEMNODE_data(MemoryNode *node); // returns a reference to data
 static u16 MEMNODE_size(MemoryNode *node); // returns data size
 static s16 MEMNODE_setData(MemoryNode *node, void *src, u16 bytes);
 static s16 MEMNODE_memSet(MemoryNode *node, u8 value);
 static s16 MEMNODE_memCopy(MemoryNode *node, void *src, u16 bytes);
 static s16 MEMNODE_memConcat (MemoryNode *node, void *src, u16 bytes);
+static void MEMNODE_print (MemoryNode *node);
 
 
 struct memory_node_ops_s memory_node_ops =
@@ -32,7 +33,8 @@ struct memory_node_ops_s memory_node_ops =
 	.setData = MEMNODE_setData,
 	.memSet = MEMNODE_memSet,
 	.memCopy = MEMNODE_memCopy,
-	.memConcat = MEMNODE_memConcat
+	.memConcat = MEMNODE_memConcat,
+	.print = MEMNODE_print
 };
 
 
@@ -48,6 +50,19 @@ MemoryNode* MEMNODE_Create()
 	}
 	MEMNODE_init(node);
 	return node;
+}
+
+s16 MEMNODE_createFromRef(MemoryNode **node){
+	*node = malloc(sizeof(MemoryNode));
+	if (NULL == node)
+	{
+#ifdef VERBOSE_
+		printf("Error: [%s] not enough memory available\n", __FUNCTION__);
+#endif
+		return 0;
+	}
+	MEMNODE_init(*node);
+	return 1;
 }
 
 s16 MEMNODE_init(MemoryNode *node)
@@ -82,15 +97,15 @@ static s16 MEMNODE_reset(MemoryNode *node){
 	return kErrorCode_Ok;
 }
 
-s16 MEMNODE_free (MemoryNode *node){
+s16 MEMNODE_free (MemoryNode **node){
 	//We don't need to check if node is null as reset will do it
-	s16 status = MEMNODE_reset(node);
+	s16 status = MEMNODE_reset(*node);
 	if(kErrorCode_Null_Pointer_Received == status){
 		//The node is already null, so it's already free.	
 		return kErrorCode_Ok;
 	}
-	free(node);
-	node = NULL;
+	free(*node);
+	*node = NULL;
 	return kErrorCode_Ok;
 }
 
@@ -190,16 +205,16 @@ s16 MEMNODE_memConcat (MemoryNode *node, void *src, u16 bytes){
 #endif
 		return kWarningCode_Ilogic_Expression;
 	}
-	s16 *aux;
-	aux = (s16*)malloc(node->size_ + bytes);
+	s8 *aux;
+	aux = (s8*)malloc(node->size_ + bytes);
 	if(NULL == aux){
 #ifdef VERBOSE_
 		printf("Error: [%s] malloc failed\n", __FUNCTION__);
 #endif
 		return kErrorCode_Error_Trying_To_Allocate_Memory;
 	}
-	memcpy(aux, node->data_, node->size_);
-	memcpy(aux+node->size_, src, bytes);
+	memcpy(aux, node->data_, node->size_-1);
+	memcpy(aux + (node->size_-1), src, bytes);
 	//We have already checked that data is not null.
 	free(node->data_);
 	node->data_ = aux;
@@ -207,9 +222,42 @@ s16 MEMNODE_memConcat (MemoryNode *node, void *src, u16 bytes){
 	return kErrorCode_Ok;
 }
 
+void MEMNODE_print(MemoryNode *node){
+	if(NULL == node){
+#ifdef VERBOSE_
+		printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
+#endif
+		printf("The node is null\n");
+		return;
+	}
+	if(NULL == node->data_){
+#ifdef VERBOSE_
+		printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
+#endif
+		printf("The data is null\n");
+		return;
+	}
+	printf("The data of the node is %s\n", (char *)node->data_);
+}
+
 int main(){
 	MemoryNode *node = NULL;
+	MemoryNode *node2 = NULL;
+	MemoryNode *node3 = NULL;
 	node = MEMNODE_Create();
-
+	node2 = MEMNODE_Create();
+	node3 = MEMNODE_Create();
+	MEMNODE_free(&node);
+	MEMNODE_print(node);
+	node = MEMNODE_Create();
+	MEMNODE_setData(node, "hellos", 6);
+	MEMNODE_print(node);
+	MEMNODE_memSet(node, 'c');
+	MEMNODE_memCopy(node2, "hello", 6);
+	MEMNODE_print(node);
+	//MEMNODE_memCopy(node2, "hello world", 12);
+	MEMNODE_print(node2);
+	MEMNODE_memConcat(node2, " world", 7);
+	MEMNODE_print(node2);
 	return 0;
 }
