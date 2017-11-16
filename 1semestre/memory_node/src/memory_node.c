@@ -140,15 +140,38 @@ u16	MEMNODE_size(MemoryNode *node) // returns data size
 
 s16	MEMNODE_setData(MemoryNode *node, void *src, u16 bytes) 
 {
+	if(NULL == src){
+#ifdef VERBOSE_
+		printf("Warning: [%s] The data passed is null\n", __FUNCTION__);
+#endif
+		return kWarningCode_Strange_Operation;
+	}
 	s16 status = MEMNODE_reset(node);
 	if(kErrorCode_Null_Memory_Node == status){
 #ifdef VERBOSE_
-			printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
+		printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
 #endif
-			return status;
+		return status;
 	}
 	node->size_ = bytes; 
 	node->data_ = src;
+	return kErrorCode_Ok;
+}
+
+s16 MEMNODE_memSet(MemoryNode *node, u8 value){
+	if(NULL == node){
+#ifdef VERBOSE_
+		printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
+#endif
+		return kErrorCode_Null_Memory_Node;
+	}
+	if(NULL == node->data_){
+#ifdef VERBOSE_
+		printf("Error: [%s] Trying to do a memset to null data\n", __FUNCTION__);
+#endif
+		return kErrorCode_Null_Data;
+	}
+	memset(node->data_, (s16)value, node->size_);
 	return kErrorCode_Ok;
 }
 
@@ -179,23 +202,6 @@ s16 MEMNODE_memCopy(MemoryNode *node, void *src, u16 bytes){
 	memcpy(node->data_, src, bytes);
 	//node->data_ = src;
 	 node->size_ = bytes;
-	return kErrorCode_Ok;
-}
-
-s16 MEMNODE_memSet(MemoryNode *node, u8 value){
-	if(NULL == node){
-#ifdef VERBOSE_
-		printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
-#endif
-		return kErrorCode_Null_Memory_Node;
-	}
-	if(NULL == node->data_){
-#ifdef VERBOSE_
-		printf("Error: [%s] Trying to do a memset to null data\n", __FUNCTION__);
-#endif
-		return kErrorCode_Null_Data;
-	}
-	memset(node->data_, (s16)value, node->size_);
 	return kErrorCode_Ok;
 }
 

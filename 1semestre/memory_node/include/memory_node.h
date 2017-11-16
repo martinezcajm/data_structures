@@ -44,10 +44,40 @@ struct memory_node_ops_s
   * went well this function assures that the pointer to node ends as NULL
   *
   * @return s16 ErrorCode of the execution
+  * @param **node direction to the pointer of the memory node we want to
+	* free
   */
-	s16(*free) (MemoryNode **node);		// free memory, both data and node
-	void*(*data) (MemoryNode *node);	// returns a reference to data
-	u16(*size) (MemoryNode *node);		// returns data size
+	s16(*free) (MemoryNode **node);
+	/** @brief getter of data
+  *
+  * Returns a pointer to data. In case a null pointer wass passed it will
+  * return null
+  *
+  * @return void* reference to the data of the memory node
+  * @param *node pointer to the node we wish to get the data
+  */
+	void*(*data) (MemoryNode *node);
+	/** @brief gets the data size
+  *
+  * Returns the size of the data. In case a null pointer wass passed it will
+  * return a 0
+  *
+  * @return u16 size of the data
+  * @param *node pointer to the node we wish to get the data size
+  */
+	u16(*size) (MemoryNode *node);
+	/** @brief Sets new data to the memory node
+  *
+  * Resets the old data of the memory node and sets it to it's new value 
+  * updating it's size with the bytes parameter. In case src is null it will 
+  * return a  kWarningCode_Strange_Operation and WON'T reset the old data. In  
+  * case a null pointer wass passed it will return kErrorCode_Null_Memory_Node
+  *
+  * @return s16 ErrorCode of the execution
+  * @param *node pointer to the node we wish to get the data size
+  * @param *src  source of the new data of the memory node
+  * @param *bytes size of the data the memory node will be referencing
+  */
 	s16 (*setData) (MemoryNode *node, void *src, u16 bytes);
 	s16(*memSet) (MemoryNode *node, u8 value);
 	s16(*memCopy) (MemoryNode *node, void *src, u16 bytes);
