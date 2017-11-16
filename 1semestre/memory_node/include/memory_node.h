@@ -122,6 +122,15 @@ struct memory_node_ops_s
   * @param *bytes size of the data to concat
   */
 	s16(*memConcat) (MemoryNode *node, void *src, u16 bytes);
+	/** @brief Applies a mask to the data
+  *
+  * Applies an and (&) mask to the data of the memory node byte to byte. In 
+  * case a null memory node was passed it will return 
+  * kErrorCode_Null_Memory_Node.
+  * @return s16 ErrorCode of the execution
+  * @param *node pointer to the node whose data we wish to apply the mask
+  * @param mask mask we want to apply to the data
+  */
 	s16(*memMask) (MemoryNode *node, u8 mask);
 	void(*print) (MemoryNode *node);
 };

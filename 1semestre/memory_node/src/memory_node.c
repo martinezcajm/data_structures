@@ -15,12 +15,13 @@
 static s16 MEMNODE_init(MemoryNode *node);
 static s16 MEMNODE_reset(MemoryNode *node);
 static s16 MEMNODE_free (MemoryNode **node);
-static void* MEMNODE_data(MemoryNode *node); // returns a reference to data
-static u16 MEMNODE_size(MemoryNode *node); // returns data size
+static void* MEMNODE_data(MemoryNode *node);
+static u16 MEMNODE_size(MemoryNode *node);
 static s16 MEMNODE_setData(MemoryNode *node, void *src, u16 bytes);
 static s16 MEMNODE_memSet(MemoryNode *node, u8 value);
 static s16 MEMNODE_memCopy(MemoryNode *node, void *src, u16 bytes);
-static s16 MEMNODE_memConcat (MemoryNode *node, void *src, u16 bytes);
+static s16 MEMNODE_memConcat(MemoryNode *node, void *src, u16 bytes);
+static s16 MEMNODE_memMask(MemoryNode *node, u8 mask);
 static void MEMNODE_print (MemoryNode *node);
 
 
@@ -34,6 +35,7 @@ struct memory_node_ops_s memory_node_ops =
   .memSet = MEMNODE_memSet,
   .memCopy = MEMNODE_memCopy,
   .memConcat = MEMNODE_memConcat,
+  .memMask = MEMNODE_memMask,
   .print = MEMNODE_print
 };
 
@@ -245,6 +247,21 @@ s16 MEMNODE_memConcat (MemoryNode *node, void *src, u16 bytes){
   free(node->data_);
   node->data_ = aux;
   node->size_ = node->size_ + bytes;
+  return kErrorCode_Ok;
+}
+
+s16 MEMNODE_memMask(MemoryNode *node, u8 mask){
+  if(NULL == node){
+#ifdef VERBOSE_
+    printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Memory_Node;
+  }
+  u8 *aux;
+  aux = (u8*)node->data_;
+  for(u8 i = 0; i < node->size_; i++){
+    aux[i] &= mask;
+  }
   return kErrorCode_Ok;
 }
 
