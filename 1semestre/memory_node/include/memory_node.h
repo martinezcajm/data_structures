@@ -71,7 +71,7 @@ struct memory_node_ops_s
   * Resets the old data of the memory node and sets it to it's new value 
   * updating it's size with the bytes parameter. In case src is null it will 
   * return a  kWarningCode_Strange_Operation and WON'T reset the old data. In  
-  * case a null pointer wass passed it will return kErrorCode_Null_Memory_Node
+  * case a null pointer was passed it will return kErrorCode_Null_Memory_Node
   *
   * @return s16 ErrorCode of the execution
   * @param *node pointer to the node we wish to set the data
@@ -97,7 +97,7 @@ struct memory_node_ops_s
   * data. If a size of 0 bytes is passed a kWarningCode_Strange_Operation will 
   * be returned and NOTHING will be done to the node. If the source is null a
   * kErrorCode_Null_Pointer_Parameter_Received will be returned. In case a 
-  * null pointer wass passed it will return kErrorCode_Null_Memory_Node. If the
+  * null pointer was passed it will return kErrorCode_Null_Memory_Node. If the
   * allocation of the new data went wrong it will return a 
   * kErrorCode_Error_Trying_To_Allocate_Memory.
   *
@@ -107,6 +107,20 @@ struct memory_node_ops_s
   * @param *bytes size of the new data
   */
 	s16(*memCopy) (MemoryNode *node, void *src, u16 bytes);
+	/** @brief Concats the data of the memory  with thedata passed at source
+  *
+  * Allocates memory for the data result from the concatenation of the memory
+  * node data with the data at source. In case a null memory node was passed 
+  * it will return kErrorCode_Null_Memory_Node. If the data of the memory node 
+  * is null a kErrorCode_Null_Data will be returned. If the source is null a 
+  * kWarningCode_Strange_Operation will be returned. If there's an error 
+  * allocating the memory a kErrorCode_Error_Trying_To_Allocate_Memory will be
+  * returned.
+  * @return s16 ErrorCode of the execution
+  * @param *node pointer to the node whose data we wish to concat
+  * @param *src  source we want to concat to the data
+  * @param *bytes size of the data to concat
+  */
 	s16(*memConcat) (MemoryNode *node, void *src, u16 bytes);
 	s16(*memMask) (MemoryNode *node, u8 mask);
 	void(*print) (MemoryNode *node);

@@ -219,22 +219,28 @@ s16 MEMNODE_memConcat (MemoryNode *node, void *src, u16 bytes){
 #endif
     return kErrorCode_Null_Memory_Node;
   }
-  if(NULL == node->data_ || NULL == src){
+  if(NULL == node->data_){
 #ifdef VERBOSE_
-    printf("Warning: [%s] trying to concat with null\n", __FUNCTION__);
+    printf("Error: [%s] Trying to concat with null data\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Data;
+  }
+  if(NULL == src){
+#ifdef VERBOSE_
+    printf("Warning: [%s] Trying to concat with null source\n", __FUNCTION__);
 #endif
     return kWarningCode_Strange_Operation;
   }
-  s8 *aux;
-  aux = (s8*)malloc(node->size_ + bytes);
+  u8 *aux;
+  aux = (u8*)malloc(node->size_ + bytes);
   if(NULL == aux){
 #ifdef VERBOSE_
     printf("Error: [%s] malloc failed\n", __FUNCTION__);
 #endif
     return kErrorCode_Error_Trying_To_Allocate_Memory;
   }
-  memcpy(aux, node->data_, node->size_-1);
-  memcpy(aux + (node->size_-1), src, bytes);
+  memcpy(aux, node->data_, node->size_);
+  memcpy(aux + (node->size_), src, bytes);
   //We have already checked that data is not null.
   free(node->data_);
   node->data_ = aux;
