@@ -74,12 +74,38 @@ struct memory_node_ops_s
   * case a null pointer wass passed it will return kErrorCode_Null_Memory_Node
   *
   * @return s16 ErrorCode of the execution
-  * @param *node pointer to the node we wish to get the data size
+  * @param *node pointer to the node we wish to set the data
   * @param *src  source of the new data of the memory node
   * @param *bytes size of the data the memory node will be referencing
   */
 	s16 (*setData) (MemoryNode *node, void *src, u16 bytes);
+	/** @brief Sets all the data to the value passed
+  *
+  * Applies a memset of the value passed to the data of the memory node. In  
+  * case a null pointer wass passed it will return kErrorCode_Null_Memory_Node.
+  * In case the data of the memory node is null it will return a 
+  * kErrorCode_Null_Data
+  *
+  * @return s16 ErrorCode of the execution
+  * @param *node pointer to the node we wish to memset
+  * @param u8 value we want to memset to the data
+  */
 	s16(*memSet) (MemoryNode *node, u8 value);
+	/** @brief allocates the data passe by src and sets it to the memory node.
+  *
+  * Copies the data passed in src and sets the pointer of data to this new
+  * data. If a size of 0 bytes is passed a kWarningCode_Strange_Operation will 
+  * be returned and NOTHING will be done to the node. If the source is null a
+  * kErrorCode_Null_Pointer_Parameter_Received will be returned. In case a 
+  * null pointer wass passed it will return kErrorCode_Null_Memory_Node. If the
+  * allocation of the new data went wrong it will return a 
+  * kErrorCode_Error_Trying_To_Allocate_Memory.
+  *
+  * @return s16 ErrorCode of the execution
+  * @param *node pointer to the node whose data we wish to memcopy
+  * @param *src  source of the data that will be copied
+  * @param *bytes size of the new data
+  */
 	s16(*memCopy) (MemoryNode *node, void *src, u16 bytes);
 	s16(*memConcat) (MemoryNode *node, void *src, u16 bytes);
 	s16(*memMask) (MemoryNode *node, u8 mask);
