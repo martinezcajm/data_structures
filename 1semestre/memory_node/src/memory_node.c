@@ -25,7 +25,7 @@ static void MEMNODE_print (MemoryNode *node);
 
 struct memory_node_ops_s memory_node_ops =
 {
-	.init = MEMNODE_init,
+	//.init = MEMNODE_init,
 	.reset = MEMNODE_reset,
 	.free = MEMNODE_free,
 	.data = MEMNODE_data,
@@ -53,27 +53,28 @@ MemoryNode* MEMNODE_Create()
 }
 
 s16 MEMNODE_createFromRef(MemoryNode **node){
-	*node = malloc(sizeof(MemoryNode));
-	if (NULL == node)
-	{
+	if(NULL == node){
+#ifdef VERBOSE_
+		printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
+#endif
+		return kErrorCode_Null_Pointer_Parameter_Received;
+	}
+	//TODO Si la referencia tiene algo la devolvemos
+
+	*node = MEMNODE_Create();
+	if(NULL == *node){
 #ifdef VERBOSE_
 		printf("Error: [%s] not enough memory available\n", __FUNCTION__);
 #endif
-		return 0;
+		return kErrorCode_Error_Trying_To_Allocate_Memory;
 	}
-	MEMNODE_init(*node);
-	return 1;
+	return kErrorCode_Ok;
 }
 
 s16 MEMNODE_init(MemoryNode *node)
 {
-	if (NULL == node)
-	{
-#ifdef VERBOSE_
-		printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
-#endif
-		return kErrorCode_Null_Pointer_Received;
-	}
+	//This function will only by called from Create so we don't need to check
+	//the pointer.
 	node->data_ = NULL;
 	node->size_ = 0;
 	node->ops_ = &memory_node_ops;
@@ -203,7 +204,7 @@ s16 MEMNODE_memConcat (MemoryNode *node, void *src, u16 bytes){
 #ifdef VERBOSE_
 		printf("Warning: [%s] trying to concat with null\n", __FUNCTION__);
 #endif
-		return kWarningCode_Ilogic_Expression;
+		return kWarningCode_Strange_Operation;
 	}
 	s8 *aux;
 	aux = (s8*)malloc(node->size_ + bytes);

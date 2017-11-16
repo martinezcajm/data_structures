@@ -17,6 +17,15 @@ typedef struct memory_node_s
 
 struct memory_node_ops_s
 {
+	/** @brief Initializes the memory node
+  *
+  * Initializes the memory node, this method must only be called from Create
+  * as it will assume the pointer passed to it is a valid one created by
+  * the Create functionality.
+  *
+  * @return s16 ErrorCode of the execution
+  * @param *node pointer to the node we wish to initialize
+  */
 	s16(*init) (MemoryNode *node);		// init memory node
 	s16(*reset) (MemoryNode *node);		// reset content of memory node
 	s16(*free) (MemoryNode **node);		// free memory, both data and node
@@ -32,7 +41,16 @@ struct memory_node_ops_s
 // Create function:
 //   1.- Allocates memory, size is passed as parameter, returns the allocated chunk of memory
 MemoryNode* MEMNODE_create();
-//   2.- Allocates memory from a reference, size is passed as parameter, returns 0 if failed, 1 if success
+/** @brief Create a Memory Node from a reference
+  *
+  * Initializes a new memory node in the memory node passed by reference, if it
+  * already had something returns a warning. If the allocation of memory fails
+  * returns an allocation error and if everything went well returns an ok.
+  *
+  * @return s16 ErrorCode of the execution
+  * @param **node direction to the pointer of the memory node we want to
+  * initialize
+  */
 s16 MEMNODE_createFromRef(MemoryNode **node);
 
 #endif // __MEMORY_NODE_H__
