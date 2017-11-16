@@ -62,6 +62,13 @@ s16 MEMNODE_createFromRef(MemoryNode **node){
     return kErrorCode_Null_Pointer_Reference_Received;
   }
   //TODO Si la referencia tiene algo la devolvemos
+  if(NULL != *node){
+#ifdef VERBOSE_
+    printf("Warning: [%s] The reference passed already had a value\n",
+           __FUNCTION__);
+#endif
+    return kWarningCode_Strange_Operation;
+  }
 
   *node = MEMNODE_create();
   if(NULL == *node){
