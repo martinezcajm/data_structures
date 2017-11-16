@@ -132,6 +132,14 @@ struct memory_node_ops_s
   * @param mask mask we want to apply to the data
   */
 	s16(*memMask) (MemoryNode *node, u8 mask);
+	/** @brief prints the content of data
+  *
+  * Prints the data byte to byte in hexadecimal. In case a null memory node 
+  * was passed it will print The node is null. If data is null it will print
+  * The data is null 
+  * @return void
+  * @param *node pointer to the node whose data we wish to print
+  */
 	void(*print) (MemoryNode *node);
 };
 /** @brief Create a Memory Node

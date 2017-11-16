@@ -268,19 +268,24 @@ s16 MEMNODE_memMask(MemoryNode *node, u8 mask){
 void MEMNODE_print(MemoryNode *node){
   if(NULL == node){
 #ifdef VERBOSE_
-    printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
+    printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
 #endif
     printf("The node is null\n");
     return;
   }
   if(NULL == node->data_){
 #ifdef VERBOSE_
-    printf("Error: [%s] the pointer passed is null\n", __FUNCTION__);
+    printf("Error: [%s] The data of memory node is null \n", __FUNCTION__);
 #endif
     printf("The data is null\n");
     return;
   }
-  printf("The data of the node is %s\n", (char *)node->data_);
+  u8 *aux;
+  aux = (u8*)node->data_;
+  for(u8 i = 0; i < node->size_; i++){
+    printf("%02x", aux[i]);
+  }
+  printf("\n");
 }
 
 int main(){
