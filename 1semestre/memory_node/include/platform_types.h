@@ -1,8 +1,10 @@
 // platform_types.h
 // Toni Barella
+// Jose Maria Martinez
 // Algoritmos & Inteligencia Artificial
 // ESAT 2017/2018
-//
+// Redefinition of our basic types using the stdint library to avoid problems
+// between different arquitectures.
 #ifndef __PLATFORM_TYPES_H__
 #define __PLATFORM_TYPES_H__
 

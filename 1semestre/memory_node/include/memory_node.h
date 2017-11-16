@@ -1,8 +1,9 @@
 // memory_node.h
 // Toni Barella
+// Jose Maria Martinez
 // Algoritmos & Inteligencia Artificial
 // ESAT 2017/2018
-//
+// Implementation of memory node and it's functionalities.
 #ifndef __MEMORY_NODE_H__
 #define __MEMORY_NODE_H__
 

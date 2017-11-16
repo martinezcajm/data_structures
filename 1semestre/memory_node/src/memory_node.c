@@ -1,9 +1,8 @@
 // memory_node.c : 
 // Toni Barella
+// Jose Maria Martinez
 // Algoritmos & Inteligencia Artificial
 // ESAT 2017/2018
-//
-
 //comments included at memory_node.h
 #include <stdio.h>
 #include <stdlib.h>

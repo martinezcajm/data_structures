@@ -1,13 +1,17 @@
 // common_def.h
 // Toni Barella
+// Jose Maria Martinez
 // Algoritmos & Inteligencia Artificial
 // ESAT 2017/2018
-//
+//Implementation of common utilities of our API like the error codes
+
 #ifndef __COMMON_DEF_H__
 #define __COMMON_DEF_H__
 
 #define VERBOSE_
-
+/** Error code enum. 
+*  Enum with the different error codes.
+*/
 typedef enum
 {
 	kErrorCode_Ok = 0,
