@@ -13,14 +13,14 @@ static s16 VECTOR_init(Vector *vector);
 static s16 VECTOR_destroy(Vector **vector);
 static s16 VECTOR_reset(Vector *vector);
 static u16 VECTOR_traverse(Vector *vector, void(*callback) (MemoryNode *));
-/*static u16 VECTOR_resize(Vector *vector, u16 new_size);
+//static u16 VECTOR_resize(Vector *vector, u16 new_size);
 static u16 VECTOR_capacity(Vector *vector);
 static u16 VECTOR_length(Vector *vector);
 static bool VECTOR_isEmpty(Vector *vector);
 static bool VECTOR_isFull(Vector *vector);
 static void* VECTOR_head(Vector *vector);
 static void* VECTOR_last(Vector *vector);
-static void* VECTOR_at(Vector *vector, u16 position);
+/*static void* VECTOR_at(Vector *vector, u16 position);
 static s16 VECTOR_insertFirst(Vector *vector, void *data);
 static s16 VECTOR_insertLast(Vector *vector, void *data);
 static s16 VECTOR_insertAt(Vector *vector, void *data, u16 position);
@@ -34,7 +34,13 @@ struct adt_vector_ops_s adt_vector_ops =
 {
   .destroy = VECTOR_destroy,
   .reset = VECTOR_reset,
-  .traverse = VECTOR_traverse
+  .traverse = VECTOR_traverse,
+  .capacity = VECTOR_capacity,
+  .length = VECTOR_length,
+  .isEmpty = VECTOR_isEmpty,
+  .isFull = VECTOR_isFull,
+  .head = VECTOR_head,
+  .last = VECTOR_last
 };
 
 Vector* VECTOR_Create(u16 capacity)
@@ -121,38 +127,84 @@ u16 VECTOR_traverse(Vector *vector, void(*callback) (MemoryNode *))
 /*u16 VECTOR_resize(Vector *vector, u16 new_size)
 {
   
-}
+}*/
 
 u16 VECTOR_capacity(Vector *vector)
 {
-  
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return 0;
+  }
+  return vector->capacity_;  
 }
 
 u16 VECTOR_length(Vector *vector)
 {
-  
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return 0;
+  }
+  //return vector->head_ - vector->tail_;
+  return vector->tail_;  
 }
 
 bool VECTOR_isEmpty(Vector *vector)
 {
-  
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return true;
+  }  
+  return 0 == vector->tail_;
 }
 
 bool VECTOR_isFull(Vector *vector)
 {
-  
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return true;
+  }  
+  return vector->tail_ == vector->capacity_;
 }
 
 void* VECTOR_head(Vector *vector)
 {
-  
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(0 == vector->tail_){
+    return NULL;
+  }
+  /*MemoryNode *aux;
+  aux = vector->storage_;
+  aux += vector->head_;*/
+  return vector->storage_ + vector->head_;
 }
 
 void* VECTOR_last(Vector *vector)
 {
-  
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(0 == vector->tail_){
+    return NULL;
+  }
+  return vector->storage_ + (vector->head_ + vector->tail_ -1);
 }
-
+/*
 void* VECTOR_at(Vector *vector, u16 position)
 {
   

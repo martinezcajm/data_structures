@@ -30,17 +30,80 @@ struct adt_vector_ops_s
   * @param *vector pointer to the vector we wish to initialize
   */
 	s16 (*init) (Vector *vector);
-	s16(*destroy) (Vector **vector);					// destroys the vector, and its data
-	s16 (*reset) (Vector *vector);					// resets vector's data
+	/** @brief Destroys the vector and it's data
+  *
+  * Destroys the vector, and its data. Note that this function calls the reset
+  * method. In case the direction to the pointer is null it will return a
+  * kErrorCode_Null_Pointer_Reference_Received. If the execution went well this
+  * function assures that the pointer to vector ends as NULL
+  *
+  * @return s16 ErrorCode of the execution
+  * @param **vector direction to the pointer of the vector we want to destroy
+  */
+	s16(*destroy) (Vector **vector);
+	/** @brief Resets the vector
+  *
+  * Frees the storage of the vector, using the reset method of memory node,
+  * and sets the values of the vector to it's default. In case a null pointer
+  * was passed it will return a kErrorCode_Null_Vector
+  *
+  * @return s16 ErrorCode of the execution
+  * @param *node pointer to the node we wish to reset
+  */
+	s16 (*reset) (Vector *vector);
 	u16 (*resize)(Vector *vector, u16 new_size);
 	// State queries
-	u16 (*capacity)(Vector *vector);				// returns the maximum number of elemets to store
-	u16 (*length)(Vector *vector);					// current number of elements (<= capacity)
+	/** @brief getter of capacity
+  *
+  * Returns the maximum number of elemets to store.
+  *
+  * @return u16 capacity of the vector
+  * @param *vector pointer to the vector we wish to get the capacity
+  */
+	u16 (*capacity)(Vector *vector);
+	/** @brief getter of the length
+  *
+  * Returns the current number of elements (<= capacity)
+  *
+  * @return u16 capacity of the vector
+  * @param *vector pointer to the vector we wish to get the length
+  */
+	u16 (*length)(Vector *vector);
+	/** @brief Indicates if the vector is empty
+  *
+  * Indicates if the vector is empty
+  *
+  * @return bool true if the vector is empty false otherwise
+  * @param *vector pointer to the vector
+  */
 	bool (*isEmpty) (Vector *vector);
+	/** @brief Indicates if the vector is full
+  *
+  * Indicates if the vector is full
+  *
+  * @return bool true if the vector is full false otherwise
+  * @param *vector pointer to the vector
+  */
 	bool (*isFull) (Vector *vector);
 	// Data queries
-	void* (*head)(Vector *vector);					// Head: returns a reference to the first node
-	void* (*last)(Vector *vector);					// Last: returns a reference to the last node
+	/** @brief Returns the first element of the vector
+  *
+  * Returns a reference to the first node. If the vector passed is NULL or the
+  * vector is empty returns null.
+  *
+  * @return void* first element of the vector
+  * @param *vector pointer to the vector
+  */
+	void* (*head)(Vector *vector);
+	/** @brief Returns the last element of the vector
+  *
+  * Returns a reference to the last node. If the vector passed is NULL or the
+  * vector is empty returns null.
+  *
+  * @return void* last element of the vector
+  * @param *vector pointer to the vector
+  */
+	void* (*last)(Vector *vector);
 	void* (*at)(Vector *vector, u16 position);		// At: returns a reference to a specific position
 	// Insertion
 	s16 (*insertFirst) (Vector *vector, void *data); // inserts an element in the first position

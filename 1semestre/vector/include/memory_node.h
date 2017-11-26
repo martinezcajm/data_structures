@@ -31,7 +31,7 @@ struct memory_node_ops_s
 	/** @brief Resets the memory node
   *
   * Sets the data and size of the memory node to it's default values. In case
-  * a null pointer wass passed it will return a kErrorCode_Null_Memory_Node
+  * a null pointer was passed it will return a kErrorCode_Null_Memory_Node
   *
   * @return s16 ErrorCode of the execution
   * @param *node pointer to the node we wish to reset
