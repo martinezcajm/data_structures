@@ -91,7 +91,7 @@ s16 VECTOR_reset(Vector *vector)
 #endif
     return kErrorCode_Null_Vector;
   }
-  //TODO use traverse function (when is done) to free the memory nodes
+  VECTOR_traverse(vector, vector->storage_->ops_->reset);
   free(vector->storage_);
   vector->storage_ = NULL;
   vector->head_ = 0;
@@ -102,7 +102,20 @@ s16 VECTOR_reset(Vector *vector)
 
 u16 VECTOR_traverse(Vector *vector, void(*callback) (MemoryNode *))
 {
-  
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return 0;
+  }
+  MemoryNode *aux;
+  aux = vector->storage_;
+  u16 i;
+  for(i = 0; i< vector->capacity_; i++){
+    callback(aux);
+    ++aux;
+  }
+  return i;
 }
 
 /*u16 VECTOR_resize(Vector *vector, u16 new_size)
