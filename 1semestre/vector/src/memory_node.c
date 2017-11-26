@@ -50,6 +50,8 @@ MemoryNode* MEMNODE_create()
     return NULL;
   }
   MEMNODE_init(node);
+  //As init can only called from create it can't return other error code than
+  //ok
   return node;
 }
 

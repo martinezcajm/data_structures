@@ -20,8 +20,17 @@ typedef struct adt_vector_s
 struct adt_vector_ops_s
 {
 	// Internal storage management
+	/** @brief Initializes the vector
+  *
+  * Initializes the vector, this method must only be called from Create
+  * as it will assume the pointer passed to it is a valid one created by
+  * the Create functionality.
+  *
+  * @return s16 ErrorCode of the execution
+  * @param *vector pointer to the vector we wish to initialize
+  */
 	s16 (*init) (Vector *vector);
-	s16(*destroy) (Vector *vector);					// destroys the vector, and its data
+	s16(*destroy) (Vector **vector);					// destroys the vector, and its data
 	s16 (*reset) (Vector *vector);					// resets vector's data
 	u16 (*resize)(Vector *vector, u16 new_size);
 	// State queries
@@ -46,7 +55,14 @@ struct adt_vector_ops_s
 	u16 (*traverse)(Vector *vector, void(*callback) (MemoryNode *)); // traverses a vector and applies a callback to each node
 	void(*print)(Vector *vector);
 };
-
+/** @brief Create a Vector
+*
+* Initializes a new Vector allocating memory for it and it's storage.
+* If the allocation of memory fails returns a NULL and if everything went well
+* returns the pointer to the memory node.
+*
+* @return Vector* pointer to the vector
+*/
 Vector* VECTOR_Create(u16 capacity);
 #endif //__ADT_VECTOR_H__
 
