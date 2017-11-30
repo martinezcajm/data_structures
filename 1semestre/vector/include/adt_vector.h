@@ -11,16 +11,16 @@
 
 typedef struct adt_vector_s
 {
-	u16 head_;
-	u16 tail_;
-	u16 capacity_;
-	MemoryNode *storage_;
+  u16 head_;
+  u16 tail_;
+  u16 capacity_;
+  MemoryNode *storage_;
 } Vector;
 
 struct adt_vector_ops_s
 {
-	// Internal storage management
-	/** @brief Initializes the vector
+  // Internal storage management
+  /** @brief Initializes the vector
   *
   * Initializes the vector, this method must only be called from Create
   * as it will assume the pointer passed to it is a valid one created by
@@ -29,8 +29,8 @@ struct adt_vector_ops_s
   * @return s16 ErrorCode of the execution
   * @param *vector pointer to the vector we wish to initialize
   */
-	s16 (*init) (Vector *vector);
-	/** @brief Destroys the vector and it's data
+  s16 (*init) (Vector *vector);
+  /** @brief Destroys the vector and it's data
   *
   * Destroys the vector, and its data. Note that this function calls the reset
   * method. In case the direction to the pointer is null it will return a
@@ -40,8 +40,8 @@ struct adt_vector_ops_s
   * @return s16 ErrorCode of the execution
   * @param **vector direction to the pointer of the vector we want to destroy
   */
-	s16(*destroy) (Vector **vector);
-	/** @brief Resets the vector
+  s16(*destroy) (Vector **vector);
+  /** @brief Resets the vector
   *
   * Frees the storage of the vector, using the reset method of memory node,
   * and sets the values of the vector to it's default. In case a null pointer
@@ -50,43 +50,43 @@ struct adt_vector_ops_s
   * @return s16 ErrorCode of the execution
   * @param *node pointer to the node we wish to reset
   */
-	s16 (*reset) (Vector *vector);
-	u16 (*resize)(Vector *vector, u16 new_size);
-	// State queries
-	/** @brief getter of capacity
+  s16 (*reset) (Vector *vector);
+  u16 (*resize)(Vector *vector, u16 new_size);
+  // State queries
+  /** @brief getter of capacity
   *
   * Returns the maximum number of elemets to store.
   *
   * @return u16 capacity of the vector
   * @param *vector pointer to the vector we wish to get the capacity
   */
-	u16 (*capacity)(Vector *vector);
-	/** @brief getter of the length
+  u16 (*capacity)(Vector *vector);
+  /** @brief getter of the length
   *
   * Returns the current number of elements (<= capacity)
   *
   * @return u16 capacity of the vector
   * @param *vector pointer to the vector we wish to get the length
   */
-	u16 (*length)(Vector *vector);
-	/** @brief Indicates if the vector is empty
+  u16 (*length)(Vector *vector);
+  /** @brief Indicates if the vector is empty
   *
   * Indicates if the vector is empty
   *
   * @return bool true if the vector is empty false otherwise
   * @param *vector pointer to the vector
   */
-	bool (*isEmpty) (Vector *vector);
-	/** @brief Indicates if the vector is full
+  bool (*isEmpty) (Vector *vector);
+  /** @brief Indicates if the vector is full
   *
   * Indicates if the vector is full
   *
   * @return bool true if the vector is full false otherwise
   * @param *vector pointer to the vector
   */
-	bool (*isFull) (Vector *vector);
-	// Data queries
-	/** @brief Returns the first element of the vector
+  bool (*isFull) (Vector *vector);
+  // Data queries
+  /** @brief Returns the first element of the vector
   *
   * Returns a reference to the first node. If the vector passed is NULL or the
   * vector is empty returns null.
@@ -94,8 +94,8 @@ struct adt_vector_ops_s
   * @return void* first element of the vector
   * @param *vector pointer to the vector
   */
-	void* (*head)(Vector *vector);
-	/** @brief Returns the last element of the vector
+  void* (*head)(Vector *vector);
+  /** @brief Returns the last element of the vector
   *
   * Returns a reference to the last node. If the vector passed is NULL or the
   * vector is empty returns null.
@@ -103,20 +103,30 @@ struct adt_vector_ops_s
   * @return void* last element of the vector
   * @param *vector pointer to the vector
   */
-	void* (*last)(Vector *vector);
-	void* (*at)(Vector *vector, u16 position);		// At: returns a reference to a specific position
-	// Insertion
-	s16 (*insertFirst) (Vector *vector, void *data); // inserts an element in the first position
-	s16(*insertLast) (Vector *vector, void *data);
-	s16(*insertAt) (Vector *vector, void *data, u16 position);	// inserts an element in a specific position
-	// Extraction
-	s16(*extractFirst) (Vector *vector, void *data);	// extracts the element stored in the first position
-	s16(*extractLast) (Vector *vector, void *data);		// extracts the element stored in the last position
-	s16(*extractAt) (Vector *vector, void *data, u16 position);	// extracts the element stored in a specific position
-	// Miscellaneous
-	s16(*concat) (Vector *vector, Vector *src);		// concatenates two vectors, and are stored in origin
-	u16 (*traverse)(Vector *vector, void(*callback) (MemoryNode *)); // traverses a vector and applies a callback to each node
-	void(*print)(Vector *vector);
+  void* (*last)(Vector *vector);
+  /** @brief Returns the element at the specified position
+  *
+  * Returns a reference to the element at the indicated position. If the 
+  * vector passed is NULL or the vector is empty returns null. It also returns
+  * NULL if position it's greater or equal to capacity
+  *
+  * @return void* element of the vector at the indicated position
+  * @param *vector pointer to the vector
+  * @param position position in which the element is located
+  */
+  void* (*at)(Vector *vector, u16 position);
+  // Insertion
+  s16 (*insertFirst) (Vector *vector, void *data); // inserts an element in the first position
+  s16(*insertLast) (Vector *vector, void *data);
+  s16(*insertAt) (Vector *vector, void *data, u16 position);  // inserts an element in a specific position
+  // Extraction
+  s16(*extractFirst) (Vector *vector, void *data);  // extracts the element stored in the first position
+  s16(*extractLast) (Vector *vector, void *data);   // extracts the element stored in the last position
+  s16(*extractAt) (Vector *vector, void *data, u16 position); // extracts the element stored in a specific position
+  // Miscellaneous
+  s16(*concat) (Vector *vector, Vector *src);   // concatenates two vectors, and are stored in origin
+  u16 (*traverse)(Vector *vector, void(*callback) (MemoryNode *)); // traverses a vector and applies a callback to each node
+  void(*print)(Vector *vector);
 };
 /** @brief Create a Vector
 *

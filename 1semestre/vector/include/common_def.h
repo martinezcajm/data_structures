@@ -21,7 +21,9 @@ typedef enum
   kErrorCode_Error_Trying_To_Allocate_Memory = -4,
   kErrorCode_Null_Data = -5,
   kWarningCode_Strange_Operation = -6,
-  kErrorCode_Null_Vector = -7
+  kErrorCode_Null_Vector = -7,
+  kErrorCode_Out_Of_Range_Index = -8,
+  kErrorCode_Vector_Is_Full = -9
 } ErrorCode;
 
 #endif // __COMMON_DEF_H__
