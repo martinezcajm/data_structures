@@ -10,7 +10,7 @@
 #include "adt_vector.h"
 #include "common_def.h"
 
-static s16 VECTOR_init(Vector *vector);
+static s16 VECTOR_init(Vector *vector, u16 capacity);
 static s16 VECTOR_destroy(Vector **vector);
 static s16 VECTOR_reset(Vector *vector);
 static u16 VECTOR_traverse(Vector *vector, void(*callback) (MemoryNode *));
@@ -47,27 +47,34 @@ struct adt_vector_ops_s adt_vector_ops =
 Vector* VECTOR_Create(u16 capacity)
 {
   Vector *vector = malloc(sizeof(Vector));
-  MemoryNode *storage = malloc(sizeof(MemoryNode)*capacity);
-  if(NULL == vector || NULL == storage){
+  if(NULL == vector){
 #ifdef VERBOSE_
     printf("Error: [%s] not enough memory available\n", __FUNCTION__);
 #endif
     return NULL;
   }
-  VECTOR_init(vector);
+  MemoryNode *storage = malloc(sizeof(MemoryNode)*capacity);
+  if(NULL == storage){
+#ifdef VERBOSE_
+    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
+#endif
+    free(vector);
+    return NULL;
+  }
+  VECTOR_init(vector, capacity);
   //As init can only called from create it can't return other error code than
   //ok
   vector->storage_ = storage;
   return vector;
 }
 
-s16 VECTOR_init(Vector *vector)
+s16 VECTOR_init(Vector *vector,u16 capacity)
 {
   //This function will only by called from Create so we don't need to check
   //the pointer.
   vector->head_ = 0;
   vector->tail_ = 0;
-  vector->capacity_ = 0;
+  vector->capacity_ = capacity;
   vector->storage_ = NULL;
   return kErrorCode_Ok;
 }
@@ -149,8 +156,7 @@ u16 VECTOR_length(Vector *vector)
 #endif
     return 0;
   }
-  //return vector->head_ - vector->tail_;
-  return vector->tail_;  
+  return vector->tail_ - vector->head_;
 }
 
 bool VECTOR_isEmpty(Vector *vector)
@@ -172,7 +178,7 @@ bool VECTOR_isFull(Vector *vector)
 #endif
     return true;
   }  
-  return vector->tail_ == vector->capacity_;
+  return VECTOR_length(vector) == vector->capacity_;
 }
 
 void* VECTOR_head(Vector *vector)
@@ -188,7 +194,6 @@ void* VECTOR_head(Vector *vector)
   }
   MemoryNode *aux = vector->storage_ + vector->head_;
   return aux->ops_->data(aux);
-  //return vector->storage_ + vector->head_;
 }
 
 void* VECTOR_last(Vector *vector)
@@ -202,11 +207,11 @@ void* VECTOR_last(Vector *vector)
   if(VECTOR_isEmpty(vector)){
     return NULL;
   }
-  MemoryNode *aux = vector->storage_ + (vector->head_ + vector->tail_ -1);
+  MemoryNode *aux = vector->storage_ + (vector->tail_ -1);
   return aux->ops_->data(aux);
-  //return vector->storage_ + (vector->head_ + vector->tail_ -1);
 }
 
+//TODO Revisar la condicion de fuera de rango
 void* VECTOR_at(Vector *vector, u16 position)
 {
   if(NULL == vector){
@@ -229,7 +234,7 @@ void* VECTOR_at(Vector *vector, u16 position)
   //return vector->storage_ + position;
 }
 
-s16 VECTOR_insertFirst(Vector *vector, void *data)
+s16 VECTOR_insertFirst(Vector *vector, void *data, u16 data_size)
 {
   if(NULL == vector){
 #ifdef VERBOSE_
@@ -249,35 +254,22 @@ s16 VECTOR_insertFirst(Vector *vector, void *data)
 #endif
     return kErrorCode_Vector_Is_Full;    
   }
-  /*MemoryNode *node = MEMNODE_create();
-  if(NULL == node){
-#ifdef VERBOSE_
-    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
-#endif
-    return kErrorCode_Error_Trying_To_Allocate_Memory;    
-  }
-  s16 status = node->ops_->setData(node, data, 5); //size?
-  if(kErrorCode_Null_Memory_Node == status || 
-     kWarningCode_Strange_Operation == status){
-#ifdef VERBOSE_
-    printf("InternalError: [%s] Problem with memory node\n", __FUNCTION__);
-#endif
-    return status;
-  }*/
   if(vector->head_ > 0){ //we don't need to move the content
     --vector->head_;
   }else{ //the head is at the first position so we need to move the elements
     memmove(vector->storage_ + 1, vector->storage_,
-            sizeof(MemoryNode)*vector->tail_);
+            sizeof(MemoryNode)*VECTOR_length(vector));
+    //As the elements were moved one position to the right the tail needs to 
+    //be updated
+    ++vector->tail_;
   }
-  ++vector->tail_;
-  MemoryNode *aux = (MemoryNode*)data;
-  *(vector->storage_ + vector->head_) = *aux;
-  //*(vector->storage_ + vector->head_) = *node;
-  return kErrorCode_Ok;
+  MemoryNode *aux = vector->storage_ + vector->head_;
+  s16 status = aux->ops_->init(aux);
+  status = aux->ops_->setData(aux, data, data_size);
+  return status;
 }
 
-s16 VECTOR_insertLast(Vector *vector, void *data)
+s16 VECTOR_insertLast(Vector *vector, void *data, u16 data_size)
 {
   if(NULL == vector){
 #ifdef VERBOSE_
@@ -297,20 +289,24 @@ s16 VECTOR_insertLast(Vector *vector, void *data)
 #endif
     return kErrorCode_Vector_Is_Full;    
   }
-  //we need to move the content
-  if(vector->head_ + vector->tail_ == vector->capacity_){ 
+
+  //As we know the vector is not full if the tail is equal to capacity we need
+  //we have free space at the front
+  if(vector->tail_ == vector->capacity_){ 
     memmove(vector->storage_ + vector->head_ -1, 
             vector->storage_ + vector->head_,
-            sizeof(MemoryNode)*vector->tail_);
+            sizeof(MemoryNode)*VECTOR_length(vector));
     --vector->head_;
+  }else{//Tail is pointing to the next free node we increase the tail
+    ++vector->tail_;
   }
-  ++vector->tail_;
-  MemoryNode *aux = (MemoryNode*)data;
-  *(vector->storage_ + vector->head_ + vector->tail_) = *aux;
-  return kErrorCode_Ok;  
+  MemoryNode *aux = vector->storage_ + (vector->tail_-1);
+  s16 status = aux->ops_->init(aux);
+  status = aux->ops_->setData(aux, data, data_size);
+  return status;  
 }
 
-/*s16 VECTOR_insertAt(Vector *vector, void *data, u16 position)
+/*s16 VECTOR_insertAt(Vector *vector, void *data, u16 position, u16 data_size)
 {
   
 }
@@ -337,7 +333,7 @@ s16 VECTOR_concat(Vector *vector, Vector *src)
 
 u16 VECTOR_taverse(Vector *vector, void(*callback) (MemoryNode *))
 {
-  
+  ALREADY DONE
 }
 
 void VECTOR_print(Vector *vector)

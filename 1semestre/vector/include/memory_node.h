@@ -20,9 +20,8 @@ struct memory_node_ops_s
 {
 	/** @brief Initializes the memory node
   *
-  * Initializes the memory node, this method must only be called from Create
-  * as it will assume the pointer passed to it is a valid one created by
-  * the Create functionality.
+  * Initializes the memory node, it a the memory node passed is NULL it will
+  * return a kErrorCode_Null_Memory_Node.
   *
   * @return s16 ErrorCode of the execution
   * @param *node pointer to the node we wish to initialize
@@ -163,5 +162,15 @@ MemoryNode* MEMNODE_create();
 * initialize
 */
 s16 MEMNODE_createFromRef(MemoryNode **node);
+/** @brief Initializes the memory node
+*
+* Initializes the memory node, this method must only be called from Create
+* as it will assume the pointer passed to it is a valid one created by
+* the Create functionality.
+*
+* @return s16 ErrorCode of the execution
+* @param *node pointer to the node we wish to initialize
+*/
+s16 MEMNODE_init(MemoryNode *node);
 
 #endif // __MEMORY_NODE_H__

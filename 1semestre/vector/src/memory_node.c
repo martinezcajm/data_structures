@@ -11,7 +11,7 @@
 #include "memory_node.h"
 #include "common_def.h"
 
-static s16 MEMNODE_init(MemoryNode *node);
+static s16 MEMNODE_ext_init(MemoryNode *node);
 static s16 MEMNODE_reset(MemoryNode *node);
 static s16 MEMNODE_free (MemoryNode **node);
 static void* MEMNODE_data(MemoryNode *node);
@@ -26,6 +26,7 @@ static void MEMNODE_print (MemoryNode *node);
 
 struct memory_node_ops_s memory_node_ops =
 {
+  .init = MEMNODE_ext_init,
   .reset = MEMNODE_reset,
   .free = MEMNODE_free,
   .data = MEMNODE_data,
@@ -84,6 +85,22 @@ s16 MEMNODE_init(MemoryNode *node)
 {
   //This function will only by called from Create so we don't need to check
   //the pointer.
+  node->data_ = NULL;
+  node->size_ = 0;
+  node->ops_ = &memory_node_ops;
+  return kErrorCode_Ok;
+}
+
+static s16 MEMNODE_ext_init(MemoryNode *node)
+{
+  //This init can be called from outside so we have to check the memory node
+  if (NULL == node)
+  {
+#ifdef VERBOSE_
+    printf("Error: [%s] the memory node is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Memory_Node;
+  }
   node->data_ = NULL;
   node->size_ = 0;
   node->ops_ = &memory_node_ops;

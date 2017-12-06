@@ -28,8 +28,9 @@ struct adt_vector_ops_s
   *
   * @return s16 ErrorCode of the execution
   * @param *vector pointer to the vector we wish to initialize
+  * @param capacity number of elements that the vector can store
   */
-  s16 (*init) (Vector *vector);
+  s16 (*init) (Vector *vector, u16 capacity);
   /** @brief Destroys the vector and it's data
   *
   * Destroys the vector, and its data. Note that this function calls the reset
@@ -116,9 +117,9 @@ struct adt_vector_ops_s
   */
   void* (*at)(Vector *vector, u16 position);
   // Insertion
-  s16 (*insertFirst) (Vector *vector, void *data); // inserts an element in the first position
-  s16(*insertLast) (Vector *vector, void *data);
-  s16(*insertAt) (Vector *vector, void *data, u16 position);  // inserts an element in a specific position
+  s16 (*insertFirst) (Vector *vector, void *data, u16 data_size); // inserts an element in the first position
+  s16(*insertLast) (Vector *vector, void *data, u16 data_size);
+  s16(*insertAt) (Vector *vector, void *data, u16 data_size, u16 position);  // inserts an element in a specific position
   // Extraction
   s16(*extractFirst) (Vector *vector, void *data);  // extracts the element stored in the first position
   s16(*extractLast) (Vector *vector, void *data);   // extracts the element stored in the last position
