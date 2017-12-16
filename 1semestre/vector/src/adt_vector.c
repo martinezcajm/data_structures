@@ -13,7 +13,7 @@
 static s16 VECTOR_init(Vector *vector, u16 capacity);
 static s16 VECTOR_destroy(Vector **vector);
 static s16 VECTOR_reset(Vector *vector);
-//static u16 VECTOR_resize(Vector *vector, u16 new_size);
+static s16 VECTOR_resize(Vector *vector, u16 new_size);
 static u16 VECTOR_capacity(Vector *vector);
 static u16 VECTOR_length(Vector *vector);
 static bool VECTOR_isEmpty(Vector *vector);
@@ -35,7 +35,7 @@ struct adt_vector_ops_s adt_vector_ops =
 {
   .destroy = VECTOR_destroy,
   .reset = VECTOR_reset,
-  //.resize = VECTOR_resize,
+  .resize = VECTOR_resize,
   .capacity = VECTOR_capacity,
   .length = VECTOR_length,
   .isEmpty = VECTOR_isEmpty,
@@ -56,6 +56,7 @@ struct adt_vector_ops_s adt_vector_ops =
 
 Vector* VECTOR_Create(u16 capacity)
 {
+  //TODO comprobar que capacity sea valida
   Vector *vector = malloc(sizeof(Vector));
   if(NULL == vector){
 #ifdef VERBOSE_
@@ -85,9 +86,6 @@ s16 VECTOR_init(Vector *vector,u16 capacity)
   vector->head_ = 0;
   vector->tail_ = 0;
   vector->capacity_ = capacity;
-  //vector->storage_ = NULL;
-  //We need to 
-  //MEMNODE_init(vector->storage_);
   //We initialize the nodes of our storage
   VECTOR_traverse(vector, MEMNODE_init);
   return kErrorCode_Ok;
@@ -128,10 +126,51 @@ s16 VECTOR_reset(Vector *vector)
   return kErrorCode_Ok;
 }
 
-/*u16 VECTOR_resize(Vector *vector, u16 new_size)
+s16 VECTOR_resize(Vector *vector, u16 new_size)
 {
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Vector;
+  }
+  //TODO comprobar que new_size sea valido
+
+  u16 old_capacity = vector->capacity_;
+  //In case the new size is the same as the actual capacity we have finished
+  if(new_size == old_capacity){
+    return kErrorCode_Ok;
+  }
+  MemoryNode *new_storage = malloc(sizeof(MemoryNode)*new_size);
+  if(NULL == new_storage){
+  #ifdef VERBOSE_
+    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
+#endif
+    return kErrorCode_Error_Trying_To_Allocate_Memory;
+  }
+
+  MemoryNode *old_storage = vector->storage_;
   
-}*/
+  vector->storage_ = new_storage;
+  vector->capacity_ = new_size;
+
+  if(new_size > old_capacity){
+    //If new size is greater we need to initialize the new memory nodes
+    //TODO apply the init just to the ones that won't be copied
+    VECTOR_traverse(vector, MEMNODE_init);
+    memcpy(new_storage,old_storage,sizeof(MemoryNode)*old_capacity);
+  }else if(new_size < old_capacity){
+    memcpy(new_storage,old_storage,sizeof(MemoryNode)*new_size);
+    //We free the data of the old storage that was not copied to the
+    //new storage
+    u16 i;
+    for(i = new_size; i < old_capacity; i++){
+      old_storage->ops_->reset(old_storage + i);
+    }
+  }
+  free(old_storage);
+  return kErrorCode_Ok;
+}
 
 u16 VECTOR_capacity(Vector *vector)
 {
@@ -434,7 +473,14 @@ int main(){
   printf("\n isFull: %d \n", VECTOR_isFull(vector));
 
   VECTOR_print(vector);
-
+  VECTOR_resize(vector, 7);
+  VECTOR_insertFirst(vector, "Now I'm bigger", 14);
+  printf("\nSecond print:");
+  VECTOR_print(vector); 
+  printf("\ncapacity: %d", VECTOR_capacity(vector));
+  printf("\nlength: %d", VECTOR_length(vector));
+  printf("\n isEmpty: %d", VECTOR_isEmpty(vector));
+  printf("\n isFull: %d", VECTOR_isFull(vector));
 
   return 0;
 }
