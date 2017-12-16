@@ -120,7 +120,7 @@ struct adt_vector_ops_s
   *
   * Returns a reference to the element at the indicated position. If the 
   * vector passed is NULL or the vector is empty returns null. It also returns
-  * NULL if position it's greater or equal to capacity
+  * NULL if position it's greater or equal to the length.
   *
   * @return void* element of the vector at the indicated position
   * @param *vector pointer to the vector
@@ -162,7 +162,8 @@ struct adt_vector_ops_s
   * status depending of the result. In case the vector is full a
   * kErrorCode_Vector_Is_Full is returned, if the vector is null 
   * kErrorCode_Null_Vector and in case the the data is null
-  * kErrorCode_Null_Data.
+  * kErrorCode_Null_Data. In case the range is greater than the number of
+  * elements stored a kErrorCode_Out_Of_Range_Index will be returned.
   *
   * @return s16 status of the operation once finished
   * @param *vector pointer to the vector

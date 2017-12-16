@@ -27,8 +27,8 @@ static s16 VECTOR_insertAt(Vector *vector, void *data, u16 position,
                            u16 data_size);
 static void* VECTOR_extractFirst(Vector *vector);
 static void* VECTOR_extractLast(Vector *vector);
-/*static void* VECTOR_extractAt(Vector *vector, u16 position);
-static s16 VECTOR_concat(Vector *vector, Vector *src);*/
+/*static void* VECTOR_extractAt(Vector *vector, u16 position);*/
+static s16 VECTOR_concat(Vector *vector, Vector *src);
 static u16 VECTOR_traverse(Vector *vector, void(*callback) (MemoryNode *));
 static void VECTOR_print(Vector *vector);
 
@@ -50,7 +50,7 @@ struct adt_vector_ops_s adt_vector_ops =
   .extractFirst = VECTOR_extractFirst,
   .extractLast = VECTOR_extractLast,
   //.extractAt = VECTOR_extractAt,
-  //.concat = VECTOR_concat,
+  .concat = VECTOR_concat,
   .traverse = VECTOR_traverse,
   .print = VECTOR_print
 };
@@ -460,12 +460,49 @@ void* VECTOR_extractLast(Vector *vector)
 /*s16 VECTOR_extractAt(Vector *vector, void *data, u16 position)
 {
   
-}
+}*/
 
 s16 VECTOR_concat(Vector *vector, Vector *src)
 {
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Vector;
+  }
+  if(NULL == src){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Pointer_Parameter_Received;
+  }
+
+  MemoryNode *new_storage = malloc(sizeof(MemoryNode)*(vector->capacity_ + 
+                                   src->capacity_));
+  if(NULL == new_storage){
+  #ifdef VERBOSE_
+    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
+#endif
+    return kErrorCode_Error_Trying_To_Allocate_Memory;
+  }
+  u16 new_number_elements = VECTOR_length(vector) + VECTOR_length(src);
+  MemoryNode *old_storage = vector->storage_;
   
-}*/
+  vector->storage_ = new_storage;
+  vector->capacity_ = vector->capacity_ + src->capacity_;
+
+  //We initialize the new storage
+  VECTOR_traverse(vector, MEMNODE_init);
+  memcpy(new_storage,old_storage + vector->head_,
+         sizeof(MemoryNode)*VECTOR_length(vector));
+  memcpy(new_storage + VECTOR_length(vector), src->storage_ + src->head_,
+         sizeof(MemoryNode)*VECTOR_length(src));
+  free(old_storage);
+  vector->head_ = 0;
+  vector->tail_ = new_number_elements;
+
+  return kErrorCode_Ok;  
+}
 
 u16 VECTOR_traverse(Vector *vector, void(*callback) (MemoryNode *))
 {
@@ -530,7 +567,29 @@ int main(){
   printf("\ncapacity: %d", VECTOR_capacity(vector));
   printf("\nlength: %d", VECTOR_length(vector));
   printf("\n isEmpty: %d", VECTOR_isEmpty(vector));
-  printf("\n isFull: %d", VECTOR_isFull(vector));
+  printf("\n isFull: %d \n", VECTOR_isFull(vector));
+
+  Vector *vector2 = NULL;
+  vector2 = VECTOR_Create(2);
+
+  Vector *vector3 = NULL;
+  vector3 = VECTOR_Create(3);
+
+  VECTOR_insertFirst(vector2, "Let's concatenate", 17);
+  VECTOR_insertLast(vector2, "now", 3);
+
+  VECTOR_insertFirst(vector3, "Concatenate with me", 19);
+  VECTOR_insertLast(vector3, "come on!", 8);
+
+  VECTOR_concat(vector2, vector3);
+  printf("\n Fourth print:");
+  VECTOR_print(vector2); 
+  printf("\ncapacity: %d", VECTOR_capacity(vector2));
+  printf("\nlength: %d", VECTOR_length(vector2));
+  printf("\n isEmpty: %d", VECTOR_isEmpty(vector2));
+  printf("\n isFull: %d", VECTOR_isFull(vector2));
+
+
 
   return 0;
 }
