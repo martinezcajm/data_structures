@@ -83,7 +83,7 @@ s16 MEMNODE_createFromRef(MemoryNode **node){
 
 s16 MEMNODE_init(MemoryNode *node)
 {
-  //This function will only by called from Create so we don't need to check
+  //This function will only be called from Create so we don't need to check
   //the pointer.
   node->data_ = NULL;
   node->size_ = 0;

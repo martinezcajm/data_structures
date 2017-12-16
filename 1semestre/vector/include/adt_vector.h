@@ -117,13 +117,53 @@ struct adt_vector_ops_s
   */
   void* (*at)(Vector *vector, u16 position);
   // Insertion
-  s16 (*insertFirst) (Vector *vector, void *data, u16 data_size); // inserts an element in the first position
+  /** @brief Inserts the data at the first position of the vector
+  *
+  * Inserts the data at the first position of the vector and returns the status
+  * depending of the result. In case the vector is full a
+  * kErrorCode_Vector_Is_Full is returned, if the vector is null 
+  * kErrorCode_Null_Vector and in case the the data is null
+  * kErrorCode_Null_Data.
+  *
+  * @return s16 status of the operation once finished
+  * @param *vector pointer to the vector
+  * @param *data data we wish to store at the position
+  * @param data_size size of the data we wish to store
+  */
+  s16 (*insertFirst) (Vector *vector, void *data, u16 data_size);
+  /** @brief Inserts the data at the last position of the vector
+  *
+  * Inserts the data at the last position of the vector and returns the status
+  * depending of the result. In case the vector is full a
+  * kErrorCode_Vector_Is_Full is returned, if the vector is null 
+  * kErrorCode_Null_Vector and in case the the data is null
+  * kErrorCode_Null_Data.
+  *
+  * @return s16 status of the operation once finished
+  * @param *vector pointer to the vector
+  * @param *data data we wish to store at the position
+  * @param data_size size of the data we wish to store
+  */
   s16(*insertLast) (Vector *vector, void *data, u16 data_size);
-  s16(*insertAt) (Vector *vector, void *data, u16 data_size, u16 position);  // inserts an element in a specific position
+  /** @brief Inserts the data at the position of the vector indicated
+  *
+  * Inserts the data at the position of the vector indicated and returns the 
+  * status depending of the result. In case the vector is full a
+  * kErrorCode_Vector_Is_Full is returned, if the vector is null 
+  * kErrorCode_Null_Vector and in case the the data is null
+  * kErrorCode_Null_Data.
+  *
+  * @return s16 status of the operation once finished
+  * @param *vector pointer to the vector
+  * @param *data data we wish to store at the position
+  * @param data_size size of the data we wish to store
+  * @param position position in which the data will be stored
+  */
+  s16(*insertAt) (Vector *vector, void *data, u16 data_size, u16 position);
   // Extraction
-  s16(*extractFirst) (Vector *vector, void *data);  // extracts the element stored in the first position
-  s16(*extractLast) (Vector *vector, void *data);   // extracts the element stored in the last position
-  s16(*extractAt) (Vector *vector, void *data, u16 position); // extracts the element stored in a specific position
+  void* (*extractFirst) (Vector *vector);  // extracts the element stored in the first position
+  void* (*extractLast) (Vector *vector);   // extracts the element stored in the last position
+  void* (*extractAt) (Vector *vector, u16 position); // extracts the element stored in a specific position
   // Miscellaneous
   s16(*concat) (Vector *vector, Vector *src);   // concatenates two vectors, and are stored in origin
   u16 (*traverse)(Vector *vector, void(*callback) (MemoryNode *)); // traverses a vector and applies a callback to each node
