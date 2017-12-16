@@ -27,7 +27,7 @@ static s16 VECTOR_insertAt(Vector *vector, void *data, u16 position,
                            u16 data_size);
 static void* VECTOR_extractFirst(Vector *vector);
 static void* VECTOR_extractLast(Vector *vector);
-/*static void* VECTOR_extractAt(Vector *vector, u16 position);*/
+static void* VECTOR_extractAt(Vector *vector, u16 position);
 static s16 VECTOR_concat(Vector *vector, Vector *src);
 static u16 VECTOR_traverse(Vector *vector, void(*callback) (MemoryNode *));
 static void VECTOR_print(Vector *vector);
@@ -49,7 +49,7 @@ struct adt_vector_ops_s adt_vector_ops =
   .insertAt = VECTOR_insertAt,
   .extractFirst = VECTOR_extractFirst,
   .extractLast = VECTOR_extractLast,
-  //.extractAt = VECTOR_extractAt,
+  .extractAt = VECTOR_extractAt,
   .concat = VECTOR_concat,
   .traverse = VECTOR_traverse,
   .print = VECTOR_print
@@ -457,10 +457,52 @@ void* VECTOR_extractLast(Vector *vector)
   return data;
 }
 
-/*s16 VECTOR_extractAt(Vector *vector, void *data, u16 position)
+void* VECTOR_extractAt(Vector *vector, u16 position)
 {
-  
-}*/
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(VECTOR_isEmpty(vector)){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is empty\n", __FUNCTION__);
+#endif
+    return NULL;    
+  }
+  if(position >= VECTOR_length(vector)){
+#ifdef VERBOSE_
+    printf("Error: [%s] Index out of range\n", __FUNCTION__);
+#endif
+    return NULL;    
+  } 
+
+  if(0 == position){ //extraction of the first element
+    return VECTOR_extractFirst(vector);
+  }else if(position == VECTOR_length(vector) - 1){ //Extraction at the end
+    return VECTOR_extractLast(vector);
+  }else{ 
+    MemoryNode *aux = vector->storage_ + (vector->head_+position);
+    void *data = aux->ops_->data(aux);
+    memmove(vector->storage_ + (vector->head_ + position),
+            vector->storage_ + (vector->head_ + position + 1),
+            sizeof(MemoryNode)* (VECTOR_length(vector)-(position+1)));
+    //We have shifted the data to the left, so we need to initialize the last
+    //element that will now be the new tail of the vector
+    --vector->tail_;
+    aux = vector->storage_ + (vector->tail_);
+    s16 status = aux->ops_->init(aux);
+    if(kErrorCode_Null_Pointer_Reference_Received == status){
+#ifdef VERBOSE_
+      printf("Error:[%s] Strange behaviour, please inform us\n", __FUNCTION__);
+#endif
+      return NULL;
+    }
+    
+    return data;
+  }
+}
 
 s16 VECTOR_concat(Vector *vector, Vector *src)
 {

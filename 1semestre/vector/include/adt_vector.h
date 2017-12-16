@@ -173,11 +173,55 @@ struct adt_vector_ops_s
   */
   s16(*insertAt) (Vector *vector, void *data, u16 data_size, u16 position);
   // Extraction
-  void* (*extractFirst) (Vector *vector);  // extracts the element stored in the first position
-  void* (*extractLast) (Vector *vector);   // extracts the element stored in the last position
+  /** @brief Extracts the first element of the vector and returns it
+  *
+  * Extracts the first element of the vector and removes it. 
+  * Notice that the data must be freed once you are finished using it as it's
+  * no longer responsability of the vector.
+  *
+  * @return void* data at the first position of the vector
+  * @param *vector pointer to the vector
+  */
+  void* (*extractFirst) (Vector *vector);
+  /** @brief Extracts the last element of the vector and returns it
+  *
+  * Extracts the last element of the vector and removes it. 
+  * Notice that the data must be freed once you are finished using it as it's
+  * no longer responsability of the vector.
+  *
+  * @return void* data at the last position of the vector
+  * @param *vector pointer to the vector
+  */
+  void* (*extractLast) (Vector *vector);
+  /** @brief Extracts the element of the vector at the position indicated
+  *   and returns it
+  *
+  * Extracts the element of the vector at the position indicated 
+  * and removes it from the vector. Notice that the data must be freed once 
+  * you finished using it as it's no longer responsability of the vector.
+  *
+  * @return void* data at the indicated position of the vector
+  * @param *vector pointer to the vector
+  * @param position position of the element we want to extract
+  */
   void* (*extractAt) (Vector *vector, u16 position); // extracts the element stored in a specific position
   // Miscellaneous
-  s16(*concat) (Vector *vector, Vector *src);   // concatenates two vectors, and are stored in origin
+  /** @brief Concatenates two vector storing the result at origin
+  *
+  * Concatenates the source to the vector, the result of it will have a 
+  * capacity of vector's capacity plus src capacity's. Notice that the src
+  * vector won't be modified during the execution. In case the vector is null 
+  * kErrorCode_Null_Vector will be returned and in case the the src is null
+  * kErrorCode_Null_Pointer_Parameter_Received. If there's a problem during
+  * the allocation of the new vector kErrorCode_Error_Trying_To_Allocate_Memory
+  * will be returned.
+  *
+  * @return s16 status of the operation once finished
+  * @param *vector pointer to the vector that will store the result of the
+  * concatenation
+  * @param *src vector we want to concatenate to our origin                                                       
+  */
+  s16(*concat) (Vector *vector, Vector *src);
   /** @brief Applies the callback method to the vector
   *
   * Applies a memory node function to the set of elements of the vector.
