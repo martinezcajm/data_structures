@@ -23,7 +23,8 @@ static void* VECTOR_last(Vector *vector);
 static void* VECTOR_at(Vector *vector, u16 position);
 static s16 VECTOR_insertFirst(Vector *vector, void *data, u16 data_size);
 static s16 VECTOR_insertLast(Vector *vector, void *data, u16 data_size);
-/*static s16 VECTOR_insertAt(Vector *vector, void *data, u16 position u16 data_size);*/
+static s16 VECTOR_insertAt(Vector *vector, void *data, u16 position,
+                           u16 data_size);
 static void* VECTOR_extractFirst(Vector *vector);
 static void* VECTOR_extractLast(Vector *vector);
 /*static void* VECTOR_extractAt(Vector *vector, u16 position);
@@ -45,7 +46,7 @@ struct adt_vector_ops_s adt_vector_ops =
   .at = VECTOR_at,
   .insertFirst = VECTOR_insertFirst,
   .insertLast = VECTOR_insertLast,
-  //.insertAt = VECTOR_insertAt,
+  .insertAt = VECTOR_insertAt,
   .extractFirst = VECTOR_extractFirst,
   .extractLast = VECTOR_extractLast,
   //.extractAt = VECTOR_extractAt,
@@ -246,7 +247,6 @@ void* VECTOR_last(Vector *vector)
   return aux->ops_->data(aux);
 }
 
-//TODO Revisar la condicion de fuera de rango
 void* VECTOR_at(Vector *vector, u16 position)
 {
   if(NULL == vector){
@@ -258,13 +258,13 @@ void* VECTOR_at(Vector *vector, u16 position)
   if(VECTOR_isEmpty(vector)){
     return NULL;
   }
-  if(position >= vector->capacity_){
+  if(position >= VECTOR_length(vector)){
 #ifdef VERBOSE_
     printf("Error: [%s] Index out of range\n", __FUNCTION__);
 #endif
     return NULL;    
   }
-  MemoryNode *aux = vector->storage_ + position;
+  MemoryNode *aux = vector->storage_ + (vector->head_ + position);
   return aux->ops_->data(aux);
   //return vector->storage_ + position;
 }
@@ -329,7 +329,7 @@ s16 VECTOR_insertLast(Vector *vector, void *data, u16 data_size)
     return kErrorCode_Vector_Is_Full;    
   }
 
-  //As we know the vector is not full if the tail is equal to capacity we need
+  //As we know the vector is not full if the tail is equal to capacity
   //we have free space at the front
   if(vector->tail_ == vector->capacity_){ 
     memmove(vector->storage_ + vector->head_ -1, 
@@ -346,13 +346,60 @@ s16 VECTOR_insertLast(Vector *vector, void *data, u16 data_size)
   return status;  
 }
 
-/*s16 VECTOR_insertAt(Vector *vector, void *data, u16 position, u16 data_size)
+s16 VECTOR_insertAt(Vector *vector, void *data, u16 position, u16 data_size)
 {
-  
-}*/
+  if(NULL == vector){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Vector;
+  }
+  if(NULL == data){
+#ifdef VERBOSE_
+    printf("Error: [%s] the data passed is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Data;
+  }
+  if(VECTOR_isFull(vector)){
+#ifdef VERBOSE_
+    printf("Error: [%s] The vector is full\n", __FUNCTION__);
+#endif
+    return kErrorCode_Vector_Is_Full;    
+  }
+  if(position > VECTOR_length(vector)){
+#ifdef VERBOSE_
+    printf("Error: [%s] Index out of range\n", __FUNCTION__);
+#endif
+    return kErrorCode_Out_Of_Range_Index;    
+  }
 
-//TODO en caso de cambiar el insert con memcpy hay que hacer un reset en vez
-//de un init (o no a lo mejor)
+  s16 status;
+
+  if(0 == position){ //Insertion at the start
+    status = VECTOR_insertFirst(vector, data, data_size);
+    return status;
+  }else if(position == VECTOR_length(vector)){ //Insertion at the end
+    status = VECTOR_insertLast(vector, data, data_size);
+    return status;
+  //we don't have space at the end
+  }else if(vector->tail_ == vector->capacity_){ 
+    memmove(vector->storage_ + (vector->head_ -1),
+            vector->storage_ + vector->head_,
+            sizeof(MemoryNode)* position);
+    --vector->head_;
+  }else{ //We can move to the right as we have space at the end
+    memmove(vector->storage_ + (vector->head_ + position + 1),
+            vector->storage_ + (vector->head_ + position),
+            sizeof(MemoryNode)* (VECTOR_length(vector) - position) );
+    ++vector->tail_;
+  }
+  MemoryNode *aux = vector->storage_ + position;
+  //we initialize the memory node before doing the memcopy
+  status = aux->ops_->init(aux);
+  status = aux->ops_->memCopy(aux, data, data_size);
+  return status;
+}
+
 void* VECTOR_extractFirst(Vector *vector)
 {
   if(NULL == vector){
@@ -476,6 +523,9 @@ int main(){
   VECTOR_resize(vector, 7);
   VECTOR_insertFirst(vector, "Now I'm bigger", 14);
   printf("\nSecond print:");
+  VECTOR_print(vector); 
+  VECTOR_insertAt(vector, " inserting at 3", 3, 15);
+  printf("\nThird print:");
   VECTOR_print(vector); 
   printf("\ncapacity: %d", VECTOR_capacity(vector));
   printf("\nlength: %d", VECTOR_length(vector));

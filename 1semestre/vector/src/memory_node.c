@@ -294,14 +294,11 @@ void MEMNODE_print(MemoryNode *node){
 #ifdef VERBOSE_
     printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
 #endif
-    printf("The node is null\n");
+    printf("Nothing\n");
     return;
   }
   if(NULL == node->data_){
-#ifdef VERBOSE_
-    printf("Error: [%s] The data of memory node is null \n", __FUNCTION__);
-#endif
-    printf("The data is null\n");
+    printf("Nothing\n");
     return;
   }
   u8 *aux;

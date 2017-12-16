@@ -177,7 +177,21 @@ struct adt_vector_ops_s
   void* (*extractAt) (Vector *vector, u16 position); // extracts the element stored in a specific position
   // Miscellaneous
   s16(*concat) (Vector *vector, Vector *src);   // concatenates two vectors, and are stored in origin
-  u16 (*traverse)(Vector *vector, void(*callback) (MemoryNode *)); // traverses a vector and applies a callback to each node
+  /** @brief Applies the callback method to the vector
+  *
+  * Applies a memory node function to the set of elements of the vector.
+  *
+  * @return u16 number of elements traveled
+  * @param *vector pointer to the vector
+  * @param *callback function of memory node that will be applied to the set
+  */
+  u16 (*traverse)(Vector *vector, void(*callback) (MemoryNode *));
+  /** @brief Prints the content of the elements of the vector
+  *
+  * Prints the content of the elements of the vector
+  *
+  * @param *vector pointer to the vector
+  */
   void(*print)(Vector *vector);
 };
 /** @brief Create a Vector
