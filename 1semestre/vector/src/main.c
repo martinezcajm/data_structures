@@ -1,3 +1,8 @@
+// main.c : 
+// Jose Maria Martinez
+// Algoritmos & Inteligencia Artificial
+// ESAT 2017/2018
+//Test battery for adt_vector
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
