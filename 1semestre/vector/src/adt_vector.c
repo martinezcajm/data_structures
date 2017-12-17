@@ -57,7 +57,6 @@ struct adt_vector_ops_s adt_vector_ops =
 
 Vector* VECTOR_Create(u16 capacity)
 {
-  //TODO comprobar que capacity sea valida
   Vector *vector = malloc(sizeof(Vector));
   if(NULL == vector){
 #ifdef VERBOSE_
@@ -105,6 +104,7 @@ s16 VECTOR_destroy(Vector **vector)
   s16 status = VECTOR_reset(*vector);
   //We check if all went well and free the vector in case it was
   if(kErrorCode_Ok == status){
+    free((*vector)->storage_);
     free(*vector);
     *vector = NULL;
   }
@@ -120,11 +120,12 @@ s16 VECTOR_reset(Vector *vector)
     return kErrorCode_Null_Vector;
   }
   VECTOR_traverse(vector, vector->storage_->ops_->reset);
-  free(vector->storage_);
-  vector->storage_ = NULL;
+  VECTOR_traverse(vector, MEMNODE_init);
+  //free(vector->storage_);
+  //vector->storage_ = NULL;
   vector->head_ = 0;
   vector->tail_ = 0;
-  vector->capacity_ = 0;
+  //vector->capacity_ = 0;
   return kErrorCode_Ok;
 }
 

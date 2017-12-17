@@ -8,6 +8,9 @@ int main()
 {
   Vector *vector = NULL;
   vector = VECTOR_Create(5);
+  //char *data = NULL;
+  char data[1024];
+
   if(NULL == vector){
     printf("\n create returned a null vector");
     return 1;
@@ -17,12 +20,23 @@ int main()
   printf("\n isEmpty: %d", vector->ops_->isEmpty(vector));
   printf("\n isFull: %d", vector->ops_->isFull(vector));
 
-  vector->ops_->insertFirst(vector, "Let's store strings", 19);
-  vector->ops_->insertLast(vector, "go", 2);
-  vector->ops_->insertFirst(vector, "You are too slow", 16);
-  vector->ops_->insertFirst(vector, "good boy", 8);
-  vector->ops_->insertLast(vector, " my boy", 7);
-  vector->ops_->insertLast(vector, " my boy", 7);
+  vector->ops_->insertFirst(vector, "Let's store strings", 20);
+  vector->ops_->insertLast(vector, "go", 3);
+  vector->ops_->insertAt(vector, "You are too slow", 4,17); //out of range
+  vector->ops_->insertAt(vector, "You are too slow", 0,17); 
+  vector->ops_->insertFirst(vector, "good boy", 9);
+  vector->ops_->insertLast(vector, " my boy", 8);
+  vector->ops_->insertLast(vector, " my boy", 8);
+
+  memset(data, 0, sizeof(data));
+  memcpy(data, vector->ops_->head(vector), sizeof(data));
+  printf("\n %s", data);
+  memset(data, 0, sizeof(data));
+  memcpy(data, vector->ops_->last(vector), sizeof(data));
+  printf("\n %s", data);
+  memset(data, 0, sizeof(data));
+  memcpy(data, vector->ops_->at(vector, 3), sizeof(data));
+  printf("\n %s", data);
 
   printf("\ncapacity: %d", vector->ops_->capacity(vector));
   printf("\nlength: %d", vector->ops_->length(vector));
@@ -31,11 +45,11 @@ int main()
 
   vector->ops_->print(vector);
   vector->ops_->resize(vector, 7);
-  vector->ops_->insertFirst(vector, "Now I'm bigger", 14);
-  printf("\nSecond print:");
+  vector->ops_->insertFirst(vector, "Now I'm bigger", 15);
+  printf("\n \n||||Second print:||||\n");
   vector->ops_->print(vector); 
-  vector->ops_->insertAt(vector, " inserting at 3", 3, 15);
-  printf("\nThird print:");
+  vector->ops_->insertAt(vector, " inserting at 3", 3, 16);
+  printf("\n \n||||Third print:||||\n");
   vector->ops_->print(vector); 
   printf("\ncapacity: %d", vector->ops_->capacity(vector));
   printf("\nlength: %d", vector->ops_->length(vector));
@@ -48,17 +62,41 @@ int main()
   Vector *vector3 = NULL;
   vector3 = VECTOR_Create(3);
 
-  vector2->ops_->insertFirst(vector2, "Let's concatenate", 17);
-  vector2->ops_->insertLast(vector2, "now", 3);
+  vector2->ops_->insertFirst(vector2, "Let's concatenate", 18);
+  vector2->ops_->insertLast(vector2, "now", 4);
 
-  vector3->ops_->insertFirst(vector3, "Concatenate with me", 19);
-  vector3->ops_->insertLast(vector3, "come on!", 8);
+  vector3->ops_->insertFirst(vector3, "Concatenate with me", 20);
+  vector3->ops_->insertLast(vector3, "come on!", 9);
 
   vector2->ops_->concat(vector2, vector3);
-  printf("\n Fourth print:");
+  printf("\n \n|||| Fourth print: |||| \n");
   vector2->ops_->print(vector2); 
   printf("\ncapacity: %d", vector2->ops_->capacity(vector2));
   printf("\nlength: %d", vector2->ops_->length(vector2));
   printf("\n isEmpty: %d", vector2->ops_->isEmpty(vector2));
   printf("\n isFull: %d", vector2->ops_->isFull(vector2));
+
+  memset(data, 0, sizeof(data));
+  memcpy(data, vector2->ops_->extractFirst(vector2), sizeof(data));
+  printf("\n %s", data);
+  vector2->ops_->extractLast(vector2);
+  printf("\n \n|||vector2 after extract||| \n");
+  vector2->ops_->print(vector2);
+  vector2->ops_->insertFirst(vector2, "I see you lost something", 25);
+  printf("\n \n|||vector2||| \n");
+  vector2->ops_->print(vector2);
+  memset(data, 0, sizeof(data));
+  memcpy(data, vector->ops_->extractAt(vector, 4), sizeof(data));
+  printf("\n %s \n", data);
+  vector->ops_->extractAt(vector, 6);
+  printf("\n \n|||vector after extract||| \n");
+  vector->ops_->print(vector);
+
+  vector->ops_->reset(vector);
+  printf("\n \n|||vector after reset||| \n");
+  vector->ops_->print(vector);
+  vector->ops_->insertFirst(vector, "Let's store strings", 20);
+  printf("\n \n|||vector after insert||| \n");
+  vector->ops_->print(vector);
+  vector->ops_->destroy(&vector);
 }
