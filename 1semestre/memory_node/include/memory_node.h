@@ -20,9 +20,8 @@ struct memory_node_ops_s
 {
 	/** @brief Initializes the memory node
   *
-  * Initializes the memory node, this method must only be called from Create
-  * as it will assume the pointer passed to it is a valid one created by
-  * the Create functionality.
+  * Initializes the memory node, it a the memory node passed is NULL it will
+  * return a kErrorCode_Null_Memory_Node.
   *
   * @return s16 ErrorCode of the execution
   * @param *node pointer to the node we wish to initialize
@@ -31,7 +30,7 @@ struct memory_node_ops_s
 	/** @brief Resets the memory node
   *
   * Sets the data and size of the memory node to it's default values. In case
-  * a null pointer wass passed it will return a kErrorCode_Null_Memory_Node
+  * a null pointer was passed it will return a kErrorCode_Null_Memory_Node
   *
   * @return s16 ErrorCode of the execution
   * @param *node pointer to the node we wish to reset
@@ -145,7 +144,7 @@ struct memory_node_ops_s
 };
 /** @brief Create a Memory Node
 *
-* Initializes a new memory node allocating memory from it. If the allocation 
+* Initializes a new memory node allocating memory for it. If the allocation 
 * of memory fails returns a NULL and if everything went well returns the 
 * pointer to the memory node.
 *
@@ -163,5 +162,16 @@ MemoryNode* MEMNODE_create();
 * initialize
 */
 s16 MEMNODE_createFromRef(MemoryNode **node);
+/** @brief Initializes the memory node
+*
+* Initializes the memory node and it's operations, if the memory node passed 
+* is NULL it will return a kErrorCode_Null_Memory_Node. Note that the create
+* function already initializes the node. So use this function if you need to
+* init a MemoryNode without using the create function.
+*
+* @return s16 ErrorCode of the execution
+* @param *node pointer to the node we wish to initialize
+*/
+s16 MEMNODE_init(MemoryNode *node);
 
 #endif // __MEMORY_NODE_H__

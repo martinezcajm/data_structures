@@ -11,7 +11,7 @@
 #include "memory_node.h"
 #include "common_def.h"
 
-static s16 MEMNODE_init(MemoryNode *node);
+static s16 MEMNODE_internal_init(MemoryNode *node);
 static s16 MEMNODE_reset(MemoryNode *node);
 static s16 MEMNODE_free (MemoryNode **node);
 static void* MEMNODE_data(MemoryNode *node);
@@ -26,6 +26,7 @@ static void MEMNODE_print (MemoryNode *node);
 
 struct memory_node_ops_s memory_node_ops =
 {
+  .init = MEMNODE_init, 
   .reset = MEMNODE_reset,
   .free = MEMNODE_free,
   .data = MEMNODE_data,
@@ -49,7 +50,9 @@ MemoryNode* MEMNODE_create()
 #endif
     return NULL;
   }
-  MEMNODE_init(node);
+  MEMNODE_internal_init(node);
+  //As init can only called from create it can't return other error code than
+  //ok
   return node;
 }
 
@@ -80,7 +83,23 @@ s16 MEMNODE_createFromRef(MemoryNode **node){
 
 s16 MEMNODE_init(MemoryNode *node)
 {
-  //This function will only by called from Create so we don't need to check
+  //This init can be called from outside so we have to check the memory node
+  if (NULL == node)
+  {
+#ifdef VERBOSE_
+    printf("Error: [%s] the memory node is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Memory_Node;
+  }
+  node->data_ = NULL;
+  node->size_ = 0;
+  node->ops_ = &memory_node_ops;
+  return kErrorCode_Ok;
+}
+
+static s16 MEMNODE_internal_init(MemoryNode *node)
+{
+  //This function will only be called from Create so we don't need to check
   //the pointer.
   node->data_ = NULL;
   node->size_ = 0;
@@ -264,7 +283,7 @@ s16 MEMNODE_memMask(MemoryNode *node, u8 mask){
   }
   u8 *aux;
   aux = (u8*)node->data_;
-  for(u8 i = 0; i < node->size_; i++){
+  for(u16 i = 0; i < node->size_; ++i){
     aux[i] &= mask;
   }
   return kErrorCode_Ok;
@@ -275,42 +294,17 @@ void MEMNODE_print(MemoryNode *node){
 #ifdef VERBOSE_
     printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
 #endif
-    printf("The node is null\n");
+    printf("Nothing\n");
     return;
   }
   if(NULL == node->data_){
-#ifdef VERBOSE_
-    printf("Error: [%s] The data of memory node is null \n", __FUNCTION__);
-#endif
-    printf("The data is null\n");
+    printf("Nothing\n");
     return;
   }
   u8 *aux;
   aux = (u8*)node->data_;
-  for(u8 i = 0; i < node->size_; i++){
-    printf("%02x", aux[i]);
+  for(u16 i = 0; i < node->size_; ++i){
+    printf("%c", aux[i]);
   }
   printf("\n");
-}
-
-int main(){
-  MemoryNode *node = NULL;
-  MemoryNode *node2 = NULL;
-  MemoryNode *node3 = NULL;
-  node = MEMNODE_create();
-  node2 = MEMNODE_create();
-  node3 = MEMNODE_create();
-  MEMNODE_free(&node);
-  MEMNODE_print(node);
-  node = MEMNODE_create();
-  MEMNODE_setData(node, "hellos", 6);
-  MEMNODE_print(node);
-  MEMNODE_memSet(node, 'c');
-  MEMNODE_memCopy(node2, "hello", 6);
-  MEMNODE_print(node);
-  //MEMNODE_memCopy(node2, "hello world", 12);
-  MEMNODE_print(node2);
-  MEMNODE_memConcat(node2, " world", 7);
-  MEMNODE_print(node2);
-  return 0;
 }
