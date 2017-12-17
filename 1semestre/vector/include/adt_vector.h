@@ -15,6 +15,7 @@ typedef struct adt_vector_s
   u16 tail_;
   u16 capacity_;
   MemoryNode *storage_;
+  struct adt_vector_ops_s *ops_;
 } Vector;
 
 struct adt_vector_ops_s

@@ -89,6 +89,7 @@ s16 VECTOR_init(Vector *vector,u16 capacity)
   vector->capacity_ = capacity;
   //We initialize the nodes of our storage
   VECTOR_traverse(vector, MEMNODE_init);
+  vector->ops_ = &adt_vector_ops;
   return kErrorCode_Ok;
 }
 
@@ -574,64 +575,4 @@ void VECTOR_print(Vector *vector)
     return;
   }
   VECTOR_traverse(vector, vector->storage_->ops_->print);
-}
-
-int main(){
-
-  Vector *vector = NULL;
-  vector = VECTOR_Create(5);
-
-  printf("\ncapacity: %d", VECTOR_capacity(vector));
-  printf("\nlength: %d", VECTOR_length(vector));
-  printf("\n isEmpty: %d", VECTOR_isEmpty(vector));
-  printf("\n isFull: %d", VECTOR_isFull(vector));
-
-  VECTOR_insertFirst(vector, "Let's store strings", 19);
-  VECTOR_insertLast(vector, "go", 2);
-  VECTOR_insertFirst(vector, "You are too slow", 16);
-  VECTOR_insertFirst(vector, "good boy", 8);
-  VECTOR_insertLast(vector, " my boy", 7);
-  VECTOR_insertLast(vector, " my boy", 7);
-
-  printf("\ncapacity: %d", VECTOR_capacity(vector));
-  printf("\nlength: %d", VECTOR_length(vector));
-  printf("\n isEmpty: %d", VECTOR_isEmpty(vector));
-  printf("\n isFull: %d \n", VECTOR_isFull(vector));
-
-  VECTOR_print(vector);
-  VECTOR_resize(vector, 7);
-  VECTOR_insertFirst(vector, "Now I'm bigger", 14);
-  printf("\nSecond print:");
-  VECTOR_print(vector); 
-  VECTOR_insertAt(vector, " inserting at 3", 3, 15);
-  printf("\nThird print:");
-  VECTOR_print(vector); 
-  printf("\ncapacity: %d", VECTOR_capacity(vector));
-  printf("\nlength: %d", VECTOR_length(vector));
-  printf("\n isEmpty: %d", VECTOR_isEmpty(vector));
-  printf("\n isFull: %d \n", VECTOR_isFull(vector));
-
-  Vector *vector2 = NULL;
-  vector2 = VECTOR_Create(2);
-
-  Vector *vector3 = NULL;
-  vector3 = VECTOR_Create(3);
-
-  VECTOR_insertFirst(vector2, "Let's concatenate", 17);
-  VECTOR_insertLast(vector2, "now", 3);
-
-  VECTOR_insertFirst(vector3, "Concatenate with me", 19);
-  VECTOR_insertLast(vector3, "come on!", 8);
-
-  VECTOR_concat(vector2, vector3);
-  printf("\n Fourth print:");
-  VECTOR_print(vector2); 
-  printf("\ncapacity: %d", VECTOR_capacity(vector2));
-  printf("\nlength: %d", VECTOR_length(vector2));
-  printf("\n isEmpty: %d", VECTOR_isEmpty(vector2));
-  printf("\n isFull: %d", VECTOR_isFull(vector2));
-
-
-
-  return 0;
 }

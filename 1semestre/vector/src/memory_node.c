@@ -11,7 +11,7 @@
 #include "memory_node.h"
 #include "common_def.h"
 
-static s16 MEMNODE_ext_init(MemoryNode *node);
+static s16 MEMNODE_internal_init(MemoryNode *node);
 static s16 MEMNODE_reset(MemoryNode *node);
 static s16 MEMNODE_free (MemoryNode **node);
 static void* MEMNODE_data(MemoryNode *node);
@@ -26,7 +26,7 @@ static void MEMNODE_print (MemoryNode *node);
 
 struct memory_node_ops_s memory_node_ops =
 {
-  .init = MEMNODE_ext_init,
+  .init = MEMNODE_init, 
   .reset = MEMNODE_reset,
   .free = MEMNODE_free,
   .data = MEMNODE_data,
@@ -50,7 +50,7 @@ MemoryNode* MEMNODE_create()
 #endif
     return NULL;
   }
-  MEMNODE_init(node);
+  MEMNODE_internal_init(node);
   //As init can only called from create it can't return other error code than
   //ok
   return node;
@@ -83,16 +83,6 @@ s16 MEMNODE_createFromRef(MemoryNode **node){
 
 s16 MEMNODE_init(MemoryNode *node)
 {
-  //This function will only be called from Create so we don't need to check
-  //the pointer.
-  node->data_ = NULL;
-  node->size_ = 0;
-  node->ops_ = &memory_node_ops;
-  return kErrorCode_Ok;
-}
-
-static s16 MEMNODE_ext_init(MemoryNode *node)
-{
   //This init can be called from outside so we have to check the memory node
   if (NULL == node)
   {
@@ -101,6 +91,16 @@ static s16 MEMNODE_ext_init(MemoryNode *node)
 #endif
     return kErrorCode_Null_Memory_Node;
   }
+  node->data_ = NULL;
+  node->size_ = 0;
+  node->ops_ = &memory_node_ops;
+  return kErrorCode_Ok;
+}
+
+static s16 MEMNODE_internal_init(MemoryNode *node)
+{
+  //This function will only be called from Create so we don't need to check
+  //the pointer.
   node->data_ = NULL;
   node->size_ = 0;
   node->ops_ = &memory_node_ops;
@@ -283,7 +283,7 @@ s16 MEMNODE_memMask(MemoryNode *node, u8 mask){
   }
   u8 *aux;
   aux = (u8*)node->data_;
-  for(u8 i = 0; i < node->size_; i++){
+  for(u16 i = 0; i < node->size_; ++i){
     aux[i] &= mask;
   }
   return kErrorCode_Ok;
@@ -303,7 +303,7 @@ void MEMNODE_print(MemoryNode *node){
   }
   u8 *aux;
   aux = (u8*)node->data_;
-  for(u8 i = 0; i < node->size_; i++){
+  for(u16 i = 0; i < node->size_; ++i){
     printf("%c", aux[i]);
   }
   printf("\n");
