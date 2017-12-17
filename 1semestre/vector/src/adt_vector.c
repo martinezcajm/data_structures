@@ -120,12 +120,8 @@ s16 VECTOR_reset(Vector *vector)
     return kErrorCode_Null_Vector;
   }
   VECTOR_traverse(vector, vector->storage_->ops_->reset);
-  VECTOR_traverse(vector, MEMNODE_init);
-  //free(vector->storage_);
-  //vector->storage_ = NULL;
   vector->head_ = 0;
   vector->tail_ = 0;
-  //vector->capacity_ = 0;
   return kErrorCode_Ok;
 }
 
