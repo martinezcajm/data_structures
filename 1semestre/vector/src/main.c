@@ -15,7 +15,7 @@ int main()
   vector = VECTOR_Create(5);
   //char *data = NULL;
   char data[1024];
-
+  
   if(NULL == vector){
     printf("\n create returned a null vector");
     return 1;
@@ -34,13 +34,13 @@ int main()
   vector->ops_->insertLast(vector, " my boy", 8);
 
   memset(data, 0, sizeof(data));
-  memcpy(data, vector->ops_->head(vector), sizeof(data));
+  memcpy(data, vector->ops_->head(vector), 9);
   printf("\n %s", data);
   memset(data, 0, sizeof(data));
-  memcpy(data, vector->ops_->last(vector), sizeof(data));
+  memcpy(data, vector->ops_->last(vector), 8);
   printf("\n %s", data);
   memset(data, 0, sizeof(data));
-  memcpy(data, vector->ops_->at(vector, 3), sizeof(data));
+  memcpy(data, vector->ops_->at(vector, 3), 3);
   printf("\n %s", data);
 
   printf("\ncapacity: %d", vector->ops_->capacity(vector));
@@ -108,7 +108,7 @@ int main()
 
 
   memset(data, 0, sizeof(data));
-  memcpy(data, vector->ops_->extractAt(vector, 4), sizeof(data));
+  memcpy(data, vector->ops_->extractAt(vector, 4), 20);
   printf("\n %s \n", data);
   vector->ops_->extractAt(vector, 6);
   printf("\n \n|||vector after extract||| \n");
