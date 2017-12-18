@@ -346,7 +346,6 @@ s16 VECTOR_insertLast(Vector *vector, void *data, u16 data_size)
   }
   MemoryNode *aux = vector->storage_ + (vector->tail_-1);
   s16 status = aux->ops_->init(aux);
-  //status = aux->ops_->setData(aux, data, data_size);
   status = aux->ops_->memCopy(aux, data, data_size);
   return status;  
 }
@@ -524,29 +523,16 @@ s16 VECTOR_concat(Vector *vector, Vector *src)
     return kErrorCode_Null_Pointer_Parameter_Received;
   }
 
-  MemoryNode *new_storage = malloc(sizeof(MemoryNode)*(vector->capacity_ + 
-                                   src->capacity_));
-  if(NULL == new_storage){
-  #ifdef VERBOSE_
-    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
-#endif
-    return kErrorCode_Error_Trying_To_Allocate_Memory;
-  }
-  u16 new_number_elements = VECTOR_length(vector) + VECTOR_length(src);
-  MemoryNode *old_storage = vector->storage_;
-  
-  vector->storage_ = new_storage;
-  vector->capacity_ = vector->capacity_ + src->capacity_;
+  s16 status = VECTOR_resize(vector, vector->capacity_ + src->capacity_);
 
-  //We initialize the new storage
-  VECTOR_traverse(vector, MEMNODE_init);
-  memcpy(new_storage,old_storage + vector->head_,
-         sizeof(MemoryNode)*VECTOR_length(vector));
-  memcpy(new_storage + VECTOR_length(vector), src->storage_ + src->head_,
-         sizeof(MemoryNode)*VECTOR_length(src));
-  free(old_storage);
-  vector->head_ = 0;
-  vector->tail_ = new_number_elements;
+  if(kErrorCode_Ok != status){
+    return status;
+  }
+
+  for(u16 i = 0; i < VECTOR_length(src); ++i){
+    VECTOR_insertLast(vector, src->storage_->ops_->data(src->storage_ + i),
+                      src->storage_->ops_->size(src->storage_ + i));
+  }
 
   return kErrorCode_Ok;  
 }

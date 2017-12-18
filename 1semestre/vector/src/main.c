@@ -73,7 +73,9 @@ int main()
   vector3->ops_->insertFirst(vector3, "Concatenate with me", 20);
   vector3->ops_->insertLast(vector3, "come on!", 9);
 
+
   vector2->ops_->concat(vector2, vector3);
+  vector3->ops_->destroy(&vector3);
   printf("\n \n|||| Fourth print: |||| \n");
   vector2->ops_->print(vector2); 
   printf("\ncapacity: %d", vector2->ops_->capacity(vector2));
@@ -119,4 +121,5 @@ int main()
   printf("\n \n|||vector after insert||| \n");
   vector->ops_->print(vector);
   vector->ops_->destroy(&vector);
+  vector2->ops_->destroy(&vector2);
 }
