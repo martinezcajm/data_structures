@@ -84,7 +84,7 @@ int main()
   printf("\n isFull: %d", vector2->ops_->isFull(vector2));
 
   memset(data, 0, sizeof(data));
-  memcpy(data, vector2->ops_->extractFirst(vector2), sizeof(data));
+  memcpy(data, vector2->ops_->extractFirst(vector2), 18);
   printf("\n %s", data);
   vector2->ops_->extractLast(vector2);
   printf("\n \n|||vector2 after extract||| \n");
