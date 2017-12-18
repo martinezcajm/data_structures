@@ -90,6 +90,21 @@ int main()
   vector2->ops_->insertFirst(vector2, "I see you lost something", 25);
   printf("\n \n|||vector2||| \n");
   vector2->ops_->print(vector2);
+
+  vector2->ops_->insertLast(vector2, "go", 3);
+  vector2->ops_->insertLast(vector2, "again", 6);
+  vector2->ops_->extractFirst(vector2);
+  vector2->ops_->extractFirst(vector2);
+  printf("\n \n|||vector2 ready to resize||| \n");
+  vector2->ops_->print(vector2);
+  vector2->ops_->resize(vector2, 3);
+  printf("\n \n|||vector2 after resize||| \n");
+  vector2->ops_->print(vector2);
+  vector2->ops_->resize(vector2, 1);
+  printf("\n \n|||vector2 after second resize||| \n");
+  vector2->ops_->print(vector2);
+
+
   memset(data, 0, sizeof(data));
   memcpy(data, vector->ops_->extractAt(vector, 4), sizeof(data));
   printf("\n %s \n", data);

@@ -133,8 +133,6 @@ s16 VECTOR_resize(Vector *vector, u16 new_size)
 #endif
     return kErrorCode_Null_Vector;
   }
-  //TODO comprobar que new_size sea valido
-
   u16 old_capacity = vector->capacity_;
   //In case the new size is the same as the actual capacity we have finished
   if(new_size == old_capacity){
@@ -153,18 +151,27 @@ s16 VECTOR_resize(Vector *vector, u16 new_size)
   vector->storage_ = new_storage;
   vector->capacity_ = new_size;
 
+  //We initialize the memnodes of the new vector
+  VECTOR_traverse(vector, MEMNODE_init);
+
   if(new_size > old_capacity){
-    //If new size is greater we need to initialize the new memory nodes
-    //TODO apply the init just to the ones that won't be copied
-    VECTOR_traverse(vector, MEMNODE_init);
     memcpy(new_storage,old_storage,sizeof(MemoryNode)*old_capacity);
   }else if(new_size < old_capacity){
-    memcpy(new_storage,old_storage,sizeof(MemoryNode)*new_size);
-    //We free the data of the old storage that was not copied to the
-    //new storage
-    u16 i;
-    for(i = new_size; i < old_capacity; i++){
-      old_storage->ops_->reset(old_storage + i);
+    if(VECTOR_length(vector) >= new_size){
+      memcpy(new_storage, old_storage + vector->head_, 
+             sizeof(MemoryNode)*new_size);
+      if(VECTOR_length(vector)>new_size){ //we need to free the remaining data
+        for(u16 i = vector->head_ + new_size; i < old_capacity; ++i){
+          old_storage->ops_->reset(old_storage + i);
+        }
+      }
+      vector->head_ = 0;
+      vector->tail_ = new_size;
+    }else{
+      memcpy(new_storage, old_storage + vector->head_, 
+             sizeof(MemoryNode)*VECTOR_length(vector));
+      vector->tail_ = VECTOR_length(vector);
+      vector->head_ = 0;
     }
   }
   free(old_storage);
