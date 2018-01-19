@@ -85,6 +85,7 @@ s16 VECTOR_init(Vector *vector,u16 capacity)
   //the pointer.
   vector->head_ = 0;
   vector->tail_ = 0;
+  vector->length_ = 0;
   vector->capacity_ = capacity;
   //We initialize the nodes of our storage
   VECTOR_traverse(vector, MEMNODE_init);
@@ -122,6 +123,7 @@ s16 VECTOR_reset(Vector *vector)
   VECTOR_traverse(vector, vector->storage_->ops_->reset);
   vector->head_ = 0;
   vector->tail_ = 0;
+  vector->length_ = 0;
   return kErrorCode_Ok;
 }
 
@@ -140,7 +142,7 @@ s16 VECTOR_resize(Vector *vector, u16 new_size)
   }
   MemoryNode *new_storage = malloc(sizeof(MemoryNode)*new_size);
   if(NULL == new_storage){
-  #ifdef VERBOSE_
+#ifdef VERBOSE_
     printf("Error: [%s] not enough memory available\n", __FUNCTION__);
 #endif
     return kErrorCode_Error_Trying_To_Allocate_Memory;
@@ -197,7 +199,8 @@ u16 VECTOR_length(Vector *vector)
 #endif
     return 0;
   }
-  return vector->tail_ - vector->head_;
+  //return vector->tail_ - vector->head_;
+  return vector->length_;
 }
 
 bool VECTOR_isEmpty(Vector *vector)
@@ -299,12 +302,8 @@ s16 VECTOR_insertFirst(Vector *vector, void *data, u16 data_size)
   }
   else if(vector->head_ > 0){ //we don't need to move the content
     --vector->head_;
-  }else{ //the head is at the first position so we need to move the elements
-    memmove(vector->storage_ + 1, vector->storage_,
-            sizeof(MemoryNode)*VECTOR_length(vector));
-    //As the elements were moved one position to the right the tail needs to 
-    //be updated
-    ++vector->tail_;
+  }else{ //the head is at the first position so we need to go the end
+    vector->head_ = vector->capacity_ - 1;
   }
   MemoryNode *aux = vector->storage_ + vector->head_;
   s16 status = aux->ops_->init(aux);
