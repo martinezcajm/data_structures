@@ -135,11 +135,19 @@ s16 VECTOR_resize(Vector *vector, u16 new_size)
 #endif
     return kErrorCode_Null_Vector;
   }
+  if(VECTOR_length(vector) > new_size){
+#ifdef VERBOSE_
+    printf("Error: [%s] New resizing size lower than actual elements\n",
+           __FUNCTION__);
+#endif
+    return kErrorCode_Resize_Loss_Of_Data;
+  }
   u16 old_capacity = vector->capacity_;
   //In case the new size is the same as the actual capacity we have finished
   if(new_size == old_capacity){
     return kErrorCode_Ok;
   }
+
   MemoryNode *new_storage = malloc(sizeof(MemoryNode)*new_size);
   if(NULL == new_storage){
 #ifdef VERBOSE_
@@ -178,22 +186,20 @@ s16 VECTOR_resize(Vector *vector, u16 new_size)
       }
     }
   }else if(new_size < old_capacity){
-    if(VECTOR_length(vector) >= new_size){
-      memcpy(new_storage, old_storage + vector->head_, 
-             sizeof(MemoryNode)*new_size);
-      if(VECTOR_length(vector)>new_size){ //we need to free the remaining data
-        for(u16 i = vector->head_ + new_size; i < old_capacity; ++i){
-          old_storage->ops_->reset(old_storage + i);
-        }
-      }
-      vector->head_ = 0;
-      vector->tail_ = new_size;
+    if((vector->tail_ < vector->head_ && vector->tail_ > 0) ||
+       (VECTOR_isFull(vector) && 0 != vector->head_)){
+      //We first copy the elements from head to capacity
+      memcpy(new_storage,old_storage + vector->head_,
+             sizeof(MemoryNode)*(old_capacity - vector->head_));
+      //At last we copy the elements from the start to tail
+      memcpy(new_storage + (old_capacity - vector->head_), old_storage,
+             sizeof(MemoryNode)*vector->tail_);
     }else{
       memcpy(new_storage, old_storage + vector->head_, 
-             sizeof(MemoryNode)*VECTOR_length(vector));
-      vector->tail_ = VECTOR_length(vector);
-      vector->head_ = 0;
+             sizeof(MemoryNode)*vector->length_);
     }
+    vector->head_ = 0;
+    vector->tail_ = vector->length_ % vector->capacity_;
   }
   free(old_storage);
   return kErrorCode_Ok;

@@ -57,9 +57,10 @@ struct adt_vector_ops_s
   /** @brief Changes the capacity of the vector
   *
   * Allocates new memory to store a new quantity of elements in the vector. If
-  * the new size is lower than the original vector the elements that exceed the
-  * new size will be freed. In case a null vector is passed it will return
-  * a kErrorCode_Null_Vector.
+  * the new size is lower than the length of the original vector an error will
+  * happen, avoiding accidentally loss of data and will return a 
+  * kErrorCode_Resize_Loss_Of_Data. In case a null vector is passed it will
+  * return a kErrorCode_Null_Vector.
   *
   * @return s16 ErrorCode of the execution
   * @param *vector pointer to the vector we wish to reset

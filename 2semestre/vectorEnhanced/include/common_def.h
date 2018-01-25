@@ -23,7 +23,8 @@ typedef enum
   kWarningCode_Strange_Operation = -6,
   kErrorCode_Null_Vector = -7,
   kErrorCode_Out_Of_Range_Index = -8,
-  kErrorCode_Vector_Is_Full = -9
+  kErrorCode_Vector_Is_Full = -9,
+  kErrorCode_Resize_Loss_Of_Data = -10
 } ErrorCode;
 
 #endif // __COMMON_DEF_H__
