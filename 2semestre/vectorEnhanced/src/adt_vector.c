@@ -157,7 +157,26 @@ s16 VECTOR_resize(Vector *vector, u16 new_size)
   VECTOR_traverse(vector, MEMNODE_init);
 
   if(new_size > old_capacity){
-    memcpy(new_storage,old_storage,sizeof(MemoryNode)*old_capacity);
+    //In this case we have the last elements at the start so we rearrange them.
+    if((vector->tail_ < vector->head_ && vector->tail_ > 0) ||
+       (VECTOR_isFull(vector) && 0 != vector->head_)){
+      //We first copy the elements from head to capacity
+      memcpy(new_storage,old_storage + vector->head_,
+             sizeof(MemoryNode)*(old_capacity - vector->head_));
+      //At last we copy the elements from the start to tail
+      memcpy(new_storage + (old_capacity - vector->head_), old_storage,
+             sizeof(MemoryNode)*vector->tail_);
+      //We update the head and tail
+      vector->head_ = 0;
+      vector->tail_ = vector->length_;
+    }else{ //the elements are like in a normal vector
+      memcpy(new_storage,old_storage,sizeof(MemoryNode)*old_capacity);
+      //In case the tail was ready to insert at the start of the vector we
+      //need to change it's position now that the size is larger
+      if(0 == vector->tail_){
+         vector->tail_ = vector->head_ + vector->length_;
+      }
+    }
   }else if(new_size < old_capacity){
     if(VECTOR_length(vector) >= new_size){
       memcpy(new_storage, old_storage + vector->head_, 
