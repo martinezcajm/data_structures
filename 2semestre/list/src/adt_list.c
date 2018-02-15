@@ -1,0 +1,424 @@
+// adt_list.c : 
+// Jose Maria Martinez
+// Algoritmos & Inteligencia Artificial
+// ESAT 2017/2018
+//comments included at adt_list.h
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "adt_list.h"
+#include "common_def.h"
+
+static s16 LIST_init(List *list, u16 capacity);
+static s16 LIST_destroy(List **list);
+static s16 LIST_reset(List *list);
+static s16 LIST_resize(List *list, u16 new_size);
+static u16 LIST_capacity(List *list);
+static u16 LIST_length(List *list);
+static bool LIST_isEmpty(List *list);
+static bool LIST_isFull(List *list);
+static void* LIST_head(List *list);
+static void* LIST_last(List *list);
+static void* LIST_at(List *list, u16 position);
+static s16 LIST_insertFirst(List *list, void *data, u16 data_size);
+static s16 LIST_insertLast(List *list, void *data, u16 data_size);
+static s16 LIST_insertAt(List *list, void *data, u16 position,
+                           u16 data_size);
+static void* LIST_extractFirst(List *list);
+static void* LIST_extractLast(List *list);
+static void* LIST_extractAt(List *list, u16 position);
+static s16 LIST_concat(List *list, List *src);
+static u16 LIST_traverse(List *list, void(*callback) (MemoryNode *));
+static void LIST_print(List *list);
+
+struct adt_list_ops_s adt_list_ops =
+{
+  .destroy = LIST_destroy,
+  .reset = LIST_reset,
+  .resize = LIST_resize,
+  .capacity = LIST_capacity,
+  .length = LIST_length,
+  .isEmpty = LIST_isEmpty,
+  .isFull = LIST_isFull,
+  .head = LIST_head,
+  .last = LIST_last,
+  .at = LIST_at,
+  .insertFirst = LIST_insertFirst,
+  .insertLast = LIST_insertLast,
+  .insertAt = LIST_insertAt,
+  .extractFirst = LIST_extractFirst,
+  .extractLast = LIST_extractLast,
+  .extractAt = LIST_extractAt,
+  .concat = LIST_concat,
+  .traverse = LIST_traverse,
+  .print = LIST_print
+};
+
+List* LIST_Create(u16 capacity)
+{
+  List *list = malloc(sizeof(List));
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  LIST_init(list, capacity);
+  //As init can only be called from create it can't return other error code 
+  //than ok  
+  return list;
+}
+
+s16 LIST_init(List *list, u16 capacity)
+{
+  //This function will only by called from Create so we don't need to check
+  //the pointer.
+  list->first_ = NULL;
+  list->last_ = NULL;
+  list->capacity_ = capacity;
+  list->length_ = 0;
+  list->ops_ = &adt_list_ops;
+  return kErrorCode_Ok;
+}
+
+s16 LIST_destroy(List **list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The pointer to list is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Pointer_Reference_Received;
+  }
+  //list->first_ shouldn't be NULL if list isn't empty but to be safe we check
+  //it
+  if(!LIST_isEmpty(*list)  && NULL != (*list)->first_){
+    LIST_traverse(*list, (*list)->first_->ops_->s_free);
+  }
+  free(*list);
+  *list = NULL;
+  return kErrorCode_Ok;
+}
+
+s16 LIST_reset(List *list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_List;
+  }
+  //list->first_ shouldn't be NULL if list isn't empty but to be safe we check
+  //it
+  if(!LIST_isEmpty(list) && NULL != list->first_){
+    LIST_traverse(list, list->first_->ops_->reset);
+  }
+  list->length_ = 0;
+  list->first_ = NULL;
+  list->last_ = NULL;
+  return kErrorCode_Ok;
+}
+
+s16 LIST_resize(List *list, u16 new_size)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_List;
+  }
+  if(new_size < list->length_){
+    return kErrorCode_Resize_Loss_Of_Data;
+  }
+  list->capacity_ = new_size;
+  return kErrorCode_Ok;
+}
+
+u16 LIST_capacity(List *list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return 0;
+  }
+  return list->capacity_;  
+}
+
+u16 LIST_length(List *list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return 0;
+  }
+  return list->length_;
+}
+
+bool LIST_isEmpty(List *list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return true;
+  }  
+  return 0 == list->length_;
+}
+
+bool LIST_isFull(List *list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return true;
+  }  
+  return list->length_ == list->capacity_;
+}
+
+void* LIST_head(List *list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(LIST_isEmpty(list)){
+    return NULL;
+  }
+  return list->first_->ops_->data(list->first_);
+}
+
+void* LIST_last(List *list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(LIST_isEmpty(list)){
+    return NULL;
+  }
+  return list->last_->ops_->data(list->last_);
+}
+
+void* LIST_at(List *list, u16 position)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(LIST_isEmpty(list)){
+    return NULL;
+  }
+  if(position >= list->length_){
+#ifdef VERBOSE_
+    printf("Error: [%s] Index out of range\n", __FUNCTION__);
+#endif
+    return NULL;    
+  }
+  //In case the position is the last one we return directly the data pointed
+  //by last
+  if(position == list->length_ - 1){
+    return list->last_->ops_->data(list->last_);
+  }
+  u16 index = 0;
+  MemoryNode *aux = list->first_;
+  while(index != position){
+    aux = aux->ops_->next(aux);
+    ++index;
+  }
+  return aux->ops_->data(aux);
+}
+
+s16 LIST_insertFirst(List *list, void *data, u16 data_size)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_List;
+  }
+  if(NULL == data){
+#ifdef VERBOSE_
+    printf("Error: [%s] the data passed is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Data;
+  }
+  if(LIST_isFull(list)){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is full\n", __FUNCTION__);
+#endif
+    return kErrorCode_List_Is_Full;    
+  }
+  MemoryNode *new_node = MEMNODE_create();
+  if(NULL == new_node){
+#ifdef VERBOSE_
+    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
+#endif
+    return kErrorCode_Error_Trying_To_Allocate_Memory;
+  } 
+  if(NULL == list->last_){
+    list->last_ = new_node;
+  }
+  new_node->ops_->setNext(new_node, list->first_);
+  list->first_ = new_node;
+  ++list->length_;
+  s16 status = list->first_->ops_->memCopy(list->first_, data, data_size);
+  return status;
+}
+
+s16 LIST_insertLast(List *list, void *data, u16 data_size)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_List;
+  }
+  if(NULL == data){
+#ifdef VERBOSE_
+    printf("Error: [%s] the data passed is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Data;
+  }
+  if(LIST_isFull(list)){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is full\n", __FUNCTION__);
+#endif
+    return kErrorCode_List_Is_Full;    
+  }
+  MemoryNode *new_node = MEMNODE_create();
+  if(NULL == new_node){
+#ifdef VERBOSE_
+    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
+#endif
+    return kErrorCode_Error_Trying_To_Allocate_Memory;
+  } 
+  if(NULL == list->first_){
+    list->first_ = new_node;
+  }
+  if(NULL != list->last_){
+    list->last_->ops_->setNext(list->last_, new_node);
+  }
+  list->last_ = new_node;
+  ++list->length_;
+  s16 status = list->last_->ops_->memCopy(list->last_, data, data_size);
+  return status;
+}
+
+s16 LIST_insertAt(List *list, void *data, u16 position, u16 data_size)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_List;
+  }
+  if(NULL == data){
+#ifdef VERBOSE_
+    printf("Error: [%s] the data passed is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_Data;
+  }
+  if(LIST_isFull(list)){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is full\n", __FUNCTION__);
+#endif
+    return kErrorCode_List_Is_Full;    
+  }
+  if(position > list->length_){
+#ifdef VERBOSE_
+    printf("Error: [%s] Index out of range\n", __FUNCTION__);
+#endif
+    return kErrorCode_Out_Of_Range_Index;    
+  }
+  s16 status = 0;
+  if(0 == position){ //Insertion at the start
+    status = LIST_insertFirst(list, data, data_size);
+    return status;
+  }else if(position == list->length_){ //Insertion at the end
+    status = LIST_insertLast(list, data, data_size);
+    return status;
+  }
+  MemoryNode *new_node = MEMNODE_create();
+  if(NULL == new_node){
+#ifdef VERBOSE_
+    printf("Error: [%s] not enough memory available\n", __FUNCTION__);
+#endif
+    return kErrorCode_Error_Trying_To_Allocate_Memory;
+  } 
+  u16 index = 0;
+  MemoryNode *aux = list->first_;
+  //We wish to found the node previous to the position we want to insert
+  while(index != position-1){
+    aux = aux->ops_->next(aux);
+    ++index;
+  }
+  new_node->next_ = aux;
+  aux->next_ = new_node;
+  ++list->length_;
+  status = new_node->ops_->memCopy(list->last_, data, data_size);
+  return status;
+}
+
+void* LIST_extractFirst(List *list)
+{
+  return NULL;
+}
+
+void* LIST_extractLast(List *list)
+{
+  return NULL;
+}
+
+void* LIST_extractAt(List *list, u16 position)
+{
+  return NULL;
+}
+
+s16 LIST_concat(List *list, List *src)
+{
+  return kErrorCode_Ok;  
+}
+
+u16 LIST_traverse(List *list, void(*callback) (MemoryNode *))
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return 0;
+  }
+  u16 index = 0;
+  MemoryNode *aux = list->first_;
+  //We wish to found the node previous to the position we want to insert
+  while(aux != NULL){
+    callback(aux);
+    aux = aux->ops_->next(aux);
+    index++;
+  }
+  return index;
+}
+
+void LIST_print(List *list)
+{
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    printf("NULL");
+    return;
+  }
+  if(NULL == list->first_){
+    printf("EMPTY");
+    return;
+  }
+  LIST_traverse(list, list->first_->ops_->print);
+}
