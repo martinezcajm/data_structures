@@ -285,7 +285,8 @@ void* VECTOR_at(Vector *vector, u16 position)
 #endif
     return NULL;    
   }
-  MemoryNode *aux = vector->storage_ + (vector->head_ + position);
+  MemoryNode *aux = vector->storage_ + 
+                    ((vector->head_ + position)%vector->capacity_);
   return aux->ops_->data(aux);
   //return vector->storage_ + position;
 }
@@ -312,17 +313,19 @@ s16 VECTOR_insertFirst(Vector *vector, void *data, u16 data_size)
   }
   if(VECTOR_isEmpty(vector)){//is empty so we just need to update the tail
     ++vector->tail_;
-  }
-  else if(vector->head_ > 0){ //we don't need to move the content
-    --vector->head_;
-  }else{ //the head is at the first position so we need to go the end
-    vector->head_ = vector->capacity_ - 1;
+  }else{ //There's at list one element and there's space
+    //We are going to use the mod function but don't want negatives, so we 
+    //increase one cicle before applying the substract and mod
+    vector->head_ = vector->head_ + vector->capacity_;
+    vector->head_ = (vector->head_ - 1) % vector->capacity_;
   }
   MemoryNode *aux = vector->storage_ + vector->head_;
   s16 status = aux->ops_->init(aux);
   //status = aux->ops_->setData(aux, data, data_size);
   status = aux->ops_->memCopy(aux, data, data_size);
+  vector->length_++;
   return status;
+  
 }
 
 s16 VECTOR_insertLast(Vector *vector, void *data, u16 data_size)
@@ -345,20 +348,11 @@ s16 VECTOR_insertLast(Vector *vector, void *data, u16 data_size)
 #endif
     return kErrorCode_Vector_Is_Full;    
   }
-
-  //As we know the vector is not full if the tail is equal to capacity
-  //we have free space at the front
-  if(vector->tail_ == vector->capacity_){ 
-    memmove(vector->storage_ + vector->head_ -1, 
-            vector->storage_ + vector->head_,
-            sizeof(MemoryNode)*VECTOR_length(vector));
-    --vector->head_;
-  }else{//Tail is pointing to the next free node we increase the tail
-    ++vector->tail_;
-  }
-  MemoryNode *aux = vector->storage_ + (vector->tail_-1);
+  MemoryNode *aux = vector->storage_ + (vector->tail_);
   s16 status = aux->ops_->init(aux);
   status = aux->ops_->memCopy(aux, data, data_size);
+  vector->tail_ = (vector->tail_ +1)%vector->capacity_;
+  vector->length_++;
   return status;  
 }
 
