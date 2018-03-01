@@ -30,7 +30,8 @@ struct adt_list_ops_s
   *
   * @return s16 ErrorCode of the execution
   * @param *list pointer to the list we wish to initialize
-  * @param capacity number of elements that the list can store
+  * @param capacity number of elements that the list can store note that a 
+  * value of 0 will imply that it has an infinite capacity
   */
   s16 (*init) (List *list, u16 capacity);
   /** @brief Destroys the list and it's data
@@ -57,7 +58,8 @@ struct adt_list_ops_s
   /** @brief Changes the capacity of the list
   *
   * Adjusts the capacity of the list so it can store more elements. If the new
-  * size causes a loss of data the function will return an error.
+  * size causes a loss of data the function will return an error. Note that a 
+  * capacity of 0 is an infinite capacity
   *
   * @return s16 ErrorCode of the execution
   * @param *list pointer to the list we wish to resuze

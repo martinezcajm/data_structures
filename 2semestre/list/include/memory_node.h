@@ -49,19 +49,18 @@ struct memory_node_ops_s
 	* free
   */
 	s16(*free) (MemoryNode **node);
-  /** @brief Frees the memory node but doesn't set the node to null, this
-  *free shares the signature of the other MEMNODE ops.
+  /** @brief Soft free of the memory node it doesn't free the data
   *
-  * Resets the content of the memory node and frees it. Note that this function
-  * calls the reset method. In case the direction to the pointer is null it 
-  * will return a kErrorCode_Null_Pointer_Reference_Received. This function
-  * dowsn't assure that the pointer to node ends as NULL.
+  * Frees the memory node without freeing the data. In case the direction to 
+  * the pointer is null it will return a 
+  * kErrorCode_Null_Pointer_Reference_Received. If the execution
+  * went well this function assures that the pointer to node ends as NULL.
   *
   * @return s16 ErrorCode of the execution
   * @param **node direction to the pointer of the memory node we want to
-  * free
+  * soft free
   */
-  s16(*s_free) (MemoryNode *node);
+  s16(*soft_free) (MemoryNode **node);
 	/** @brief getter of data
   *
   * Returns a pointer to data. In case a null pointer wass passed it will

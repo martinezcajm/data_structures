@@ -90,10 +90,21 @@ s16 LIST_destroy(List **list)
 #endif
     return kErrorCode_Null_Pointer_Reference_Received;
   }
+  if(NULL == *list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return kErrorCode_Null_List;
+  }
   //list->first_ shouldn't be NULL if list isn't empty but to be safe we check
   //it
   if(!LIST_isEmpty(*list)  && NULL != (*list)->first_){
-    LIST_traverse(*list, (*list)->first_->ops_->s_free);
+    //LIST_traverse(*list, (*list)->first_->ops_->s_free);
+    while( NULL != (*list)->first_){
+      (*list)->last_ = (*list)->first_;
+      (*list)->first_ = (*list)->first_->ops_->next((*list)->first_);
+      (*list)->last_->ops_->free(&((*list)->last_));
+    }
   }
   free(*list);
   *list = NULL;
@@ -162,7 +173,7 @@ bool LIST_isEmpty(List *list)
 #ifdef VERBOSE_
     printf("Error: [%s] The list is null\n", __FUNCTION__);
 #endif
-    return true;
+    return false;
   }  
   return 0 == list->length_;
 }
@@ -333,7 +344,7 @@ s16 LIST_insertAt(List *list, void *data, u16 position, u16 data_size)
 #endif
     return kErrorCode_List_Is_Full;    
   }
-  if(position > list->length_){
+  if(position >= list->length_){
 #ifdef VERBOSE_
     printf("Error: [%s] Index out of range\n", __FUNCTION__);
 #endif
@@ -343,7 +354,7 @@ s16 LIST_insertAt(List *list, void *data, u16 position, u16 data_size)
   if(0 == position){ //Insertion at the start
     status = LIST_insertFirst(list, data, data_size);
     return status;
-  }else if(position == list->length_){ //Insertion at the end
+  }else if(position == list->length_ - 1){ //Insertion at the end
     status = LIST_insertLast(list, data, data_size);
     return status;
   }
@@ -353,34 +364,120 @@ s16 LIST_insertAt(List *list, void *data, u16 position, u16 data_size)
     printf("Error: [%s] not enough memory available\n", __FUNCTION__);
 #endif
     return kErrorCode_Error_Trying_To_Allocate_Memory;
-  } 
-  u16 index = 0;
+  }
   MemoryNode *aux = list->first_;
+  u16 index = 0;
   //We wish to found the node previous to the position we want to insert
   while(index != position-1){
     aux = aux->ops_->next(aux);
     ++index;
   }
-  new_node->next_ = aux;
-  aux->next_ = new_node;
+  new_node->ops_->setNext(new_node, aux->ops_->next(aux));
+  aux->ops_->setNext(aux,new_node);
   ++list->length_;
-  status = new_node->ops_->memCopy(list->last_, data, data_size);
+  status = new_node->ops_->memCopy(new_node, data, data_size);
   return status;
 }
 
 void* LIST_extractFirst(List *list)
 {
-  return NULL;
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(LIST_isEmpty(list)){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is empty\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  MemoryNode *extract_node = list->first_;
+  void* data = list->first_->ops_->data(list->first_);
+  list->first_ = list->first_->ops_->next(list->first_);
+  //If the list only had one element we set last to NULL
+  if(NULL == list->first_) list->last_ = NULL;
+  //We free the node without affecting it's data
+  extract_node->ops_->soft_free(&extract_node);
+  --list->length_;
+  return data;
 }
 
 void* LIST_extractLast(List *list)
 {
-  return NULL;
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(LIST_isEmpty(list)){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is empty\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  MemoryNode *extract_node = list->last_;
+  //MemoryNode *aux = list->first_;
+  list->last_ = list->first_;
+  //We want to check if the next of our next is NULL to get the element before
+  //the previous last, as this will be the new last
+  while(NULL != list->last_->ops_->next(list->last_->ops_->next(list->last_))){
+    list->last_ = list->last_->ops_->next(list->last_);
+  }
+  //list->last_ = aux;
+  list->last_->ops_->setNext(list->last_, NULL);
+  void* data = extract_node->ops_->data(extract_node);
+  extract_node->ops_->soft_free(&extract_node);
+  --list->length_;
+  //In case there was just one element
+  if(0 == list->length_){
+    list->last_ = NULL;
+    list->first_ = NULL;
+  }
+  return data;
 }
 
 void* LIST_extractAt(List *list, u16 position)
 {
-  return NULL;
+  if(NULL == list){
+#ifdef VERBOSE_
+    printf("Error: [%s] The list is null\n", __FUNCTION__);
+#endif
+    return NULL;
+  }
+  if(LIST_isEmpty(list)){
+    return NULL;
+  }
+  if(position >= list->length_){
+#ifdef VERBOSE_
+    printf("Error: [%s] Index out of range\n", __FUNCTION__);
+#endif
+    return NULL;    
+  }
+  void* data = NULL;
+  if(0 == position){ //Insertion at the start
+    data = LIST_extractLast(list);
+    return data;
+  }else if(position == list->length_ - 1){ //Insertion at the end
+    data = LIST_extractFirst(list);
+    return data;
+  }
+  MemoryNode *extract_node = NULL;
+  MemoryNode *aux = list->first_;
+  u16 index = 0;
+  //We wish to found the node previous to the position we want to insert
+  while(index != position-1){
+    aux = aux->ops_->next(aux);
+    ++index;
+  }
+  extract_node = aux->ops_->next(aux);
+  data = extract_node->ops_->data(extract_node);
+  aux->ops_->setNext(aux, extract_node->ops_->next(extract_node));
+  extract_node->ops_->soft_free(&extract_node);
+  --list->length_;  
+  return data;
 }
 
 s16 LIST_concat(List *list, List *src)
@@ -398,10 +495,11 @@ u16 LIST_traverse(List *list, void(*callback) (MemoryNode *))
   }
   u16 index = 0;
   MemoryNode *aux = list->first_;
-  //We wish to found the node previous to the position we want to insert
-  while(aux != NULL){
+  while( NULL != aux){
     callback(aux);
-    aux = aux->ops_->next(aux);
+    //It shouldn't happen, reset is not allowed for traverse, but we assure
+    //that aux is not null before the callback method
+    if(NULL != aux) aux = aux->ops_->next(aux);
     index++;
   }
   return index;

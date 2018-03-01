@@ -14,7 +14,7 @@
 static s16 MEMNODE_internal_init(MemoryNode *node);
 static s16 MEMNODE_reset(MemoryNode *node);
 static s16 MEMNODE_free (MemoryNode **node);
-static s16 MEMNODE_s_free (MemoryNode *node);
+static s16 MEMNODE_soft_free (MemoryNode **node);
 static void* MEMNODE_data(MemoryNode *node);
 static u16 MEMNODE_size(MemoryNode *node);
 static MemoryNode* MEMNODE_next(MemoryNode *node);
@@ -32,7 +32,7 @@ struct memory_node_ops_s memory_node_ops =
   .init = MEMNODE_init, 
   .reset = MEMNODE_reset,
   .free = MEMNODE_free,
-  .s_free = MEMNODE_s_free,
+  .soft_free = MEMNODE_soft_free,
   .data = MEMNODE_data,
   .size = MEMNODE_size,
   .next = MEMNODE_next,
@@ -151,20 +151,15 @@ s16 MEMNODE_free (MemoryNode **node){
   return kErrorCode_Ok;
 }
 
-s16 MEMNODE_s_free (MemoryNode *node){
+s16 MEMNODE_soft_free (MemoryNode **node){
   if(NULL == node){
 #ifdef VERBOSE_
     printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
 #endif
     return kErrorCode_Null_Pointer_Reference_Received;
   }
-  //We don't need to check if the pointer to node is null as reset will do it
-  s16 status = MEMNODE_reset(node);
-  //We check if all went well and free the node in that case, if the node we
-  //sent to reset was already null it's already free.
-  if(kErrorCode_Ok == status){
-    free(node);
-  }
+  free(*node);
+  *node = NULL;
   return kErrorCode_Ok;
 }
 
@@ -208,11 +203,6 @@ s16 MEMNODE_setNext(MemoryNode *node, MemoryNode *next_node)
       printf("Error: [%s] The pointer to memory node is null\n", __FUNCTION__);
 #endif
       return kErrorCode_Null_Memory_Node;
-  }
-  if(next_node == node){
-#ifdef VERBOSE_
-      printf("Warning: [%s] cyclic redundance\n", __FUNCTION__);
-#endif
   }
   node->next_ = next_node;
   return kErrorCode_Ok;
