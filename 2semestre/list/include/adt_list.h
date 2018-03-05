@@ -83,6 +83,14 @@ struct adt_list_ops_s
   * @param *list pointer to the list we wish to get the length
   */
   u16 (*length)(List *list);
+  /** @brief checks that the length of the list is consistent
+  *
+  * Traverses the number of elements and checks its result with its own lenght
+  *
+  * @return bool 
+  * @param *list pointer to the list we wish to get the length
+  */
+  bool (*length_debug)(List *list);
   /** @brief Indicates if the list is empty
   *
   * Indicates if the list is empty
@@ -120,9 +128,8 @@ struct adt_list_ops_s
   void* (*last)(List *list);
   /** @brief Returns the element at the specified position
   *
-  * Returns a reference to the element at the indicated position. If the 
-  * list passed is NULL or the list is empty returns null. It also returns
-  * NULL if position it's greater or equal to the length.
+  * Returns a reference to the element at the indicated position, starting by * 0. If the list passed is NULL or the list is empty returns null. It also
+  * returns NULL if position it's greater or equal to the length.
   *
   * @return void* element of the list at the indicated position
   * @param *list pointer to the list
@@ -162,8 +169,8 @@ struct adt_list_ops_s
   s16(*insertLast) (List *list, void *data, u16 data_size);
   /** @brief Inserts the data at the position of the list indicated
   *
-  * Inserts the data at the position of the list indicated and returns the 
-  * status depending of the result. In case the list is full a
+  * Inserts the data at the position of the list indicated, starting by 0,   
+  * and returns the status depending of the result. In case the list is full a
   * kErrorCode_List_Is_Full is returned, if the list is null 
   * kErrorCode_Null_List and in case the the data is null
   * kErrorCode_Null_Data. In case the range is greater than the number of
@@ -175,7 +182,7 @@ struct adt_list_ops_s
   * @param data_size size of the data we wish to store
   * @param position position in which the data will be stored
   */
-  s16(*insertAt) (List *list, void *data, u16 data_size, u16 position);
+  s16(*insertAt) (List *list, void *data, u16 position, u16 data_size);
   // Extraction
   /** @brief Extracts the first element of the list and returns it
   *
@@ -200,9 +207,9 @@ struct adt_list_ops_s
   /** @brief Extracts the element of the list at the position indicated
   *   and returns it
   *
-  * Extracts the element of the list at the position indicated 
+  * Extracts the element of the list at the position indicated, starting by 0, 
   * and removes it from the list. Notice that the data must be freed once 
-  * you finished using it as it's no longer responsability of the list.
+  * you finish using it as it's no longer responsability of the list.
   *
   * @return void* data at the indicated position of the list
   * @param *list pointer to the list
@@ -212,8 +219,9 @@ struct adt_list_ops_s
   // Miscellaneous
   /** @brief Concatenates two list storing the result at origin
   *
-  * Concatenates the source to the list, the result of it will have a 
-  * capacity of list's capacity plus src capacity's. Notice that the src
+  * Concatenates the source to the list, in case one of the list has infinite
+  * capacity the result list will have infinite capacity, otherwise it will be
+  * the result of both capacities added. Notice that the src
   * list won't be modified during the execution. In case the list is null 
   * kErrorCode_Null_List will be returned and in case the the src is null
   * kErrorCode_Null_Pointer_Parameter_Received. If there's a problem during
@@ -223,7 +231,7 @@ struct adt_list_ops_s
   * @return s16 status of the operation once finished
   * @param *list pointer to the list that will store the result of the
   * concatenation
-  * @param *src list we want to concatenate to our origin                                                       
+  * @param *src list we want to concatenate to our origin             
   */
   s16(*concat) (List *list, List *src);
   /** @brief Applies the callback method to the list
@@ -247,7 +255,8 @@ struct adt_list_ops_s
 *
 * Initializes a new List allocating memory for it and it's storage.
 * If the allocation of memory fails returns a NULL and if everything went well
-* returns the pointer to the memory node.
+* returns the pointer to the memory node. Note that a capacity of 0 is an
+* infinite capacity
 *
 * @return List* pointer to the list
 */

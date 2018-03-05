@@ -73,7 +73,7 @@ int main()
   list3->ops_->insertLast(list3, "come on!", 9);
 
 
-  //list2->ops_->concat(list2, list3);
+  list2->ops_->concat(list2, list3);
   list3->ops_->destroy(&list3);
   printf("\n \n|||| Fourth print: |||| \n");
   list2->ops_->print(list2); 
@@ -123,4 +123,17 @@ int main()
   list->ops_->print(list);
   list->ops_->destroy(&list);
   list2->ops_->destroy(&list2);
+  List *infinite_list = NULL;
+  infinite_list = LIST_Create(0);
+  infinite_list->ops_->insertLast(infinite_list, "I have infinite power", 22);
+  infinite_list->ops_->insertLast(infinite_list, "and infinite space", 19);
+  infinite_list->ops_->insertAt(infinite_list, "boy", 3, 4);
+  infinite_list->ops_->insertAt(infinite_list, "boy", 2, 4);
+  printf("\n \n|||infinite list||| \n");
+  infinite_list->ops_->print(infinite_list);
+  printf("\n isEmpty: %d", infinite_list->ops_->length_debug(infinite_list));
+  infinite_list->ops_->resize(2);
+  infinite_list->ops_->resize(3);
+  infinite_list->ops_->insertLast(infinite_list, "noo", 4);
+  printf("\n %s", data);
 }
