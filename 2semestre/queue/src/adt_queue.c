@@ -97,7 +97,7 @@ s16 QUEUE_destroy(Queue **queue)
   s16 status = (*queue)->list_->ops_->destroy(&((*queue)->list_));
   free(*queue);
   *queue = NULL;
-  return s16;
+  return status;
 }
 
 s16 QUEUE_reset(Queue *queue)
