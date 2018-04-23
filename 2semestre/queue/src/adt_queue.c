@@ -94,7 +94,10 @@ s16 QUEUE_destroy(Queue **queue)
 #endif
     return kErrorCode_Null_Queue;
   }
-  return (*queue)->list_->ops_->destroy(&((*queue)->list_));
+  s16 status = (*queue)->list_->ops_->destroy(&((*queue)->list_));
+  free(*queue);
+  *queue = NULL;
+  return s16;
 }
 
 s16 QUEUE_reset(Queue *queue)
