@@ -132,8 +132,8 @@ int main()
   printf("\n \n|||infinite list||| \n");
   infinite_list->ops_->print(infinite_list);
   printf("\n isEmpty: %d", infinite_list->ops_->length_debug(infinite_list));
-  infinite_list->ops_->resize(2);
-  infinite_list->ops_->resize(3);
+  infinite_list->ops_->resize(infinite_list, 2);
+  infinite_list->ops_->resize(infinite_list, 3);
   infinite_list->ops_->insertLast(infinite_list, "noo", 4);
   printf("\n %s", data);
 }
