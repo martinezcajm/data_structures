@@ -2,7 +2,7 @@
 // Jose Maria Martinez
 // Algoritmos & Inteligencia Artificial
 // ESAT 2017/2018
-//comments included at adt_list.h
+//comments included at adt_double_linked_list.h
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -396,6 +396,10 @@ s16 DLLIST_insertAt(DLList *list, void *data, u16 position, u16 data_size)
     ++index;
   }
   new_node->ops_->setNext(new_node, aux->ops_->next(aux));
+  new_node->ops_->setPrev(new_node, aux);
+  //First of all we update the previous of the node after the one we are
+  //inserting
+  aux->ops_->setPrev(aux->ops_->next(aux), new_node);
   aux->ops_->setNext(aux,new_node);
   ++list->length_;
   status = new_node->ops_->memCopy(new_node, data, data_size);
@@ -496,6 +500,7 @@ void* DLLIST_extractAt(DLList *list, u16 position)
   node_to_extract = aux->ops_->next(aux);
   data = node_to_extract->ops_->data(node_to_extract);
   aux->ops_->setNext(aux, node_to_extract->ops_->next(node_to_extract));
+  aux->ops_->setPrev(node_to_extract->ops_->next(node_to_extract), aux);
   node_to_extract->ops_->soft_free(&node_to_extract);
   --list->length_;  
   return data;
