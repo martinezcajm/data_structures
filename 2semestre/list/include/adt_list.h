@@ -221,8 +221,8 @@ struct adt_list_ops_s
   *
   * Concatenates the source to the list, in case one of the list has infinite
   * capacity the result list will have infinite capacity, otherwise it will be
-  * the result of both capacities added. Notice that the src
-  * list won't be modified during the execution. In case the list is null 
+  * the result of both capacities added. Notice that the src list will 
+  * dissapear after the execution. In case the list is null 
   * kErrorCode_Null_List will be returned and in case the the src is null
   * kErrorCode_Null_Pointer_Parameter_Received. If there's a problem during
   * the allocation of the new list kErrorCode_Error_Trying_To_Allocate_Memory

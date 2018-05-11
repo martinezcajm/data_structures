@@ -180,9 +180,17 @@ bool DLLIST_length_debug(DLList *list){
   u16 elements_in_list = 0;
   while(aux->ops_->next(aux) != NULL){
     aux = aux->ops_->next(aux);
-    elements_in_list ++;
+    elements_in_list++;
   }
-  return elements_in_list == list->length_;
+  //TODO inverse while
+  aux = list->last_;
+  u16 inverse_elements_in_list = 0;
+  while(aux->ops_->prev(aux) != NULL){
+    aux = aux->ops_->prev(aux);
+    inverse_elements_in_list++;
+  }
+  return elements_in_list == list->length_ &&
+         inverse_elements_in_list == list->length_;
 }
 
 bool DLLIST_isEmpty(DLList *list)
@@ -521,6 +529,7 @@ s16 DLLIST_concat(DLList *list, DLList *src)
     return kErrorCode_Null_Pointer_Reference_Received;
   }
   list->last_->ops_->setNext(list->last_, src->first_);
+  src->first_->ops_->setPrev(src->first_, list->last_);
   list->last_ = src->last_;
   if(0 == list->capacity_ || 0 == src->capacity_){
     list->capacity_ = 0;

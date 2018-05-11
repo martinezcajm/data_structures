@@ -299,7 +299,7 @@ s16 LIST_insertFirst(List *list, void *data, u16 data_size)
   new_node->ops_->setNext(new_node, list->first_);
   list->first_ = new_node;
   ++list->length_;
-  s16 status = list->first_->ops_->memCopy(list->first_, data, data_size);
+  s16 status = list->first_->ops_->memCopy(list->first_, data, data_size);//set
   return status;
 }
 
