@@ -122,8 +122,12 @@ s16 LIST_reset(List *list)
   }
   //list->first_ shouldn't be NULL if list isn't empty but to be safe we check
   //it
-  if(!LIST_isEmpty(list) && NULL != list->first_){
-    LIST_traverse(list, list->first_->ops_->reset);
+  if (!LIST_isEmpty(list)) {
+    while (NULL != list->first_) {
+      list->last_ = list->first_;
+      list->first_ = list->first_->ops_->next(list->first_);
+      list->last_->ops_->free(&(list->last_));
+    }
   }
   list->length_ = 0;
   list->first_ = NULL;
@@ -475,11 +479,11 @@ void* LIST_extractAt(List *list, u16 position)
     return NULL;    
   }
   void* data = NULL;
-  if(0 == position){ //Insertion at the start
-    data = LIST_extractLast(list);
-    return data;
-  }else if(position == list->length_ - 1){ //Insertion at the end
+  if(0 == position){ //Extraction at the start
     data = LIST_extractFirst(list);
+    return data;
+  }else if(position == list->length_ - 1){ //Extraction at the end
+    data = LIST_extractLast(list);
     return data;
   }
   MemoryNode *node_to_extract = NULL;
