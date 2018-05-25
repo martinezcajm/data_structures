@@ -22,7 +22,8 @@ class Queue
    *
    * Base constructor of Queue
    *
-   * @return *List
+   ** @parameter capacity capacity of the queue we are creating
+   * @return *Queue
    */
    Queue(const u16 capacity);
    // TODO Queue(List l);

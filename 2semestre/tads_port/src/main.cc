@@ -12,6 +12,7 @@
 #include "adt_vector.h"
 #include "adt_queue.h"
 #include "adt_double_linked_list.h"
+#include "adt_Stack.h"
 
 int test_memory_node()
 {
@@ -186,6 +187,7 @@ int test_vector()
 
   delete(vector);
   delete(vector2);
+  return 0;
 }
 
 int test_list()
@@ -311,6 +313,7 @@ int test_list()
   infinite_list->resize(3);
   infinite_list->insertLast("noo", 4);
   printf("\n %s", data);
+  return 0;
 }
 
 int test_dllist()
@@ -436,6 +439,7 @@ int test_dllist()
   infinite_list->resize(3);
   infinite_list->insertLast("noo", 4);
   printf("\n %s", data);
+  return 0;
 }
 
 int test_queue()
@@ -554,6 +558,111 @@ int test_queue()
   infinite_queue->resize(3);
   infinite_queue->enqueue("noo", 4);
   printf("\n %s", data);
+  return 0;
+}
+
+int test_stack()
+{
+  Stack *stack = new Stack(5);
+  char data[1024];
+
+  if (nullptr == stack) {
+    printf("\n create returned a null stack");
+    return 1;
+  }
+  printf("\ncapacity: %d", stack->capacity());
+  printf("\nlength: %d", stack->length());
+  printf("\n isEmpty: %d", stack->isEmpty());
+  printf("\n isFull: %d", stack->isFull());
+
+  stack->push("Let's store strings", 20);
+  stack->push("go", 3);
+  stack->push("You are too slow", 17);
+  stack->push("You are too slow", 17);
+
+  memset(data, 0, sizeof(data));
+  memcpy(data, stack->first(), 9);
+  printf("\n %s", data);
+
+  printf("\ncapacity: %d", stack->capacity());
+  printf("\nlength: %d", stack->length());
+  printf("\n isEmpty: %d", stack->isEmpty());
+  printf("\n isFull: %d \n", stack->isFull());
+
+  stack->print();
+  stack->resize(7);
+  stack->push("Now I'm bigger", 15);
+  printf("\n \n||||Second print:||||\n");
+  stack->print();
+  stack->push(" inserting at 3", 16);
+  printf("\n \n||||Third print:||||\n");
+  stack->print();
+  printf("\ncapacity: %d", stack->capacity());
+  printf("\nlength: %d", stack->length());
+  printf("\n isEmpty: %d", stack->isEmpty());
+  printf("\n isFull: %d \n", stack->isFull());
+
+  Stack *stack2 = new Stack(2);
+  Stack *stack3 = new Stack(3);
+
+  stack2->push("Let's concatenate", 18);
+  stack2->push("now", 4);
+
+  stack3->push("Concatenate with me", 20);
+  stack3->push("come on!", 9);
+
+
+  stack2->concat(*stack3);
+  delete(stack3);
+  printf("\n \n|||| Fourth print: |||| \n");
+  stack2->print();
+  printf("\ncapacity: %d", stack2->capacity());
+  printf("\nlength: %d", stack2->length());
+  printf("\n isEmpty: %d", stack2->isEmpty());
+  printf("\n isFull: %d", stack2->isFull());
+
+  memset(data, 0, sizeof(data));
+  memcpy(data, stack2->pop(), 18);
+  printf("\n %s", data);
+  stack2->pop();
+  printf("\n \n|||stack2 after extract||| \n");
+  stack2->print();
+  stack2->push("I see you lost something", 25);
+  printf("\n \n|||stack2||| \n");
+  stack2->print();
+
+  stack2->push("go", 3);
+  stack2->push("again", 6);
+  stack2->pop();
+  stack2->pop();
+  printf("\n \n|||stack2 ready to resize||| \n");
+  stack2->print();
+  stack2->resize(3);
+  printf("\n \n|||stack2 after resize||| \n");
+  stack2->print();
+  stack2->resize(1);
+  printf("\n \n|||stack2 after second resize||| \n");
+  stack2->print();
+
+
+  memset(data, 0, sizeof(data));
+  memcpy(data, stack->pop(), 20);
+  printf("\n %s \n", data);
+  printf("\n \n|||stack before extract||| \n");
+  stack->print();
+  stack->pop();
+  printf("\n \n|||stack after extract||| \n");
+  stack->print();
+
+  stack->reset();
+  printf("\n \n|||stack after reset||| \n");
+  stack->print();
+  stack->push("Let's store strings", 20);
+  printf("\n \n|||stack after insert||| \n");
+  stack->print();
+  delete(stack);
+  delete(stack2);
+  return 0;
 }
 
 int main()
@@ -563,6 +672,7 @@ int main()
   //test_list();
   //test_dllist();
   //test_queue();
+  test_stack();
   return 0;
 }
 
