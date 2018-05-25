@@ -4,43 +4,39 @@
 // ESAT 2017/2018
 // Header for our abstract data type list
 //
-#ifndef __ADT_LIST_H__
-#define __ADT_LIST_H__
+#ifndef __ADT_DOUBLE_LINKED_LIST_H__
+#define __ADT_DOUBLE_LINKED_LIST_H__
 
 #include "platform_types.h"
 #include "memory_node.h"
 
-//typedef struct adt_list_s
+//typedef struct adt_double_linked_list_s
 //{
 //  u16 capacity_;
 //  u16 length_;
 //  MemoryNode *first_;
 //  MemoryNode *last_;
-//  struct adt_list_ops_s *ops_;
-//} List;
+//  struct adt_double_linked_list_ops_s *ops_;
+//} DLList;
 
-class List
+class DLList
 {
- public:
-   /** @brief List constructor
-   *
-   * Base constructor of list
-   *
-   * @return *List
-   */
-   List(u16 capacity);
-   /** @brief Frees the List
-   *
-   * Resets the content of the List and frees it. Note that this function
-   * calls the reset method.
-   *
-   * @return void
-   */
-   ~List();
-   /*TODO 
-   List(const List& o);*/
-   /* TODO
-   List& operator = (const List &l);*/
+public:
+  /** @brief List constructor
+  *
+  * Base constructor of list
+  *
+  * @return *List
+  */
+  DLList(const u16 capacity);
+  /** @brief Frees the List
+  *
+  * Resets the content of the List and frees it. Note that this function
+  * calls the reset method.
+  *
+  * @return void
+  */
+  ~DLList();
   // Internal storage management
   /** @brief Initializes the list
   *
@@ -62,12 +58,12 @@ class List
   *
   * @return s16 ErrorCode of the execution
   */
-  //s16 destroy();
+  s16 destroy();
   /** @brief Resets the list
   *
   * Frees the elements of the list, using the reset method of memory node,
   * and sets the values of the list to it's default. In case a null pointer
-  * was passed it will return a kErrorCode_Null_List
+  * was passed it will return a kErrorCode_Null_DLList
   *
   * @return s16 ErrorCode of the execution
   */
@@ -149,8 +145,8 @@ class List
   *
   * Inserts the data at the first position of the list and returns the status
   * depending of the result. In case the list is full a
-  * kErrorCode_List_Is_Full is returned, if the list is null 
-  * kErrorCode_Null_List and in case the the data is null
+  * kErrorCode_DLList_Is_Full is returned, if the list is null 
+  * kErrorCode_Null_DLList and in case the the data is null
   * kErrorCode_Null_Data. The list makes a copy of the data so the value
   * you store will not be touched unless you modify it through the list.
   *
@@ -158,13 +154,13 @@ class List
   * @param data data we wish to store at the position
   * @param data_size size of the data we wish to store
   */
-  s16 insertFirst(void *data,const u16 data_size);
+  s16 insertFirst(void *data, const u16 data_size);
   /** @brief Inserts the data at the last position of the list
   *
   * Inserts the data at the last position of the list and returns the status
   * depending of the result. In case the list is full a
-  * kErrorCode_List_Is_Full is returned, if the list is null 
-  * kErrorCode_Null_List and in case the the data is null
+  * kErrorCode_DLList_Is_Full is returned, if the list is null 
+  * kErrorCode_Null_DLList and in case the the data is null
   * kErrorCode_Null_Data. The list makes a copy of the data so the value
   * you store will not be touched unless you modify it through the list.
   *
@@ -177,8 +173,8 @@ class List
   *
   * Inserts the data at the position of the list indicated, starting by 0,   
   * and returns the status depending of the result. In case the list is full a
-  * kErrorCode_List_Is_Full is returned, if the list is null 
-  * kErrorCode_Null_List and in case the the data is null
+  * kErrorCode_DLList_Is_Full is returned, if the list is null 
+  * kErrorCode_Null_DLList and in case the the data is null
   * kErrorCode_Null_Data. In case the range is greater than the number of
   * elements stored a kErrorCode_Out_Of_Range_Index will be returned.
   *
@@ -217,24 +213,23 @@ class List
   * @return void* data at the indicated position of the list
   * @param position position of the element we want to extract
   */
-  void* extractAt(u16 position); // extracts the element stored in a specific position
+  void* extractAt(const u16 position); // extracts the element stored in a specific position
   // Miscellaneous
   /** @brief Concatenates two list storing the result at origin
   *
   * Concatenates the source to the list, in case one of the list has infinite
   * capacity the result list will have infinite capacity, otherwise it will be
-  * the result of both capacities added. Notice that the src
-  * list won't be modified during the execution. In case the list is null 
-  * kErrorCode_Null_List will be returned and in case the the src is null
+  * the result of both capacities added. Notice that the src list will 
+  * dissapear after the execution. In case the list is null 
+  * kErrorCode_Null_DLList will be returned and in case the the src is null
   * kErrorCode_Null_Pointer_Parameter_Received. If there's a problem during
   * the allocation of the new list kErrorCode_Error_Trying_To_Allocate_Memory
   * will be returned.
   *
   * @return s16 status of the operation once finished
-  * concatenation
   * @param src list we want to concatenate to our origin             
   */
-  s16 concat(List *src);
+  s16 concat(DLList *src);
   /** @brief Applies the callback method to the list
   *
   * Applies a memory node function to the set of elements of the list.
@@ -249,12 +244,12 @@ class List
   *
   */
   void print() const;
-
- private:
-    u16 capacity_;
-    u16 length_;
-    MemoryNode *first_;
-    MemoryNode *last_;
+private:
+  u16 capacity_;
+  u16 length_;
+  MemoryNode *first_;
+  MemoryNode *last_;
+  MemoryNode* getNodeAtPosition(const u16 position) const;
 };
 
 #endif //__ADT_LIST_H__

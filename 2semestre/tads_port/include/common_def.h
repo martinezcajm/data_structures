@@ -30,7 +30,8 @@ typedef enum
   kErrorCode_Null_Queue = -13,
   kErrorCode_Queue_Is_Full = -14,
   kErrorCode_Null_Stack = -15,
-  kErrorCode_Stack_Is_Full = -16
+  kErrorCode_Stack_Is_Full = -16,
+  kErrorCode_DLList_Is_Full = -17
 } ErrorCode;
 
 #endif // __COMMON_DEF_H__

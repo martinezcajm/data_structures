@@ -2,27 +2,26 @@
 // Jose Maria Martinez
 // Algoritmos & Inteligencia Artificial
 // ESAT 2017/2018
-//comments included at adt_list.h
+//comments included at adt_double_linked_list.h
 #include <cstdio>
 #include <cstdlib>
+#include <cassert>
 
-#include "adt_list.h"
+#include "adt_double_linked_list.h"
 #include "common_def.h"
 
-List::List(u16 capacity)
+
+DLList::DLList(const u16 capacity)
 {
   init(capacity);
 }
 
-List::~List()
+DLList::~DLList()
 {
-  //list->first_ shouldn't be NULL if list isn't empty but to be safe we check
-  //it
   reset();
 }
 
-
-s16 List::init(const u16 capacity)
+s16 DLList::init(const u16 capacity)
 {
   first_ = nullptr;
   last_ = nullptr;
@@ -31,9 +30,9 @@ s16 List::init(const u16 capacity)
   return kErrorCode_Ok;
 }
 
-s16 List::reset()
+s16 DLList::reset()
 {
-  //list->first_ shouldn't be NULL if list isn't empty but to be safe we check
+  //first_ shouldn't be NULL if list isn't empty but to be safe we check
   //it
   if (!isEmpty()) {
     while (nullptr != first_) {
@@ -48,7 +47,7 @@ s16 List::reset()
   return kErrorCode_Ok;
 }
 
-s16 List::resize(const u16 new_size)
+s16 DLList::resize(const u16 new_size)
 {
   if (new_size < length_) {
     return kErrorCode_Resize_Loss_Of_Data;
@@ -57,17 +56,17 @@ s16 List::resize(const u16 new_size)
   return kErrorCode_Ok;
 }
 
-u16 List::capacity() const
+u16 DLList::capacity() const
 {
   return capacity_;
 }
 
-u16 List::length() const
+u16 DLList::length() const
 {
   return length_;
 }
 
-bool List::length_debug() const
+bool DLList::length_debug() const
 {
   MemoryNode *aux = first_;
   u16 elements_in_list = 0;
@@ -75,21 +74,28 @@ bool List::length_debug() const
     aux = aux->next();
     elements_in_list++;
   }
-  return elements_in_list == length_;
+  aux = last_;
+  u16 inverse_elements_in_list = 0;
+  while (aux->prev() != nullptr) {
+    aux = aux->prev();
+    inverse_elements_in_list++;
+  }
+  return elements_in_list == length_ &&
+    inverse_elements_in_list == length_;
 }
 
-bool List::isEmpty() const
+bool DLList::isEmpty() const
 {
   return 0 == length_;
 }
 
-bool List::isFull() const
+bool DLList::isFull() const
 {
   if (0 == capacity_) return false;
   return length_ == capacity_;
 }
 
-void* List::head()
+void* DLList::head()
 {
   if (isEmpty()) {
     return nullptr;
@@ -97,7 +103,7 @@ void* List::head()
   return first_->data();
 }
 
-void* List::last()
+void* DLList::last()
 {
   if (isEmpty()) {
     return nullptr;
@@ -105,7 +111,36 @@ void* List::last()
   return last_->data();
 }
 
-void* List::at(const u16 position)
+MemoryNode* DLList::getNodeAtPosition(const u16 position) const
+{
+  u16 index;
+  MemoryNode *aux = nullptr;
+  // we divide by two our position to know if the index
+  // is closest to the last or the first node
+  if (position > length_ >> 1)
+  {
+    index = length_ - 1;
+    aux = last_;
+    while (index != position) {
+      aux = aux->prev();
+      --index;
+    }
+  }
+  else
+  {
+    index = 0;
+    aux = first_;
+    while (index != position) {
+      aux = aux->next();
+      ++index;
+    }
+  }
+  assert(aux != nullptr && "getNodeAtPosition: the node wasn't found DANGER!");
+  return aux;
+}
+
+
+void* DLList::at(const u16 position)
 {
   if (isEmpty()) {
     return nullptr;
@@ -118,19 +153,35 @@ void* List::at(const u16 position)
   }
   //In case the position is the last one we return directly the data pointed
   //by last
-  if (position == length_ - 1) {
-    return last_->data();
-  }
-  u16 index = 0;
-  MemoryNode *aux = first_;
-  while (index != position) {
-    aux = aux->next();
-    ++index;
-  }
-  return aux->data();
+  //if (position == length_ - 1) {
+  //  return last_->data();
+  //}
+  //u16 index;
+  //MemoryNode *aux;
+  //// we divide by two our position to know if the index
+  //// is closest to the last or the first node
+  //if(position > ceil(position>>1)) 
+  //{
+  //  index = length_-1;
+  //  aux = last_;
+  //  while (index != position) {
+  //    aux = aux->prev();
+  //    --index;
+  //  }
+  //}else
+  //{
+  //  index = 0;
+  //  aux = first_;
+  //  while (index != position) {
+  //    aux = aux->next();
+  //    ++index;
+  //  }
+  //}
+  //return aux->data();
+  return getNodeAtPosition(position)->data();
 }
 
-s16 List::insertFirst(void* data, const u16 data_size)
+s16 DLList::insertFirst(void* data, const u16 data_size)
 {
   if (nullptr == data) {
 #ifdef VERBOSE_
@@ -142,7 +193,7 @@ s16 List::insertFirst(void* data, const u16 data_size)
 #ifdef VERBOSE_
     printf("Error: [%s] The list is full\n", __FUNCTION__);
 #endif
-    return kErrorCode_List_Is_Full;
+    return kErrorCode_DLList_Is_Full;
   }
   MemoryNode *new_node = new MemoryNode();
   if (nullptr == new_node) {
@@ -155,13 +206,16 @@ s16 List::insertFirst(void* data, const u16 data_size)
     last_ = new_node;
   }
   new_node->setNext(first_);
+  if (nullptr != first_) {
+    first_->setPrev(new_node);
+  }
   first_ = new_node;
   ++length_;
   const s16 status = first_->memCopy(data, data_size);
   return status;
 }
 
-s16 List::insertLast(void* data, const u16 data_size)
+s16 DLList::insertLast(void* data, const u16 data_size)
 {
   if (nullptr == data) {
 #ifdef VERBOSE_
@@ -173,7 +227,7 @@ s16 List::insertLast(void* data, const u16 data_size)
 #ifdef VERBOSE_
     printf("Error: [%s] The list is full\n", __FUNCTION__);
 #endif
-    return kErrorCode_List_Is_Full;
+    return kErrorCode_DLList_Is_Full;
   }
   MemoryNode *new_node = new MemoryNode();
   if (nullptr == new_node) {
@@ -188,13 +242,14 @@ s16 List::insertLast(void* data, const u16 data_size)
   if (nullptr != last_) {
     last_->setNext(new_node);
   }
+  new_node->setPrev(last_);
   last_ = new_node;
   ++length_;
   const s16 status = last_->memCopy(data, data_size);
   return status;
 }
 
-s16 List::insertAt(void* data, const u16 position, const u16 data_size)
+s16 DLList::insertAt(void* data, const u16 position, const u16 data_size)
 {
   if (nullptr == data) {
 #ifdef VERBOSE_
@@ -206,7 +261,7 @@ s16 List::insertAt(void* data, const u16 position, const u16 data_size)
 #ifdef VERBOSE_
     printf("Error: [%s] The list is full\n", __FUNCTION__);
 #endif
-    return kErrorCode_List_Is_Full;
+    return kErrorCode_DLList_Is_Full;
   }
   if (position >= length_) {
 #ifdef VERBOSE_
@@ -230,21 +285,28 @@ s16 List::insertAt(void* data, const u16 position, const u16 data_size)
 #endif
     return kErrorCode_Error_Trying_To_Allocate_Memory;
   }
-  MemoryNode *aux = first_;
-  u16 index = 0;
+  //MemoryNode *aux = first_;
+  //u16 index = 0;
+  ////We wish to found the node previous to the position we want to insert
+  //while (index != position - 1) {
+  //  aux = aux->next(aux);
+  //  ++index;
+  //}
   //We wish to found the node previous to the position we want to insert
-  while (index != position - 1) {
-    aux = aux->next();
-    ++index;
-  }
+  MemoryNode *aux = getNodeAtPosition(position - 1);
   new_node->setNext(aux->next());
+  new_node->setPrev(aux);
+  //First of all we update the previous of the node after the one we are
+  //inserting
+  aux->next()->setPrev(new_node);
+  //aux->setPrev(aux->next(aux), new_node);
   aux->setNext(new_node);
   ++length_;
   status = new_node->memCopy(data, data_size);
   return status;
 }
 
-void* List::extractFirst()
+void* DLList::extractFirst()
 {
   if (isEmpty()) {
 #ifdef VERBOSE_
@@ -256,14 +318,19 @@ void* List::extractFirst()
   void* data = first_->data();
   first_ = first_->next();
   //If the list only had one element we set last to NULL
-  if (nullptr == first_) last_ = nullptr;
+  if (nullptr == first_) {
+    last_ = nullptr;
+  }
+  else {
+    first_->setPrev(nullptr);
+  }
   //We free the node without affecting it's data
   node_to_extract->free_mn(true);
   --length_;
   return data;
 }
 
-void* List::extractLast()
+void* DLList::extractLast()
 {
   if (isEmpty()) {
 #ifdef VERBOSE_
@@ -272,29 +339,21 @@ void* List::extractLast()
     return nullptr;
   }
   MemoryNode *node_to_extract = last_;
-  if(first_->next() != nullptr) //first and last are not the same
-  {
-    last_ = first_;
-    //We want to check if the next of our next is NULL to get the element before
-    //the previous last, as this will be the new last
-    while (nullptr != last_->next()->next()) {
-      last_ = last_->next();
-    }
+  last_ = node_to_extract->prev();
+
+  if (nullptr == last_) {//In case case tere was just an element
+    first_ = nullptr;
   }
-  //list->last_ = aux;
-  last_->setNext(nullptr);
+  else {
+    last_->setNext(nullptr);
+  }
   void* data = node_to_extract->data();
   node_to_extract->free_mn(true);
   --length_;
-  //In case there was just one element
-  if (0 == length_) {
-    last_ = nullptr;
-    first_ = nullptr;
-  }
   return data;
 }
 
-void* List::extractAt(u16 position)
+void* DLList::extractAt(const u16 position)
 {
   if (isEmpty()) {
     return nullptr;
@@ -306,32 +365,38 @@ void* List::extractAt(u16 position)
     return nullptr;
   }
   void* data = nullptr;
-  if (0 == position) { //extraction at the start
+  if (0 == position) { //Extraction at the start
     data = extractFirst();
     return data;
   }
-  else if (position == length_ - 1) { //extraction at the end
+  else if (position == length_ - 1) { //Extraction at the end
     data = extractLast();
     return data;
   }
-  MemoryNode *node_to_extract = nullptr;
-  MemoryNode *aux = first_;
-  u16 index = 0;
+  //MemoryNode *node_to_extract = nullptr;
+  //MemoryNode *aux = first_;
+  //u16 index = 0;
+  ////We wish to found the node previous to the position we want to insert
+  //while (index != position - 1) {
+  //  aux = aux->next(aux);
+  //  ++index;
+  //}
+
   //We wish to found the node previous to the position we want to insert
-  while (index != position - 1) {
-    aux = aux->next();
-    ++index;
-  }
+  MemoryNode *node_to_extract = nullptr;
+  MemoryNode *aux = getNodeAtPosition(position - 1);
   node_to_extract = aux->next();
   data = node_to_extract->data();
   aux->setNext(node_to_extract->next());
+  node_to_extract->next()->setPrev(aux);
+  //aux->setPrev(node_to_extract->next(node_to_extract), aux);
   node_to_extract->free_mn(true);
   --length_;
   return data;
 }
 
-s16 List::concat(List* src)
-{
+s16 DLList::concat(DLList* src)
+{  
   if (nullptr == src) {
 #ifdef VERBOSE_ 
     printf("Error: [%s] The source list is null\n", __FUNCTION__);
@@ -339,6 +404,7 @@ s16 List::concat(List* src)
     return kErrorCode_Null_Pointer_Reference_Received;
   }
   last_->setNext(src->first_);
+  src->first_->setPrev(last_);
   last_ = src->last_;
   if (0 == capacity_ || 0 == src->capacity_) {
     capacity_ = 0;
@@ -353,7 +419,7 @@ s16 List::concat(List* src)
   return kErrorCode_Ok;
 }
 
-u16 List::traverse(s16 ( MemoryNode::* callback)()) const
+uint16_t DLList::traverse(s16(MemoryNode::*callback)()) const
 {
   u16 index = 0;
   MemoryNode *aux = first_;
@@ -367,7 +433,7 @@ u16 List::traverse(s16 ( MemoryNode::* callback)()) const
   return index;
 }
 
-void List::print() const
+void DLList::print() const
 {
   if (nullptr == first_) {
     printf("EMPTY");

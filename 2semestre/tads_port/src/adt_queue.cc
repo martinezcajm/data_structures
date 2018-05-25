@@ -37,23 +37,23 @@ s16 Queue::init(u16 capacity)
   return kErrorCode_Ok;
 }
 
-int_least16_t Queue::reset()
+s16 Queue::reset()
 {  
   return list_->reset();
 }
 
-int_least16_t Queue::resize(u16 new_size)
+s16 Queue::resize(u16 new_size)
 {
   const s16 status = list_->resize(new_size);
   return status;
 }
 
-uint16_t Queue::capacity() const
+u16 Queue::capacity() const
 {
   return list_->capacity();
 }
 
-uint16_t Queue::length() const
+u16 Queue::length() const
 {
   return list_->length();
 }
@@ -83,7 +83,7 @@ void* Queue::last()
   return list_->last();
 }
 
-int_least16_t Queue::enqueue(void* data, u16 data_size)
+s16 Queue::enqueue(void* data, u16 data_size)
 {
   //insertLast already checks data and if it's full
   return list_->insertLast(data, data_size);
@@ -94,12 +94,12 @@ void* Queue::dequeue()
   return list_->extractFirst();
 }
 
-int_least16_t Queue::concat(Queue* src)
+s16 Queue::concat(Queue* src)
 {
   return list_->concat(src->list_);
 }
 
-uint16_t Queue::traverse(s16 ( MemoryNode::* callback)()) const
+u16 Queue::traverse(s16 ( MemoryNode::* callback)()) const
 {
   return list_->traverse(callback);
 }
