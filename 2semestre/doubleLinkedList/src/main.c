@@ -134,5 +134,6 @@ int main()
   printf("\n isEmpty: %d", infinite_list->ops_->length_debug(infinite_list));
   infinite_list->ops_->resize(infinite_list, 2);
   infinite_list->ops_->resize(infinite_list, 3);
-  infinite_list->ops_->insertLast(infinite_list, "noo", 4);
+  infinite_list->ops_->insertLast(infinite_list, "noo", 4);  
+  infinite_list->ops_->destroy(&infinite_list);
 }

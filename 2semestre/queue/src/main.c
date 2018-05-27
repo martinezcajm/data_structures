@@ -130,4 +130,5 @@ int main()
   infinite_queue->ops_->resize(infinite_queue,3);
   infinite_queue->ops_->enqueue(infinite_queue, "noo", 4);
   printf("\n %s", data);
+  infinite_queue->ops_->destroy(&infinite_queue);
 }

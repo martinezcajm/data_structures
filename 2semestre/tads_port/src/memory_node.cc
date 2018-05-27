@@ -154,7 +154,9 @@ s16 MemoryNode::memCopy(void* src, u16 bytes)
 #endif
     return status;
   }
-  data_ = malloc(bytes);
+  //raw data allocator of c++
+  data_ = operator new(bytes);
+  //data_ = malloc(bytes);
   if (nullptr == data_) {
 #ifdef VERBOSE_
     printf("Error: [%s] malloc failed\n", __FUNCTION__);
@@ -180,7 +182,8 @@ s16 MemoryNode::memConcat(void* src, u16 bytes)
 #endif
     return kWarningCode_Strange_Operation;
   }
-  u8 *aux = static_cast<u8*>(malloc(size_ + bytes));
+  u8 *aux = new u8[size_ + bytes];
+  //u8 *aux = static_cast<u8*>(malloc(size_ + bytes));
   if (nullptr == aux) {
 #ifdef VERBOSE_
     printf("Error: [%s] malloc failed\n", __FUNCTION__);

@@ -35,7 +35,7 @@ class Vector
    * @param o vector to be copied
    */
    Vector(const Vector& o);
-   /** @brief MemoryNode = operation
+   /** @brief Vector = operation
    *
    * returns a reference to memory node equal to mn
    *
@@ -43,6 +43,22 @@ class Vector
    * @param v vector to be copied
    */
    Vector& operator = (const Vector &v);
+   /** @brief Vector new operation override
+   *
+   * returns a reference to memory node equal to mn
+   *
+   * @return void*
+   * @param size size of the memory to allocate
+   */
+   void* operator new(size_t size);
+   /** @brief Vector delete operation override
+   *
+   * returns a reference to memory node equal to mn
+   *
+   * @return void
+   * @param pointer_to_delete vector to be copied
+   */
+   void operator delete(void* pointer_to_delete);
    /** @brief Initializes the memory node
    *
    * Initializes the memory node. Note that the constructor

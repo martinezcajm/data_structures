@@ -12,7 +12,10 @@
 #include "adt_vector.h"
 #include "adt_queue.h"
 #include "adt_double_linked_list.h"
-#include "adt_Stack.h"
+#include "adt_stack.h"
+#include "printer.h"
+#include "memory_manager.h"
+#include "Windows.h"
 
 int test_memory_node()
 {
@@ -313,6 +316,7 @@ int test_list()
   infinite_list->resize(3);
   infinite_list->insertLast("noo", 4);
   printf("\n %s", data);
+  delete(infinite_list);
   return 0;
 }
 
@@ -665,14 +669,101 @@ int test_stack()
   return 0;
 }
 
+int test_printer()
+{
+  Printer *logger = new Printer();
+
+  logger->write("Starting test, all systems on");
+  logger->write("some tatsy miscellanea");
+  logger->flush();
+  logger->write("and the world keeps going on");
+  logger->flush();
+  delete(logger);
+  return 0;
+}
+
+int test_tads()
+{
+  //DLList *tad = new DLList(0);
+  List *tad = new List(0);
+  //Vector *tad = new Vector(10000);
+  LARGE_INTEGER frequency;				        // ticks per second
+  LARGE_INTEGER time_start, time_end;     // ticks in interval
+  double elapsed_time = 0.0f;
+
+  // get ticks per second
+  QueryPerformanceFrequency(&frequency);
+  const s16 repetitions = 100;
+  const s16 iterations = 100;
+
+  // start timer
+  
+  //tad->insertLast("Now I'm bigger", 15);
+  //tad->insertLast("Now I'm bigger", 15);
+  //tad->insertLast("Now I'm bigger", 15);
+  //tad->insertLast("Now I'm bigger", 15);
+  //tad->insertLast("Now I'm bigger", 15);
+  for (u16 rep = 0; rep < repetitions; ++rep)
+  {
+    for (s16 type = 0; type < iterations; ++type)
+    {
+      //ejecuto la accion necesaria aqui;
+      tad->insertFirst("Now I'm bigger",3);
+    }
+  }
+  for (u16 rep = 0; rep < repetitions; ++rep)
+  {
+    for (s16 type = 0; type < iterations; ++type)
+    {
+      //ejecuto la accion necesaria aqui;
+      tad->extractLast();
+    }
+  }
+  QueryPerformanceCounter(&time_start);
+  for (u16 rep = 0; rep < repetitions; ++rep)
+  {
+    for (s16 type = 0; type < iterations; ++type)
+    {
+      Vector v1 = Vector(5);
+      //List v1 = List(5);
+      //DLList v1 = DLList(5);
+      v1.insertLast("Now I'm bigger", 15);
+      v1.insertLast("Now I'm bigger", 15);
+      v1.insertLast("Now I'm bigger", 15);
+      v1.insertLast("Now I'm bigger", 15);
+      v1.insertLast("Now I'm bigger", 15);
+      Vector v2 = Vector(2);
+      //List v2 = List(2);
+      //DLList v2 = DLList(2);
+      v2.insertLast("Now I'm bigger", 15);
+      v2.insertLast("Now I'm bigger", 15);
+      v1.concat(v2);
+    }
+  }
+  // stop timer
+  QueryPerformanceCounter(&time_end);
+
+  // compute and print the elapsed time in microseconds
+  elapsed_time = (time_end.QuadPart - time_start.QuadPart)
+    * 1000000.0f / frequency.QuadPart;
+  double promedium_time = elapsed_time / 10000;
+  // Falta promediar
+  delete(tad);
+  //delete(test_dll);
+  return 0;
+}
+
 int main()
 {
+  MemoryManager::instance();
   //test_memory_node();
   //test_vector();
   //test_list();
   //test_dllist();
   //test_queue();
-  test_stack();
+  //test_stack();
+  test_printer();
+  test_tads();
   return 0;
 }
 

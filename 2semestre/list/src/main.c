@@ -136,4 +136,5 @@ int main()
   infinite_list->ops_->resize(infinite_list, 3);
   infinite_list->ops_->insertLast(infinite_list, "noo", 4);
   printf("\n %s", data);
+  infinite_list->ops_->destroy(&infinite_list);
 }

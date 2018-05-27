@@ -9,11 +9,13 @@
 
 #include "adt_vector.h"
 #include "common_def.h"
+#include "memory_manager.h"
 
 Vector::Vector(u16 capacity)
 {
   //Vector *vector = malloc(sizeof(Vector));
-  storage_ = static_cast<MemoryNode*>(malloc(sizeof(MemoryNode) * capacity));
+  //storage_ = static_cast<MemoryNode*>(malloc(sizeof(MemoryNode) * capacity));
+  storage_ = new MemoryNode[capacity];
   if (nullptr == storage_) {
 #ifdef VERBOSE_
     printf("Error: [%s] not enough memory available\n", __FUNCTION__);
@@ -30,7 +32,8 @@ Vector::~Vector()
   const s16 status = reset();
   //We check if all went well and free the vector in case it was
   if (kErrorCode_Ok == status) {
-    free(storage_);
+    delete[] storage_;
+    //free(storage_);
   }
 }
 
@@ -49,6 +52,17 @@ Vector& Vector::operator=(const Vector& v)
   //tail_ = v.tail_;
   //capacity_ = v.capacity();  
   return *this;
+}
+
+void* Vector::operator new(size_t size)
+{
+  return MemoryManager::instance().malloc(static_cast<u16>(size));
+}
+
+void Vector::operator delete(void* pointer_to_delete)
+{
+  u16 s = sizeof(Vector);
+  MemoryManager::instance().free(pointer_to_delete, sizeof(Vector));
 }
 
 
@@ -79,7 +93,8 @@ s16 Vector::resize(const u16 new_size)
   if (new_size == old_capacity) {
     return kErrorCode_Ok;
   }
-  MemoryNode *new_storage = static_cast<MemoryNode*>(malloc(sizeof(MemoryNode) * new_size));
+  MemoryNode *new_storage = new MemoryNode[new_size];
+  //MemoryNode *new_storage = static_cast<MemoryNode*>(malloc(sizeof(MemoryNode) * new_size));
   if (nullptr == new_storage) {
 #ifdef VERBOSE_
     printf("Error: [%s] not enough memory available\n", __FUNCTION__);
@@ -116,7 +131,8 @@ s16 Vector::resize(const u16 new_size)
       head_ = 0;
     }
   }
-  free(old_storage);
+  //free(old_storage);
+  delete[] old_storage;
   return kErrorCode_Ok;
 }
 

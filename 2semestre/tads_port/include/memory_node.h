@@ -179,12 +179,6 @@ class MemoryNode
    * @return s16 status of the function
    */
    s16 print ();
-
- private:
-   void *data_;
-   u16 size_;
-   MemoryNode *next_;
-   MemoryNode *prev_;
    /** @brief memory node destructor
    *
    * Destructor of memory node. Note that you need to call free_mn to destroy
@@ -193,6 +187,13 @@ class MemoryNode
    * @return void
    */
    ~MemoryNode();
+
+ private:
+   void *data_;
+   u16 size_;
+   MemoryNode *next_;
+   MemoryNode *prev_;
+
 };
 
 #endif // __MEMORY_NODE_H__
