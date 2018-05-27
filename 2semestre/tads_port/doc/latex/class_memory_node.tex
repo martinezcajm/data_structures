@@ -1,0 +1,390 @@
+\hypertarget{class_memory_node}{}\section{Memory\+Node Class Reference}
+\label{class_memory_node}\index{Memory\+Node@{Memory\+Node}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_memory_node_a5b96575439c0b82ac4cfebf71209838a}{Memory\+Node} ()
+\begin{DoxyCompactList}\small\item\em Memory Node constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_memory_node_a6d07a3f7d2594d9cc115015bba04ede9}{Memory\+Node} (const \hyperlink{class_memory_node}{Memory\+Node} \&o)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_memory_node}{Memory\+Node} copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_memory_node}{Memory\+Node} \& \hyperlink{class_memory_node_a67adfa40cb3ccb63deb68491a31ec854}{operator=} (const \hyperlink{class_memory_node}{Memory\+Node} \&mn)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_memory_node}{Memory\+Node} = operation. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_a7d5525e6dc8c0c41e8d32a14534cf261}{init} ()
+\begin{DoxyCompactList}\small\item\em Initializes the memory node. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_abd62af9897dd0f29a1a06490fc2c7570}{free\+\_\+mn} (boolean soft=false)
+\begin{DoxyCompactList}\small\item\em Frees the memory node (Destructor) \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_a705f9683b7f721e3fbc90b82bb1daacc}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the memory node. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_memory_node_a5f375b561aea9c23dd04c133d2ed9add}{data} () const
+\begin{DoxyCompactList}\small\item\em getter of data \end{DoxyCompactList}\item 
+u16 \hyperlink{class_memory_node_a2cce3c72a53570de651f43a9b8d0d023}{size} () const
+\begin{DoxyCompactList}\small\item\em gets the data size \end{DoxyCompactList}\item 
+\hyperlink{class_memory_node}{Memory\+Node} $\ast$ \hyperlink{class_memory_node_a6f704b211e3638e78677cc5010f73724}{next} () const
+\begin{DoxyCompactList}\small\item\em gettter of next \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_ae5535f4947d24e5855aba8f9b2355c36}{set\+Next} (\hyperlink{class_memory_node}{Memory\+Node} $\ast$next\+\_\+node)
+\begin{DoxyCompactList}\small\item\em setter of next \end{DoxyCompactList}\item 
+\hyperlink{class_memory_node}{Memory\+Node} $\ast$ \hyperlink{class_memory_node_a4fe6fb65838319101cde35a371728bb5}{prev} () const
+\begin{DoxyCompactList}\small\item\em gettter of previous \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_a3370c238a8a995f0cd34a84c2180c654}{set\+Prev} (\hyperlink{class_memory_node}{Memory\+Node} $\ast$prev\+\_\+node)
+\begin{DoxyCompactList}\small\item\em setter of previous \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_af4631d27eef2e810df9767b66f46e26b}{set\+Data} (void $\ast$src, u16 bytes)
+\begin{DoxyCompactList}\small\item\em Sets new data to the memory node. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_a0d366149c6c235c72016ba5bf2b7fe3c}{mem\+Set} (u8 value)
+\begin{DoxyCompactList}\small\item\em Sets all the data to the value passed. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_ae8111a880a8d11ce39d73d841d147a44}{mem\+Copy} (void $\ast$src, u16 bytes)
+\begin{DoxyCompactList}\small\item\em allocates the data passe by src and sets it to the memory node. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_affb353802eb004abced42bcfc1e10d73}{mem\+Concat} (void $\ast$src, u16 bytes)
+\begin{DoxyCompactList}\small\item\em Concats the data of the memory with thedata passed at source. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_a5a9f89d13c46a4fcca917d7313b1e1d6}{mem\+Mask} (u8 mask) const
+\begin{DoxyCompactList}\small\item\em Applies a mask to the data. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_node_a97e6335a0d16bf6550b036d7a96c0f58}{print} ()
+\begin{DoxyCompactList}\small\item\em prints the content of data \end{DoxyCompactList}\item 
+\hyperlink{class_memory_node_abfffe599d76ee15d80521bb740e57a71}{$\sim$\+Memory\+Node} ()
+\begin{DoxyCompactList}\small\item\em memory node destructor \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_memory_node_a5b96575439c0b82ac4cfebf71209838a}\label{class_memory_node_a5b96575439c0b82ac4cfebf71209838a}} 
+\index{Memory\+Node@{Memory\+Node}!Memory\+Node@{Memory\+Node}}
+\index{Memory\+Node@{Memory\+Node}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{Memory\+Node()}{MemoryNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Memory\+Node\+::\+Memory\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Memory Node constructor. 
+
+Base constructor of memory node
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Memory\+Node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_node_a6d07a3f7d2594d9cc115015bba04ede9}\label{class_memory_node_a6d07a3f7d2594d9cc115015bba04ede9}} 
+\index{Memory\+Node@{Memory\+Node}!Memory\+Node@{Memory\+Node}}
+\index{Memory\+Node@{Memory\+Node}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{Memory\+Node()}{MemoryNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Memory\+Node\+::\+Memory\+Node (\begin{DoxyParamCaption}\item[{const \hyperlink{class_memory_node}{Memory\+Node} \&}]{o }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_memory_node}{Memory\+Node} copy constructor. 
+
+Memory node copy constructor.
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Memory\+Node 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em o} & memory node to be copied \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_abfffe599d76ee15d80521bb740e57a71}\label{class_memory_node_abfffe599d76ee15d80521bb740e57a71}} 
+\index{Memory\+Node@{Memory\+Node}!````~Memory\+Node@{$\sim$\+Memory\+Node}}
+\index{````~Memory\+Node@{$\sim$\+Memory\+Node}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{$\sim$\+Memory\+Node()}{~MemoryNode()}}
+{\footnotesize\ttfamily Memory\+Node\+::$\sim$\+Memory\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+memory node destructor 
+
+Destructor of memory node. Note that you need to call free\+\_\+mn to destroy a memory node.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_memory_node_a5f375b561aea9c23dd04c133d2ed9add}\label{class_memory_node_a5f375b561aea9c23dd04c133d2ed9add}} 
+\index{Memory\+Node@{Memory\+Node}!data@{data}}
+\index{data@{data}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{data()}{data()}}
+{\footnotesize\ttfamily void $\ast$ Memory\+Node\+::data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of data 
+
+Returns a pointer to data. In case a null pointer wass passed it will return null
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ reference to the data of the memory node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_node_abd62af9897dd0f29a1a06490fc2c7570}\label{class_memory_node_abd62af9897dd0f29a1a06490fc2c7570}} 
+\index{Memory\+Node@{Memory\+Node}!free\+\_\+mn@{free\+\_\+mn}}
+\index{free\+\_\+mn@{free\+\_\+mn}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{free\+\_\+mn()}{free\_mn()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::free\+\_\+mn (\begin{DoxyParamCaption}\item[{boolean}]{soft = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Frees the memory node (Destructor) 
+
+Destroys the memory node. In case you wish to mantain the data of the memory node after it\textquotesingle{}s destruction set soft as true otherwise just ignore the parameter or pass false
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em soft} & in case false is passed data will be released, otherwise the data won\textquotesingle{}t be released and it\textquotesingle{}s your responsability to free it. free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_a7d5525e6dc8c0c41e8d32a14534cf261}\label{class_memory_node_a7d5525e6dc8c0c41e8d32a14534cf261}} 
+\index{Memory\+Node@{Memory\+Node}!init@{init}}
+\index{init@{init}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the memory node. 
+
+Initializes the memory node. Note that the constructor already initializes the node.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_node_affb353802eb004abced42bcfc1e10d73}\label{class_memory_node_affb353802eb004abced42bcfc1e10d73}} 
+\index{Memory\+Node@{Memory\+Node}!mem\+Concat@{mem\+Concat}}
+\index{mem\+Concat@{mem\+Concat}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{mem\+Concat()}{memConcat()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::mem\+Concat (\begin{DoxyParamCaption}\item[{void $\ast$}]{src,  }\item[{u16}]{bytes }\end{DoxyParamCaption})}
+
+
+
+Concats the data of the memory with thedata passed at source. 
+
+Allocates memory for the data result from the concatenation of the memory node data with the data at source. In case a null memory node was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. If the data of the memory node is null a k\+Error\+Code\+\_\+\+Null\+\_\+\+Data will be returned. If the source is null a k\+Warning\+Code\+\_\+\+Strange\+\_\+\+Operation will be returned. If there\textquotesingle{}s an error allocating the memory a k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned. \begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em src} & source we want to concat to the data \\
+\hline
+{\em bytes} & size of the data to concat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_ae8111a880a8d11ce39d73d841d147a44}\label{class_memory_node_ae8111a880a8d11ce39d73d841d147a44}} 
+\index{Memory\+Node@{Memory\+Node}!mem\+Copy@{mem\+Copy}}
+\index{mem\+Copy@{mem\+Copy}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{mem\+Copy()}{memCopy()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::mem\+Copy (\begin{DoxyParamCaption}\item[{void $\ast$}]{src,  }\item[{u16}]{bytes }\end{DoxyParamCaption})}
+
+
+
+allocates the data passe by src and sets it to the memory node. 
+
+Copies the data passed in src and sets the pointer of data to this new data. If a size of 0 bytes is passed a k\+Warning\+Code\+\_\+\+Strange\+\_\+\+Operation will be returned and N\+O\+T\+H\+I\+NG will be done to the node. If the source is null a k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received will be returned. In case a null pointer was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. If the allocation of the new data went wrong it will return a k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em src} & source of the data that will be copied \\
+\hline
+{\em bytes} & size of the new data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_a5a9f89d13c46a4fcca917d7313b1e1d6}\label{class_memory_node_a5a9f89d13c46a4fcca917d7313b1e1d6}} 
+\index{Memory\+Node@{Memory\+Node}!mem\+Mask@{mem\+Mask}}
+\index{mem\+Mask@{mem\+Mask}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{mem\+Mask()}{memMask()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::mem\+Mask (\begin{DoxyParamCaption}\item[{u8}]{mask }\end{DoxyParamCaption}) const}
+
+
+
+Applies a mask to the data. 
+
+Applies an and (\&) mask to the data of the memory node byte to byte. In case a null memory node was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. \begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & mask we want to apply to the data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_a0d366149c6c235c72016ba5bf2b7fe3c}\label{class_memory_node_a0d366149c6c235c72016ba5bf2b7fe3c}} 
+\index{Memory\+Node@{Memory\+Node}!mem\+Set@{mem\+Set}}
+\index{mem\+Set@{mem\+Set}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{mem\+Set()}{memSet()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::mem\+Set (\begin{DoxyParamCaption}\item[{u8}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets all the data to the value passed. 
+
+Applies a memset of the value passed to the data of the memory node. In case a null pointer wass passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. In case the data of the memory node is null it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Data
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & we want to memset to the data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_a6f704b211e3638e78677cc5010f73724}\label{class_memory_node_a6f704b211e3638e78677cc5010f73724}} 
+\index{Memory\+Node@{Memory\+Node}!next@{next}}
+\index{next@{next}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily \hyperlink{class_memory_node}{Memory\+Node} $\ast$ Memory\+Node\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+gettter of next 
+
+Returns the next \hyperlink{class_memory_node}{Memory\+Node}
+
+\begin{DoxyReturn}{Returns}
+Memory\+Node$\ast$ reference to the next memory node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_node_a67adfa40cb3ccb63deb68491a31ec854}\label{class_memory_node_a67adfa40cb3ccb63deb68491a31ec854}} 
+\index{Memory\+Node@{Memory\+Node}!operator=@{operator=}}
+\index{operator=@{operator=}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{class_memory_node}{Memory\+Node} \& Memory\+Node\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_memory_node}{Memory\+Node} \&}]{mn }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_memory_node}{Memory\+Node} = operation. 
+
+returns a reference to memory node equal to mn
+
+\begin{DoxyReturn}{Returns}
+\&\hyperlink{class_memory_node}{Memory\+Node} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em mn} & memory node to be copied \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_a4fe6fb65838319101cde35a371728bb5}\label{class_memory_node_a4fe6fb65838319101cde35a371728bb5}} 
+\index{Memory\+Node@{Memory\+Node}!prev@{prev}}
+\index{prev@{prev}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{prev()}{prev()}}
+{\footnotesize\ttfamily \hyperlink{class_memory_node}{Memory\+Node} $\ast$ Memory\+Node\+::prev (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+gettter of previous 
+
+Returns the previous \hyperlink{class_memory_node}{Memory\+Node}
+
+\begin{DoxyReturn}{Returns}
+Memory\+Node$\ast$ pointer to the previous memory node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_node_a97e6335a0d16bf6550b036d7a96c0f58}\label{class_memory_node_a97e6335a0d16bf6550b036d7a96c0f58}} 
+\index{Memory\+Node@{Memory\+Node}!print@{print}}
+\index{print@{print}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints the content of data 
+
+Prints the data byte to byte in hexadecimal. In case a null memory node was passed it will print The node is null. If data is null it will print The data is null \begin{DoxyReturn}{Returns}
+s16 status of the function 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_node_a705f9683b7f721e3fbc90b82bb1daacc}\label{class_memory_node_a705f9683b7f721e3fbc90b82bb1daacc}} 
+\index{Memory\+Node@{Memory\+Node}!reset@{reset}}
+\index{reset@{reset}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the memory node. 
+
+Sets the data and size of the memory node to it\textquotesingle{}s default values.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_node_af4631d27eef2e810df9767b66f46e26b}\label{class_memory_node_af4631d27eef2e810df9767b66f46e26b}} 
+\index{Memory\+Node@{Memory\+Node}!set\+Data@{set\+Data}}
+\index{set\+Data@{set\+Data}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{set\+Data()}{setData()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::set\+Data (\begin{DoxyParamCaption}\item[{void $\ast$}]{src,  }\item[{u16}]{bytes }\end{DoxyParamCaption})}
+
+
+
+Sets new data to the memory node. 
+
+Resets the old data of the memory node and sets it to it\textquotesingle{}s new value updating it\textquotesingle{}s size with the bytes parameter. In case src is null it will return a k\+Warning\+Code\+\_\+\+Strange\+\_\+\+Operation and W\+ON\textquotesingle{}T reset the old data. In case a null pointer was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em src} & source of the new data of the memory node \\
+\hline
+{\em bytes} & size of the data the memory node will be referencing \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_ae5535f4947d24e5855aba8f9b2355c36}\label{class_memory_node_ae5535f4947d24e5855aba8f9b2355c36}} 
+\index{Memory\+Node@{Memory\+Node}!set\+Next@{set\+Next}}
+\index{set\+Next@{set\+Next}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{set\+Next()}{setNext()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::set\+Next (\begin{DoxyParamCaption}\item[{\hyperlink{class_memory_node}{Memory\+Node} $\ast$}]{next\+\_\+node }\end{DoxyParamCaption})}
+
+
+
+setter of next 
+
+Sets the next \hyperlink{class_memory_node}{Memory\+Node} of the \hyperlink{class_memory_node}{Memory\+Node}. Take into account that this function won\textquotesingle{}t release the old next \hyperlink{class_memory_node}{Memory\+Node}.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em next\+\_\+node} & new pointer to the next memory\+\_\+node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_a3370c238a8a995f0cd34a84c2180c654}\label{class_memory_node_a3370c238a8a995f0cd34a84c2180c654}} 
+\index{Memory\+Node@{Memory\+Node}!set\+Prev@{set\+Prev}}
+\index{set\+Prev@{set\+Prev}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{set\+Prev()}{setPrev()}}
+{\footnotesize\ttfamily s16 Memory\+Node\+::set\+Prev (\begin{DoxyParamCaption}\item[{\hyperlink{class_memory_node}{Memory\+Node} $\ast$}]{prev\+\_\+node }\end{DoxyParamCaption})}
+
+
+
+setter of previous 
+
+Sets the previous \hyperlink{class_memory_node}{Memory\+Node} of the \hyperlink{class_memory_node}{Memory\+Node}. Take into account that this function won\textquotesingle{}t release the old previous \hyperlink{class_memory_node}{Memory\+Node}.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em prev\+\_\+node} & new pointer to the previous memory\+\_\+node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_memory_node_a2cce3c72a53570de651f43a9b8d0d023}\label{class_memory_node_a2cce3c72a53570de651f43a9b8d0d023}} 
+\index{Memory\+Node@{Memory\+Node}!size@{size}}
+\index{size@{size}!Memory\+Node@{Memory\+Node}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily u16 Memory\+Node\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+gets the data size 
+
+Returns the size of the data. In case a null pointer wass passed it will return a 0
+
+\begin{DoxyReturn}{Returns}
+u16 size of the data 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/include/memory\+\_\+node.\+h\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/src/memory\+\_\+node.\+cc\end{DoxyCompactItemize}

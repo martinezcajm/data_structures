@@ -1,0 +1,515 @@
+\hypertarget{class_vector}{}\section{Vector Class Reference}
+\label{class_vector}\index{Vector@{Vector}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vector_a9467d86e33600527022d24e2c55bd898}{Vector} (u16 \hyperlink{class_vector_a8f7d8bd11c88b8373e10fd1650ec17fb}{capacity})
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_vector}{Vector} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_vector_a2eb3c49587a4f12cade7895ccb73f6a0}{$\sim$\+Vector} ()
+\begin{DoxyCompactList}\small\item\em Frees the vector. \end{DoxyCompactList}\item 
+\hyperlink{class_vector_a1a09f0b714eb24c7484ee55aaf308c92}{Vector} (const \hyperlink{class_vector}{Vector} \&o)
+\begin{DoxyCompactList}\small\item\em vector copy constructor \end{DoxyCompactList}\item 
+\hyperlink{class_vector}{Vector} \& \hyperlink{class_vector_ae48c467a9f65d60e2f7455aba4ca1239}{operator=} (const \hyperlink{class_vector}{Vector} \&v)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_vector}{Vector} = operation. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_vector_a8c34a3b143a7007d8f264cce5d2e3a25}{operator new} (size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_vector}{Vector} new operation override. \end{DoxyCompactList}\item 
+void \hyperlink{class_vector_a014c3802d82fb8348bd39ad7dcf9fcc5}{operator delete} (void $\ast$pointer\+\_\+to\+\_\+delete)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_vector}{Vector} delete operation override. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_vector_a9b081b05b56862b5d5918beabe732c54}{init} (const u16 \hyperlink{class_vector_a8f7d8bd11c88b8373e10fd1650ec17fb}{capacity})
+\begin{DoxyCompactList}\small\item\em Initializes the memory node. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_vector_abdb3654bb23bc4f7bd0158a3a30a1019}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the vector. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_vector_a3477707e55ad541292ae26b1c8645819}{resize} (const u16 new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Changes the capacity of the vector. \end{DoxyCompactList}\item 
+u16 \hyperlink{class_vector_a8f7d8bd11c88b8373e10fd1650ec17fb}{capacity} () const
+\begin{DoxyCompactList}\small\item\em getter of capacity \end{DoxyCompactList}\item 
+u16 \hyperlink{class_vector_a3326a8116d10d5d302b5ae8f4794fbb8}{length} () const
+\begin{DoxyCompactList}\small\item\em getter of the length \end{DoxyCompactList}\item 
+boolean \hyperlink{class_vector_a390f85b3efa89070994f43b6570c909e}{is\+Empty} () const
+\begin{DoxyCompactList}\small\item\em Indicates if the vector is empty. \end{DoxyCompactList}\item 
+boolean \hyperlink{class_vector_ab9bedff9bd3c3826d7f2fa9a78116c9d}{is\+Full} () const
+\begin{DoxyCompactList}\small\item\em Indicates if the vector is full. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_vector_ab8f205d5a5da8672d6aa048b773a852f}{head} ()
+\begin{DoxyCompactList}\small\item\em Returns the first element of the vector. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_vector_a753c7105d2a6acf776b190d29cecd356}{last} ()
+\begin{DoxyCompactList}\small\item\em Returns the last element of the vector. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_vector_a56f4698af2478b8dc6710094855f65e9}{at} (const u16 position)
+\begin{DoxyCompactList}\small\item\em Returns the element at the specified position. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_vector_a58d0f4970cc96457f60e12a0201ce58f}{insert\+First} (void $\ast$data, const u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the first position of the vector. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_vector_a4e762aa3819ce9c217d38095f6fb3a0b}{insert\+Last} (void $\ast$data, const u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the last position of the vector. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_vector_a87b88764d408955bc78fa3372102a7fb}{insert\+At} (void $\ast$data, const u16 data\+\_\+size, const u16 position)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the position of the vector indicated. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_vector_adc981406679edbd18e0125dd7d322229}{extract\+First} ()
+\begin{DoxyCompactList}\small\item\em Extracts the first element of the vector and returns it. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_vector_ae7cf9b7f0c345589098036e367b5729f}{extract\+Last} ()
+\begin{DoxyCompactList}\small\item\em Extracts the last element of the vector and returns it. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_vector_aae8d43ca6747949bfe322c71d961c9a6}{extract\+At} (const u16 position)
+\begin{DoxyCompactList}\small\item\em Extracts the element of the vector at the position indicated and returns it. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_vector_a7fff9a3f12f5ffe8a132e81a55c04f70}{concat} (const \hyperlink{class_vector}{Vector} \&src)
+\begin{DoxyCompactList}\small\item\em Concatenates two vector storing the result at origin. \end{DoxyCompactList}\item 
+u16 \hyperlink{class_vector_a2ccabd5bd543d4f56db38c9c2e8fdd4d}{traverse} (s16(Memory\+Node\+::$\ast$callback)()) const
+\begin{DoxyCompactList}\small\item\em Applies the callback method to the vector. \end{DoxyCompactList}\item 
+void \hyperlink{class_vector_aa9d204c1e8c6f232e5391ebc57e8edd2}{print} () const
+\begin{DoxyCompactList}\small\item\em Prints the content of the elements of the vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_vector_a9467d86e33600527022d24e2c55bd898}\label{class_vector_a9467d86e33600527022d24e2c55bd898}} 
+\index{Vector@{Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{u16}]{capacity }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_vector}{Vector} constructor. 
+
+Base constructor of vector
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_a2eb3c49587a4f12cade7895ccb73f6a0}\label{class_vector_a2eb3c49587a4f12cade7895ccb73f6a0}} 
+\index{Vector@{Vector}!````~Vector@{$\sim$\+Vector}}
+\index{````~Vector@{$\sim$\+Vector}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{$\sim$\+Vector()}{~Vector()}}
+{\footnotesize\ttfamily Vector\+::$\sim$\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the vector. 
+
+Resets the content of the vector and frees it. Note that this function calls the reset method.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_a1a09f0b714eb24c7484ee55aaf308c92}\label{class_vector_a1a09f0b714eb24c7484ee55aaf308c92}} 
+\index{Vector@{Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{const \hyperlink{class_vector}{Vector} \&}]{o }\end{DoxyParamCaption})}
+
+
+
+vector copy constructor 
+
+\hyperlink{class_vector}{Vector} copy constructor.
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Vector 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em o} & vector to be copied \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vector_a56f4698af2478b8dc6710094855f65e9}\label{class_vector_a56f4698af2478b8dc6710094855f65e9}} 
+\index{Vector@{Vector}!at@{at}}
+\index{at@{at}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily void $\ast$ Vector\+::at (\begin{DoxyParamCaption}\item[{const u16}]{position }\end{DoxyParamCaption})}
+
+
+
+Returns the element at the specified position. 
+
+Returns a reference to the element at the indicated position. If the vector passed is N\+U\+LL or the vector is empty returns null. It also returns N\+U\+LL if position it\textquotesingle{}s greater or equal to the length.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ element of the vector at the indicated position 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & position in which the element is located \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_a8f7d8bd11c88b8373e10fd1650ec17fb}\label{class_vector_a8f7d8bd11c88b8373e10fd1650ec17fb}} 
+\index{Vector@{Vector}!capacity@{capacity}}
+\index{capacity@{capacity}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily u16 Vector\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of capacity 
+
+Returns the maximum number of elemets to store.
+
+\begin{DoxyReturn}{Returns}
+u16 capacity of the vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_a7fff9a3f12f5ffe8a132e81a55c04f70}\label{class_vector_a7fff9a3f12f5ffe8a132e81a55c04f70}} 
+\index{Vector@{Vector}!concat@{concat}}
+\index{concat@{concat}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily s16 Vector\+::concat (\begin{DoxyParamCaption}\item[{const \hyperlink{class_vector}{Vector} \&}]{src }\end{DoxyParamCaption})}
+
+
+
+Concatenates two vector storing the result at origin. 
+
+Concatenates the source to the vector, the result of it will have a capacity of vector\textquotesingle{}s capacity plus src capacity\textquotesingle{}s. Notice that the src vector won\textquotesingle{}t be modified during the execution. In case the vector is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Vector will be returned and in case the the src is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received. If there\textquotesingle{}s a problem during the allocation of the new vector k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em src} & vector we want to concatenate to our origin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_aae8d43ca6747949bfe322c71d961c9a6}\label{class_vector_aae8d43ca6747949bfe322c71d961c9a6}} 
+\index{Vector@{Vector}!extract\+At@{extract\+At}}
+\index{extract\+At@{extract\+At}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{extract\+At()}{extractAt()}}
+{\footnotesize\ttfamily void $\ast$ Vector\+::extract\+At (\begin{DoxyParamCaption}\item[{const u16}]{position }\end{DoxyParamCaption})}
+
+
+
+Extracts the element of the vector at the position indicated and returns it. 
+
+Extracts the element of the vector at the position indicated and removes it from the vector. Notice that the data must be freed once you finished using it as it\textquotesingle{}s no longer responsability of the vector.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the indicated position of the vector 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & position of the element we want to extract \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_adc981406679edbd18e0125dd7d322229}\label{class_vector_adc981406679edbd18e0125dd7d322229}} 
+\index{Vector@{Vector}!extract\+First@{extract\+First}}
+\index{extract\+First@{extract\+First}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{extract\+First()}{extractFirst()}}
+{\footnotesize\ttfamily void $\ast$ Vector\+::extract\+First (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Extracts the first element of the vector and returns it. 
+
+Extracts the first element of the vector and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the vector.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the first position of the vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_ae7cf9b7f0c345589098036e367b5729f}\label{class_vector_ae7cf9b7f0c345589098036e367b5729f}} 
+\index{Vector@{Vector}!extract\+Last@{extract\+Last}}
+\index{extract\+Last@{extract\+Last}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{extract\+Last()}{extractLast()}}
+{\footnotesize\ttfamily void $\ast$ Vector\+::extract\+Last (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Extracts the last element of the vector and returns it. 
+
+Extracts the last element of the vector and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the vector.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the last position of the vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_ab8f205d5a5da8672d6aa048b773a852f}\label{class_vector_ab8f205d5a5da8672d6aa048b773a852f}} 
+\index{Vector@{Vector}!head@{head}}
+\index{head@{head}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{head()}{head()}}
+{\footnotesize\ttfamily void $\ast$ Vector\+::head (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the first element of the vector. 
+
+Returns a reference to the first node. If the vector passed is N\+U\+LL or the vector is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ first element of the vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_a9b081b05b56862b5d5918beabe732c54}\label{class_vector_a9b081b05b56862b5d5918beabe732c54}} 
+\index{Vector@{Vector}!init@{init}}
+\index{init@{init}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily s16 Vector\+::init (\begin{DoxyParamCaption}\item[{const u16}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Initializes the memory node. 
+
+Initializes the memory node. Note that the constructor already initializes the node.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution\+Initializes the vector
+\end{DoxyReturn}
+Initializes the vector, this method must only be called from Create as it will assume the pointer passed to it is a valid one created by the Create functionality.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & number of elements that the vector can store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_a87b88764d408955bc78fa3372102a7fb}\label{class_vector_a87b88764d408955bc78fa3372102a7fb}} 
+\index{Vector@{Vector}!insert\+At@{insert\+At}}
+\index{insert\+At@{insert\+At}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{insert\+At()}{insertAt()}}
+{\footnotesize\ttfamily s16 Vector\+::insert\+At (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{const u16}]{data\+\_\+size,  }\item[{const u16}]{position }\end{DoxyParamCaption})}
+
+
+
+Inserts the data at the position of the vector indicated. 
+
+Inserts the data at the position of the vector indicated and returns the status depending of the result. In case the vector is full a k\+Error\+Code\+\_\+\+Vector\+\_\+\+Is\+\_\+\+Full is returned, if the vector is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Vector and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. In case the range is greater than the number of elements stored a k\+Error\+Code\+\_\+\+Out\+\_\+\+Of\+\_\+\+Range\+\_\+\+Index will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+{\em position} & position in which the data will be stored \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_a58d0f4970cc96457f60e12a0201ce58f}\label{class_vector_a58d0f4970cc96457f60e12a0201ce58f}} 
+\index{Vector@{Vector}!insert\+First@{insert\+First}}
+\index{insert\+First@{insert\+First}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{insert\+First()}{insertFirst()}}
+{\footnotesize\ttfamily s16 Vector\+::insert\+First (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{const u16}]{data\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Inserts the data at the first position of the vector. 
+
+Inserts the data at the first position of the vector and returns the status depending of the result. In case the vector is full a k\+Error\+Code\+\_\+\+Vector\+\_\+\+Is\+\_\+\+Full is returned, if the vector is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Vector and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_a4e762aa3819ce9c217d38095f6fb3a0b}\label{class_vector_a4e762aa3819ce9c217d38095f6fb3a0b}} 
+\index{Vector@{Vector}!insert\+Last@{insert\+Last}}
+\index{insert\+Last@{insert\+Last}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{insert\+Last()}{insertLast()}}
+{\footnotesize\ttfamily s16 Vector\+::insert\+Last (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{const u16}]{data\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Inserts the data at the last position of the vector. 
+
+Inserts the data at the last position of the vector and returns the status depending of the result. In case the vector is full a k\+Error\+Code\+\_\+\+Vector\+\_\+\+Is\+\_\+\+Full is returned, if the vector is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Vector and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_a390f85b3efa89070994f43b6570c909e}\label{class_vector_a390f85b3efa89070994f43b6570c909e}} 
+\index{Vector@{Vector}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{is\+Empty()}{isEmpty()}}
+{\footnotesize\ttfamily boolean Vector\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates if the vector is empty. 
+
+Indicates if the vector is empty
+
+\begin{DoxyReturn}{Returns}
+bool true if the vector is empty false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_ab9bedff9bd3c3826d7f2fa9a78116c9d}\label{class_vector_ab9bedff9bd3c3826d7f2fa9a78116c9d}} 
+\index{Vector@{Vector}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{is\+Full()}{isFull()}}
+{\footnotesize\ttfamily boolean Vector\+::is\+Full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates if the vector is full. 
+
+Indicates if the vector is full
+
+\begin{DoxyReturn}{Returns}
+bool true if the vector is full false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_a753c7105d2a6acf776b190d29cecd356}\label{class_vector_a753c7105d2a6acf776b190d29cecd356}} 
+\index{Vector@{Vector}!last@{last}}
+\index{last@{last}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{last()}{last()}}
+{\footnotesize\ttfamily void $\ast$ Vector\+::last (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the last element of the vector. 
+
+Returns a reference to the last node. If the vector passed is N\+U\+LL or the vector is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ last element of the vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_a3326a8116d10d5d302b5ae8f4794fbb8}\label{class_vector_a3326a8116d10d5d302b5ae8f4794fbb8}} 
+\index{Vector@{Vector}!length@{length}}
+\index{length@{length}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily u16 Vector\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of the length 
+
+Returns the current number of elements ($<$= capacity)
+
+\begin{DoxyReturn}{Returns}
+u16 capacity of the vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_a014c3802d82fb8348bd39ad7dcf9fcc5}\label{class_vector_a014c3802d82fb8348bd39ad7dcf9fcc5}} 
+\index{Vector@{Vector}!operator delete@{operator delete}}
+\index{operator delete@{operator delete}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator delete()}{operator delete()}}
+{\footnotesize\ttfamily void Vector\+::operator delete (\begin{DoxyParamCaption}\item[{void $\ast$}]{pointer\+\_\+to\+\_\+delete }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_vector}{Vector} delete operation override. 
+
+returns a reference to memory node equal to mn
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em pointer\+\_\+to\+\_\+delete} & vector to be copied \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_a8c34a3b143a7007d8f264cce5d2e3a25}\label{class_vector_a8c34a3b143a7007d8f264cce5d2e3a25}} 
+\index{Vector@{Vector}!operator new@{operator new}}
+\index{operator new@{operator new}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator new()}{operator new()}}
+{\footnotesize\ttfamily void $\ast$ Vector\+::operator new (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_vector}{Vector} new operation override. 
+
+returns a reference to memory node equal to mn
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & size of the memory to allocate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_ae48c467a9f65d60e2f7455aba4ca1239}\label{class_vector_ae48c467a9f65d60e2f7455aba4ca1239}} 
+\index{Vector@{Vector}!operator=@{operator=}}
+\index{operator=@{operator=}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{class_vector}{Vector} \& Vector\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_vector}{Vector} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_vector}{Vector} = operation. 
+
+returns a reference to memory node equal to mn
+
+\begin{DoxyReturn}{Returns}
+\&\hyperlink{class_vector}{Vector} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & vector to be copied \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_aa9d204c1e8c6f232e5391ebc57e8edd2}\label{class_vector_aa9d204c1e8c6f232e5391ebc57e8edd2}} 
+\index{Vector@{Vector}!print@{print}}
+\index{print@{print}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Vector\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the content of the elements of the vector. 
+
+Prints the content of the elements of the vector \mbox{\Hypertarget{class_vector_abdb3654bb23bc4f7bd0158a3a30a1019}\label{class_vector_abdb3654bb23bc4f7bd0158a3a30a1019}} 
+\index{Vector@{Vector}!reset@{reset}}
+\index{reset@{reset}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily s16 Vector\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the vector. 
+
+Frees the storage of the vector, using the reset method of memory node, and sets the values of the vector to it\textquotesingle{}s default. In case a null pointer was passed it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Vector
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_vector_a3477707e55ad541292ae26b1c8645819}\label{class_vector_a3477707e55ad541292ae26b1c8645819}} 
+\index{Vector@{Vector}!resize@{resize}}
+\index{resize@{resize}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily s16 Vector\+::resize (\begin{DoxyParamCaption}\item[{const u16}]{new\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Changes the capacity of the vector. 
+
+Allocates new memory to store a new quantity of elements in the vector. If the new size is lower than the original vector the elements that exceed the new size will be freed. In case a null vector is passed it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Vector.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+size} & new size for the vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_vector_a2ccabd5bd543d4f56db38c9c2e8fdd4d}\label{class_vector_a2ccabd5bd543d4f56db38c9c2e8fdd4d}} 
+\index{Vector@{Vector}!traverse@{traverse}}
+\index{traverse@{traverse}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{traverse()}{traverse()}}
+{\footnotesize\ttfamily u16 Vector\+::traverse (\begin{DoxyParamCaption}\item[{s16(Memory\+Node\+::$\ast$)()}]{callback }\end{DoxyParamCaption}) const}
+
+
+
+Applies the callback method to the vector. 
+
+Applies a memory node function to the set of elements of the vector.
+
+\begin{DoxyReturn}{Returns}
+u16 number of elements traveled 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & function of memory node that will be applied to the set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/include/adt\+\_\+vector.\+h\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/src/adt\+\_\+vector.\+cc\end{DoxyCompactItemize}

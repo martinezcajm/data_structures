@@ -1,0 +1,333 @@
+\hypertarget{class_stack}{}\section{Stack Class Reference}
+\label{class_stack}\index{Stack@{Stack}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_stack_ae208bce3b329f0dc82c8b7e761bb595e}{Stack} (const u16 \hyperlink{class_stack_a3bb579836ffee2ddc1eb7cb0bfa02b43}{capacity})
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_stack}{Stack} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_stack_ae06d731c1b3802e21c211d8118945667}{Stack} (const \hyperlink{class_vector}{Vector} \&v)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_stack}{Stack} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_stack_a40bd5dff912f0e5290777c4b46d17809}{$\sim$\+Stack} ()
+\begin{DoxyCompactList}\small\item\em Frees the \hyperlink{class_stack}{Stack}. \end{DoxyCompactList}\item 
+\hyperlink{class_stack_a44d3a06cb431d4e657197d01e10414f8}{Stack} (const \hyperlink{class_stack}{Stack} \&o)
+\begin{DoxyCompactList}\small\item\em stack copy constructor \end{DoxyCompactList}\item 
+\hyperlink{class_stack}{Stack} \& \hyperlink{class_stack_a673ed59047b6764946b7db209fef7dab}{operator=} (const \hyperlink{class_stack}{Stack} \&s)
+\begin{DoxyCompactList}\small\item\em stack = operation \end{DoxyCompactList}\item 
+s16 \hyperlink{class_stack_a2f7b55c0ee432748d78175f3d830ce27}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the stack. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_stack_ae210ae6778f978313659fbd7aa59fc6c}{resize} (u16 new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Changes the capacity of the \hyperlink{class_stack}{Stack}. \end{DoxyCompactList}\item 
+u16 \hyperlink{class_stack_a3bb579836ffee2ddc1eb7cb0bfa02b43}{capacity} () const
+\begin{DoxyCompactList}\small\item\em getter of capacity \end{DoxyCompactList}\item 
+u16 \hyperlink{class_stack_af1b623c6719cf5d7ef22a73117fcd88f}{length} () const
+\begin{DoxyCompactList}\small\item\em getter of the length \end{DoxyCompactList}\item 
+bool \hyperlink{class_stack_a8b137edba711ed0250dccf9ecdd52971}{is\+Empty} () const
+\begin{DoxyCompactList}\small\item\em Indicates if the \hyperlink{class_stack}{Stack} is empty. \end{DoxyCompactList}\item 
+bool \hyperlink{class_stack_a1b7baacfc1eabbb0554852a4ea02618d}{is\+Full} () const
+\begin{DoxyCompactList}\small\item\em Indicates if the \hyperlink{class_stack}{Stack} is full. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_stack_a32a58607561bad2f48e3af293027412c}{first} ()
+\begin{DoxyCompactList}\small\item\em Returns the first element of the \hyperlink{class_stack}{Stack}. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_stack_ace717fade5bd0d805231aa934bb04299}{push} (void $\ast$data, u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the first position of the \hyperlink{class_stack}{Stack}. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_stack_a3d88defdf19383864b519080c02c9f16}{pop} ()
+\begin{DoxyCompactList}\small\item\em Extracts the first element of the \hyperlink{class_stack}{Stack} and returns it. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_stack_a43140f1be6fde2389b8fabde77d124c1}{concat} (const \hyperlink{class_stack}{Stack} \&src)
+\begin{DoxyCompactList}\small\item\em Concatenates two \hyperlink{class_stack}{Stack} storing the result at origin. \end{DoxyCompactList}\item 
+u16 \hyperlink{class_stack_a9b8f6f94beb016e0345e7c5ace28ab94}{traverse} (s16(Memory\+Node\+::$\ast$callback)()) const
+\begin{DoxyCompactList}\small\item\em Applies the callback method to the \hyperlink{class_stack}{Stack}. \end{DoxyCompactList}\item 
+void \hyperlink{class_stack_a93cbfa88863494b516670340d01358dd}{print} () const
+\begin{DoxyCompactList}\small\item\em Prints the content of the elements of the \hyperlink{class_stack}{Stack}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_stack_ae208bce3b329f0dc82c8b7e761bb595e}\label{class_stack_ae208bce3b329f0dc82c8b7e761bb595e}} 
+\index{Stack@{Stack}!Stack@{Stack}}
+\index{Stack@{Stack}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{Stack()}{Stack()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Stack\+::\+Stack (\begin{DoxyParamCaption}\item[{const u16}]{capacity }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_stack}{Stack} constructor. 
+
+Base constructor of \hyperlink{class_stack}{Stack}
+
+capacity capacity of the stack we are creating \begin{DoxyReturn}{Returns}
+$\ast$\+Stack 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_ae06d731c1b3802e21c211d8118945667}\label{class_stack_ae06d731c1b3802e21c211d8118945667}} 
+\index{Stack@{Stack}!Stack@{Stack}}
+\index{Stack@{Stack}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{Stack()}{Stack()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Stack\+::\+Stack (\begin{DoxyParamCaption}\item[{const \hyperlink{class_vector}{Vector} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_stack}{Stack} constructor. 
+
+Creates an stack using a vector as reference
+
+v vector we use as reference to create an stack \begin{DoxyReturn}{Returns}
+$\ast$\+Stack 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_a40bd5dff912f0e5290777c4b46d17809}\label{class_stack_a40bd5dff912f0e5290777c4b46d17809}} 
+\index{Stack@{Stack}!````~Stack@{$\sim$\+Stack}}
+\index{````~Stack@{$\sim$\+Stack}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{$\sim$\+Stack()}{~Stack()}}
+{\footnotesize\ttfamily Stack\+::$\sim$\+Stack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the \hyperlink{class_stack}{Stack}. 
+
+Resets the content of the \hyperlink{class_stack}{Stack} and frees it. Note that this function calls the reset method.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_a44d3a06cb431d4e657197d01e10414f8}\label{class_stack_a44d3a06cb431d4e657197d01e10414f8}} 
+\index{Stack@{Stack}!Stack@{Stack}}
+\index{Stack@{Stack}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{Stack()}{Stack()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Stack\+::\+Stack (\begin{DoxyParamCaption}\item[{const \hyperlink{class_stack}{Stack} \&}]{o }\end{DoxyParamCaption})}
+
+
+
+stack copy constructor 
+
+stack copy constructor.
+
+\begin{DoxyReturn}{Returns}
+$\ast$stack 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em o} & stack to be copied \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_stack_a3bb579836ffee2ddc1eb7cb0bfa02b43}\label{class_stack_a3bb579836ffee2ddc1eb7cb0bfa02b43}} 
+\index{Stack@{Stack}!capacity@{capacity}}
+\index{capacity@{capacity}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily u16 Stack\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of capacity 
+
+Returns the maximum number of elemets that can be stored at the \hyperlink{class_stack}{Stack}.
+
+\begin{DoxyReturn}{Returns}
+u16 capacity of the \hyperlink{class_stack}{Stack} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_a43140f1be6fde2389b8fabde77d124c1}\label{class_stack_a43140f1be6fde2389b8fabde77d124c1}} 
+\index{Stack@{Stack}!concat@{concat}}
+\index{concat@{concat}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily s16 Stack\+::concat (\begin{DoxyParamCaption}\item[{const \hyperlink{class_stack}{Stack} \&}]{src }\end{DoxyParamCaption})}
+
+
+
+Concatenates two \hyperlink{class_stack}{Stack} storing the result at origin. 
+
+Concatenates the source to the \hyperlink{class_stack}{Stack}, in case one of the \hyperlink{class_stack}{Stack} has infinite capacity the result \hyperlink{class_stack}{Stack} will have infinite capacity, otherwise it will be the result of both capacities added. Notice that the src \hyperlink{class_stack}{Stack} won\textquotesingle{}t be modified during the execution. In case the \hyperlink{class_stack}{Stack} is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Stack will be returned and in case the the src is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received. If there\textquotesingle{}s a problem during the allocation of the new \hyperlink{class_stack}{Stack} k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished concatenation 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em src} & \hyperlink{class_stack}{Stack} we want to concatenate to our origin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_stack_a32a58607561bad2f48e3af293027412c}\label{class_stack_a32a58607561bad2f48e3af293027412c}} 
+\index{Stack@{Stack}!first@{first}}
+\index{first@{first}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{first()}{first()}}
+{\footnotesize\ttfamily void $\ast$ Stack\+::first (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the first element of the \hyperlink{class_stack}{Stack}. 
+
+T\+O\+DO change description\+Returns a reference to the first element. If the \hyperlink{class_stack}{Stack} passed is N\+U\+LL or the \hyperlink{class_stack}{Stack} is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ first element of the \hyperlink{class_stack}{Stack} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_a8b137edba711ed0250dccf9ecdd52971}\label{class_stack_a8b137edba711ed0250dccf9ecdd52971}} 
+\index{Stack@{Stack}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{is\+Empty()}{isEmpty()}}
+{\footnotesize\ttfamily bool Stack\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates if the \hyperlink{class_stack}{Stack} is empty. 
+
+Indicates if the \hyperlink{class_stack}{Stack} is empty
+
+\begin{DoxyReturn}{Returns}
+bool true if the \hyperlink{class_stack}{Stack} is empty false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_a1b7baacfc1eabbb0554852a4ea02618d}\label{class_stack_a1b7baacfc1eabbb0554852a4ea02618d}} 
+\index{Stack@{Stack}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{is\+Full()}{isFull()}}
+{\footnotesize\ttfamily bool Stack\+::is\+Full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates if the \hyperlink{class_stack}{Stack} is full. 
+
+Indicates if the \hyperlink{class_stack}{Stack} is full
+
+\begin{DoxyReturn}{Returns}
+bool true if the \hyperlink{class_stack}{Stack} is full false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_af1b623c6719cf5d7ef22a73117fcd88f}\label{class_stack_af1b623c6719cf5d7ef22a73117fcd88f}} 
+\index{Stack@{Stack}!length@{length}}
+\index{length@{length}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily u16 Stack\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of the length 
+
+Returns the current number of elements ($<$= capacity)
+
+\begin{DoxyReturn}{Returns}
+u16 length of the \hyperlink{class_stack}{Stack} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_a673ed59047b6764946b7db209fef7dab}\label{class_stack_a673ed59047b6764946b7db209fef7dab}} 
+\index{Stack@{Stack}!operator=@{operator=}}
+\index{operator=@{operator=}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{class_stack}{Stack} \& Stack\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{class_stack}{Stack} \&}]{s }\end{DoxyParamCaption})}
+
+
+
+stack = operation 
+
+returns a reference to stack equal to s
+
+\begin{DoxyReturn}{Returns}
+\&\hyperlink{class_stack}{Stack} 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em s} & vector to be copied \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_stack_a3d88defdf19383864b519080c02c9f16}\label{class_stack_a3d88defdf19383864b519080c02c9f16}} 
+\index{Stack@{Stack}!pop@{pop}}
+\index{pop@{pop}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily void $\ast$ Stack\+::pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Extracts the first element of the \hyperlink{class_stack}{Stack} and returns it. 
+
+T\+O\+DO change description Extracts the first element of the \hyperlink{class_stack}{Stack} and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the \hyperlink{class_stack}{Stack}.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the first position of the \hyperlink{class_stack}{Stack} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_a93cbfa88863494b516670340d01358dd}\label{class_stack_a93cbfa88863494b516670340d01358dd}} 
+\index{Stack@{Stack}!print@{print}}
+\index{print@{print}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Stack\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the content of the elements of the \hyperlink{class_stack}{Stack}. 
+
+Prints the content of the elements of the \hyperlink{class_stack}{Stack} \mbox{\Hypertarget{class_stack_ace717fade5bd0d805231aa934bb04299}\label{class_stack_ace717fade5bd0d805231aa934bb04299}} 
+\index{Stack@{Stack}!push@{push}}
+\index{push@{push}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily s16 Stack\+::push (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{u16}]{data\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Inserts the data at the first position of the \hyperlink{class_stack}{Stack}. 
+
+T\+O\+DO change description Inserts the data at the first position of the \hyperlink{class_stack}{Stack} and returns the status depending of the result. In case the \hyperlink{class_stack}{Stack} is full a k\+Error\+Code\+\_\+\+Stack\+\_\+\+Is\+\_\+\+Full is returned, if the \hyperlink{class_stack}{Stack} is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Stack and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. The \hyperlink{class_stack}{Stack} makes a copy of the data so the value you store will not be touched unless you modify it through the \hyperlink{class_stack}{Stack}.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_stack_a2f7b55c0ee432748d78175f3d830ce27}\label{class_stack_a2f7b55c0ee432748d78175f3d830ce27}} 
+\index{Stack@{Stack}!reset@{reset}}
+\index{reset@{reset}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily s16 Stack\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the stack. 
+
+Frees the elements of the stack, using the reset method of memory node, and sets the values of the stack to it\textquotesingle{}s default.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_stack_ae210ae6778f978313659fbd7aa59fc6c}\label{class_stack_ae210ae6778f978313659fbd7aa59fc6c}} 
+\index{Stack@{Stack}!resize@{resize}}
+\index{resize@{resize}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily s16 Stack\+::resize (\begin{DoxyParamCaption}\item[{u16}]{new\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Changes the capacity of the \hyperlink{class_stack}{Stack}. 
+
+Adjusts the capacity of the \hyperlink{class_stack}{Stack} so it can store more elements. If the new size causes a loss of data the function will return an error. Note that a capacity of 0 is an infinite capacity
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+size} & new size for the \hyperlink{class_stack}{Stack} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_stack_a9b8f6f94beb016e0345e7c5ace28ab94}\label{class_stack_a9b8f6f94beb016e0345e7c5ace28ab94}} 
+\index{Stack@{Stack}!traverse@{traverse}}
+\index{traverse@{traverse}!Stack@{Stack}}
+\subsubsection{\texorpdfstring{traverse()}{traverse()}}
+{\footnotesize\ttfamily u16 Stack\+::traverse (\begin{DoxyParamCaption}\item[{s16(Memory\+Node\+::$\ast$)()}]{callback }\end{DoxyParamCaption}) const}
+
+
+
+Applies the callback method to the \hyperlink{class_stack}{Stack}. 
+
+Applies a memory node function to the set of elements of the \hyperlink{class_stack}{Stack}.
+
+\begin{DoxyReturn}{Returns}
+u16 number of elements traveled 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & function of memory node that will be applied to the set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/include/adt\+\_\+stack.\+h\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/src/adt\+\_\+stack.\+cc\end{DoxyCompactItemize}

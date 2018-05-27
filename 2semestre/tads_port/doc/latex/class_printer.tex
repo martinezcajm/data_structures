@@ -1,0 +1,102 @@
+\hypertarget{class_printer}{}\section{Printer Class Reference}
+\label{class_printer}\index{Printer@{Printer}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_printer_a1aba91ebff40aebda570d92f17f28b27}{Printer} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_printer}{Printer} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_printer_a011da1d2aa31df5440071c0b6e80eb1d}{$\sim$\+Printer} ()
+\begin{DoxyCompactList}\small\item\em Frees the \hyperlink{class_printer}{Printer}. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_printer_a5ed3289b1d1494ad44c0b56a48ad3e15}{clear} ()
+\begin{DoxyCompactList}\small\item\em Clears the messages in the printer. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_printer_a3c089dbcfb957de33f01bd3691bb75d6}{write} (const char $\ast$message)
+\begin{DoxyCompactList}\small\item\em Changes the capacity of the queue. \end{DoxyCompactList}\item 
+void \hyperlink{class_printer_ab16ea56023ef4f1d2d3a5a18651f0ae9}{flush} () const
+\begin{DoxyCompactList}\small\item\em Prints the messages stored. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_printer_a1aba91ebff40aebda570d92f17f28b27}\label{class_printer_a1aba91ebff40aebda570d92f17f28b27}} 
+\index{Printer@{Printer}!Printer@{Printer}}
+\index{Printer@{Printer}!Printer@{Printer}}
+\subsubsection{\texorpdfstring{Printer()}{Printer()}}
+{\footnotesize\ttfamily Printer\+::\+Printer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_printer}{Printer} constructor. 
+
+Base constructor of \hyperlink{class_printer}{Printer}
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+Printer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_printer_a011da1d2aa31df5440071c0b6e80eb1d}\label{class_printer_a011da1d2aa31df5440071c0b6e80eb1d}} 
+\index{Printer@{Printer}!````~Printer@{$\sim$\+Printer}}
+\index{````~Printer@{$\sim$\+Printer}!Printer@{Printer}}
+\subsubsection{\texorpdfstring{$\sim$\+Printer()}{~Printer()}}
+{\footnotesize\ttfamily Printer\+::$\sim$\+Printer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the \hyperlink{class_printer}{Printer}. 
+
+Resets the content of the \hyperlink{class_printer}{Printer} and frees it.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_printer_a5ed3289b1d1494ad44c0b56a48ad3e15}\label{class_printer_a5ed3289b1d1494ad44c0b56a48ad3e15}} 
+\index{Printer@{Printer}!clear@{clear}}
+\index{clear@{clear}!Printer@{Printer}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily int\+\_\+least16\+\_\+t Printer\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the messages in the printer. 
+
+Clears the messages that the printer actually has.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_printer_ab16ea56023ef4f1d2d3a5a18651f0ae9}\label{class_printer_ab16ea56023ef4f1d2d3a5a18651f0ae9}} 
+\index{Printer@{Printer}!flush@{flush}}
+\index{flush@{flush}!Printer@{Printer}}
+\subsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily void Printer\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the messages stored. 
+
+Shows the stored messages, notice that the messages will be cleared once extracted \mbox{\Hypertarget{class_printer_a3c089dbcfb957de33f01bd3691bb75d6}\label{class_printer_a3c089dbcfb957de33f01bd3691bb75d6}} 
+\index{Printer@{Printer}!write@{write}}
+\index{write@{write}!Printer@{Printer}}
+\subsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily s16 Printer\+::write (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Changes the capacity of the queue. 
+
+Adjusts the capacity of the queue so it can store more elements. If the new size causes a loss of data the function will return an error. Note that a capacity of 0 is an infinite capacity
+
+\begin{DoxyReturn}{Returns}
+s16 status of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & new size for the queue \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/include/printer.\+h\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/src/printer.\+cc\end{DoxyCompactItemize}

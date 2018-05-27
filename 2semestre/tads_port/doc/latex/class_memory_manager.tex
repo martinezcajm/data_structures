@@ -1,0 +1,69 @@
+\hypertarget{class_memory_manager}{}\section{Memory\+Manager Class Reference}
+\label{class_memory_manager}\index{Memory\+Manager@{Memory\+Manager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{class_memory_manager_abad4b4e43287ee7446b80090abe339df}{malloc} (u16 size) const
+\begin{DoxyCompactList}\small\item\em Applies a mask to the data. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_memory_manager_a566751311698bea523100cf911701fe3}{free} (void $\ast$p, u16 size)
+\begin{DoxyCompactList}\small\item\em prints the content of data \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_memory_manager}{Memory\+Manager} \& \hyperlink{class_memory_manager_aca47d9c82aaf9978968a3e6ac9216e79}{instance} ()
+\begin{DoxyCompactList}\small\item\em Gets the instance of our \hyperlink{class_memory_manager}{Memory\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_memory_manager_a566751311698bea523100cf911701fe3}\label{class_memory_manager_a566751311698bea523100cf911701fe3}} 
+\index{Memory\+Manager@{Memory\+Manager}!free@{free}}
+\index{free@{free}!Memory\+Manager@{Memory\+Manager}}
+\subsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily s16 Memory\+Manager\+::free (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{u16}]{size }\end{DoxyParamCaption})}
+
+
+
+prints the content of data 
+
+Prints the data byte to byte in hexadecimal. In case a null memory node was passed it will print The node is null. If data is null it will print The data is null \begin{DoxyReturn}{Returns}
+s16 status of the function 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_manager_aca47d9c82aaf9978968a3e6ac9216e79}\label{class_memory_manager_aca47d9c82aaf9978968a3e6ac9216e79}} 
+\index{Memory\+Manager@{Memory\+Manager}!instance@{instance}}
+\index{instance@{instance}!Memory\+Manager@{Memory\+Manager}}
+\subsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily \hyperlink{class_memory_manager}{Memory\+Manager} \& Memory\+Manager\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the instance of our \hyperlink{class_memory_manager}{Memory\+Manager}. 
+
+In charge of creating our \hyperlink{class_memory_manager}{Memory\+Manager} singleton in case it doesn\textquotesingle{}t exist or return it\textquotesingle{}s instance if it exists.
+
+\begin{DoxyReturn}{Returns}
+Game\+Manager\& instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_memory_manager_abad4b4e43287ee7446b80090abe339df}\label{class_memory_manager_abad4b4e43287ee7446b80090abe339df}} 
+\index{Memory\+Manager@{Memory\+Manager}!malloc@{malloc}}
+\index{malloc@{malloc}!Memory\+Manager@{Memory\+Manager}}
+\subsubsection{\texorpdfstring{malloc()}{malloc()}}
+{\footnotesize\ttfamily void $\ast$ Memory\+Manager\+::malloc (\begin{DoxyParamCaption}\item[{u16}]{size }\end{DoxyParamCaption}) const}
+
+
+
+Applies a mask to the data. 
+
+Applies an and (\&) mask to the data of the memory node byte to byte. In case a null memory node was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. \begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & mask we want to apply to the data \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/include/memory\+\_\+manager.\+h\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/src/memory\+\_\+manager.\+cc\end{DoxyCompactItemize}

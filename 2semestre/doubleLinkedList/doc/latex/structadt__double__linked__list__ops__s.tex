@@ -1,0 +1,498 @@
+\hypertarget{structadt__double__linked__list__ops__s}{}\section{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s Struct Reference}
+\label{structadt__double__linked__list__ops__s}\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+s16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a6ee8a6635bd532cd18304937ee45f374}{init} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, u16 \hyperlink{structadt__double__linked__list__ops__s_adfa3417ca009567eeb9382f735cf6482}{capacity})
+\begin{DoxyCompactList}\small\item\em Initializes the list. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a6a421e311614328c17b11404bbfcc0c1}{destroy} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$$\ast$list)
+\begin{DoxyCompactList}\small\item\em Destroys the list and it\textquotesingle{}s data. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a849787a1e33fd60d783ba6176e8727dd}{reset} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Resets the list. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_aadb76bb9698533203350f929f21883a4}{resize} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, u16 new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Changes the capacity of the list. \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_adfa3417ca009567eeb9382f735cf6482}{capacity} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em getter of capacity \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a65de6dc4c9fafded567468218e387155}{length} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em getter of the length \end{DoxyCompactList}\item 
+bool($\ast$ \hyperlink{structadt__double__linked__list__ops__s_aa20365d81a3b2dc4642f8c3863a40357}{length\+\_\+debug} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em checks that the length of the list is consistent \end{DoxyCompactList}\item 
+bool($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a9389b85c5ecf09b1fab11793b6ba6b6e}{is\+Empty} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Indicates if the list is empty. \end{DoxyCompactList}\item 
+bool($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a156c7c3f087975a75273c9bc333f2946}{is\+Full} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Indicates if the list is full. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__double__linked__list__ops__s_acb2435ff509e9edc4f8651e17e5c54ab}{head} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Returns the first element of the list. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__double__linked__list__ops__s_af88ef2562862184f13eb7964a2cfd4ab}{last} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Returns the last element of the list. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a4a8f2937537767814a0b7775d09de4c5}{at} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, u16 position)
+\begin{DoxyCompactList}\small\item\em Returns the element at the specified position. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a1a2098c9d925b4e4e425e4776fb0ccbb}{insert\+First} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, void $\ast$data, u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the first position of the list. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_aedc1a68fac3c56281dd83e6662ee7a34}{insert\+Last} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, void $\ast$data, u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the last position of the list. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a57e91557be99866b581edd146111b921}{insert\+At} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, void $\ast$data, u16 position, u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the position of the list indicated. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a4ad95f5f73220766b7784b86fe950f7b}{extract\+First} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Extracts the first element of the list and returns it. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__double__linked__list__ops__s_a738730a58de549e634b8a6ccec3fdf4c}{extract\+Last} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Extracts the last element of the list and returns it. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__double__linked__list__ops__s_aa003cf5b1eadf08fc847b523c088084b}{extract\+At} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, u16 position)
+\begin{DoxyCompactList}\small\item\em Extracts the element of the list at the position indicated and returns it. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_ae893719dce808aae2f25c51be6f1c11a}{concat} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, \hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$src)
+\begin{DoxyCompactList}\small\item\em Concatenates two list storing the result at origin. \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__double__linked__list__ops__s_ac0751c64cc9556fe18445ae4961ed930}{traverse} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, void($\ast$callback)(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$))
+\begin{DoxyCompactList}\small\item\em Applies the callback method to the list. \end{DoxyCompactList}\item 
+void($\ast$ \hyperlink{structadt__double__linked__list__ops__s_ab6997d4fcadb176622405fece05d0f22}{print} )(\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Prints the content of the elements of the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a4a8f2937537767814a0b7775d09de4c5}\label{structadt__double__linked__list__ops__s_a4a8f2937537767814a0b7775d09de4c5}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!at@{at}}
+\index{at@{at}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{at}{at}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::at) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, u16 position)}
+
+
+
+Returns the element at the specified position. 
+
+Returns a reference to the element at the indicated position, starting by $\ast$ 0. If the list passed is N\+U\+LL or the list is empty returns null. It also returns N\+U\+LL if position it\textquotesingle{}s greater or equal to the length.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ element of the list at the indicated position 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+{\em position} & position in which the element is located \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_adfa3417ca009567eeb9382f735cf6482}\label{structadt__double__linked__list__ops__s_adfa3417ca009567eeb9382f735cf6482}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!capacity@{capacity}}
+\index{capacity@{capacity}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::capacity) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+getter of capacity 
+
+Returns the maximum number of elemets that can be stored at the list.
+
+\begin{DoxyReturn}{Returns}
+u16 capacity of the list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list we wish to get the capacity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_ae893719dce808aae2f25c51be6f1c11a}\label{structadt__double__linked__list__ops__s_ae893719dce808aae2f25c51be6f1c11a}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!concat@{concat}}
+\index{concat@{concat}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{concat}{concat}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::concat) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, \hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$src)}
+
+
+
+Concatenates two list storing the result at origin. 
+
+Concatenates the source to the list, in case one of the list has infinite capacity the result list will have infinite capacity, otherwise it will be the result of both capacities added. Notice that the src list will dissapear after the execution. In case the list is null k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List will be returned and in case the the src is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received. If there\textquotesingle{}s a problem during the allocation of the new list k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list that will store the result of the concatenation \\
+\hline
+{\em $\ast$src} & list we want to concatenate to our origin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a6a421e311614328c17b11404bbfcc0c1}\label{structadt__double__linked__list__ops__s_a6a421e311614328c17b11404bbfcc0c1}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!destroy@{destroy}}
+\index{destroy@{destroy}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{destroy}{destroy}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::destroy) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$$\ast$list)}
+
+
+
+Destroys the list and it\textquotesingle{}s data. 
+
+Destroys the list and its data. Note that this function calls the reset method. In case the direction to the pointer is null it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Reference\+\_\+\+Received. If the execution went well this function assures that the pointer to list ends as N\+U\+LL
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$$\ast$list} & direction to the pointer of the list we want to destroy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_aa003cf5b1eadf08fc847b523c088084b}\label{structadt__double__linked__list__ops__s_aa003cf5b1eadf08fc847b523c088084b}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!extract\+At@{extract\+At}}
+\index{extract\+At@{extract\+At}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{extract\+At}{extractAt}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::extract\+At) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, u16 position)}
+
+
+
+Extracts the element of the list at the position indicated and returns it. 
+
+Extracts the element of the list at the position indicated, starting by 0, and removes it from the list. Notice that the data must be freed once you finish using it as it\textquotesingle{}s no longer responsability of the list.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the indicated position of the list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+{\em position} & position of the element we want to extract \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a4ad95f5f73220766b7784b86fe950f7b}\label{structadt__double__linked__list__ops__s_a4ad95f5f73220766b7784b86fe950f7b}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!extract\+First@{extract\+First}}
+\index{extract\+First@{extract\+First}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{extract\+First}{extractFirst}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::extract\+First) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+Extracts the first element of the list and returns it. 
+
+Extracts the first element of the list and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the list.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the first position of the list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a738730a58de549e634b8a6ccec3fdf4c}\label{structadt__double__linked__list__ops__s_a738730a58de549e634b8a6ccec3fdf4c}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!extract\+Last@{extract\+Last}}
+\index{extract\+Last@{extract\+Last}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{extract\+Last}{extractLast}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::extract\+Last) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+Extracts the last element of the list and returns it. 
+
+Extracts the last element of the list and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the list.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the last position of the list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_acb2435ff509e9edc4f8651e17e5c54ab}\label{structadt__double__linked__list__ops__s_acb2435ff509e9edc4f8651e17e5c54ab}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!head@{head}}
+\index{head@{head}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{head}{head}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::head) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+Returns the first element of the list. 
+
+Returns a reference to the first node. If the list passed is N\+U\+LL or the list is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ first element of the list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a6ee8a6635bd532cd18304937ee45f374}\label{structadt__double__linked__list__ops__s_a6ee8a6635bd532cd18304937ee45f374}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!init@{init}}
+\index{init@{init}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{init}{init}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::init) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, u16 \hyperlink{structadt__double__linked__list__ops__s_adfa3417ca009567eeb9382f735cf6482}{capacity})}
+
+
+
+Initializes the list. 
+
+Initializes the list, this method must only be called from Create as it will assume the pointer passed to it is a valid one created by the Create functionality.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list we wish to initialize \\
+\hline
+{\em capacity} & number of elements that the list can store note that a value of 0 will imply that it has an infinite capacity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a57e91557be99866b581edd146111b921}\label{structadt__double__linked__list__ops__s_a57e91557be99866b581edd146111b921}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!insert\+At@{insert\+At}}
+\index{insert\+At@{insert\+At}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{insert\+At}{insertAt}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::insert\+At) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, void $\ast$data, u16 position, u16 data\+\_\+size)}
+
+
+
+Inserts the data at the position of the list indicated. 
+
+Inserts the data at the position of the list indicated, starting by 0, and returns the status depending of the result. In case the list is full a k\+Error\+Code\+\_\+\+D\+L\+List\+\_\+\+Is\+\_\+\+Full is returned, if the list is null k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. In case the range is greater than the number of elements stored a k\+Error\+Code\+\_\+\+Out\+\_\+\+Of\+\_\+\+Range\+\_\+\+Index will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+{\em $\ast$data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+{\em position} & position in which the data will be stored \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a1a2098c9d925b4e4e425e4776fb0ccbb}\label{structadt__double__linked__list__ops__s_a1a2098c9d925b4e4e425e4776fb0ccbb}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!insert\+First@{insert\+First}}
+\index{insert\+First@{insert\+First}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{insert\+First}{insertFirst}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::insert\+First) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, void $\ast$data, u16 data\+\_\+size)}
+
+
+
+Inserts the data at the first position of the list. 
+
+Inserts the data at the first position of the list and returns the status depending of the result. In case the list is full a k\+Error\+Code\+\_\+\+D\+L\+List\+\_\+\+Is\+\_\+\+Full is returned, if the list is null k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. The list makes a copy of the data so the value you store will not be touched unless you modify it through the list.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+{\em $\ast$data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_aedc1a68fac3c56281dd83e6662ee7a34}\label{structadt__double__linked__list__ops__s_aedc1a68fac3c56281dd83e6662ee7a34}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!insert\+Last@{insert\+Last}}
+\index{insert\+Last@{insert\+Last}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{insert\+Last}{insertLast}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::insert\+Last) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, void $\ast$data, u16 data\+\_\+size)}
+
+
+
+Inserts the data at the last position of the list. 
+
+Inserts the data at the last position of the list and returns the status depending of the result. In case the list is full a k\+Error\+Code\+\_\+\+D\+L\+List\+\_\+\+Is\+\_\+\+Full is returned, if the list is null k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. The list makes a copy of the data so the value you store will not be touched unless you modify it through the list.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+{\em $\ast$data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a9389b85c5ecf09b1fab11793b6ba6b6e}\label{structadt__double__linked__list__ops__s_a9389b85c5ecf09b1fab11793b6ba6b6e}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{is\+Empty}{isEmpty}}
+{\footnotesize\ttfamily bool($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::is\+Empty) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+Indicates if the list is empty. 
+
+Indicates if the list is empty
+
+\begin{DoxyReturn}{Returns}
+bool true if the list is empty false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a156c7c3f087975a75273c9bc333f2946}\label{structadt__double__linked__list__ops__s_a156c7c3f087975a75273c9bc333f2946}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{is\+Full}{isFull}}
+{\footnotesize\ttfamily bool($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::is\+Full) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+Indicates if the list is full. 
+
+Indicates if the list is full
+
+\begin{DoxyReturn}{Returns}
+bool true if the list is full false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_af88ef2562862184f13eb7964a2cfd4ab}\label{structadt__double__linked__list__ops__s_af88ef2562862184f13eb7964a2cfd4ab}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!last@{last}}
+\index{last@{last}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{last}{last}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::last) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+Returns the last element of the list. 
+
+Returns a reference to the last node. If the list passed is N\+U\+LL or the list is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ last element of the list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a65de6dc4c9fafded567468218e387155}\label{structadt__double__linked__list__ops__s_a65de6dc4c9fafded567468218e387155}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!length@{length}}
+\index{length@{length}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::length) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+getter of the length 
+
+Returns the current number of elements ($<$= capacity)
+
+\begin{DoxyReturn}{Returns}
+u16 length of the list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list we wish to get the length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_aa20365d81a3b2dc4642f8c3863a40357}\label{structadt__double__linked__list__ops__s_aa20365d81a3b2dc4642f8c3863a40357}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!length\+\_\+debug@{length\+\_\+debug}}
+\index{length\+\_\+debug@{length\+\_\+debug}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{length\+\_\+debug}{length\_debug}}
+{\footnotesize\ttfamily bool($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::length\+\_\+debug) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+checks that the length of the list is consistent 
+
+Traverses the number of elements and checks its result with its own lenght
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list we wish to get the length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_ab6997d4fcadb176622405fece05d0f22}\label{structadt__double__linked__list__ops__s_ab6997d4fcadb176622405fece05d0f22}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!print@{print}}
+\index{print@{print}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{print}{print}}
+{\footnotesize\ttfamily void($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::print) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+Prints the content of the elements of the list. 
+
+Prints the content of the elements of the list
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_a849787a1e33fd60d783ba6176e8727dd}\label{structadt__double__linked__list__ops__s_a849787a1e33fd60d783ba6176e8727dd}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!reset@{reset}}
+\index{reset@{reset}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{reset}{reset}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::reset) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list)}
+
+
+
+Resets the list. 
+
+Frees the elements of the list, using the reset method of memory node, and sets the values of the list to it\textquotesingle{}s default. In case a null pointer was passed it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list we wish to reset \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_aadb76bb9698533203350f929f21883a4}\label{structadt__double__linked__list__ops__s_aadb76bb9698533203350f929f21883a4}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!resize@{resize}}
+\index{resize@{resize}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{resize}{resize}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::resize) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, u16 new\+\_\+size)}
+
+
+
+Changes the capacity of the list. 
+
+Adjusts the capacity of the list so it can store more elements. If the new size causes a loss of data the function will return an error. Note that a capacity of 0 is an infinite capacity
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list we wish to resuze \\
+\hline
+{\em new\+\_\+size} & new size for the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__double__linked__list__ops__s_ac0751c64cc9556fe18445ae4961ed930}\label{structadt__double__linked__list__ops__s_ac0751c64cc9556fe18445ae4961ed930}} 
+\index{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}!traverse@{traverse}}
+\index{traverse@{traverse}!adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s@{adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{traverse}{traverse}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+double\+\_\+linked\+\_\+list\+\_\+ops\+\_\+s\+::traverse) (\hyperlink{structadt__double__linked__list__s}{D\+L\+List} $\ast$list, void($\ast$callback)(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$))}
+
+
+
+Applies the callback method to the list. 
+
+Applies a memory node function to the set of elements of the list.
+
+\begin{DoxyReturn}{Returns}
+u16 number of elements traveled 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$list} & pointer to the list \\
+\hline
+{\em $\ast$callback} & function of memory node that will be applied to the set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/double\+Linked\+List/include/adt\+\_\+double\+\_\+linked\+\_\+list.\+h\end{DoxyCompactItemize}

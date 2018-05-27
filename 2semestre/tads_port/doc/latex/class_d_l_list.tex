@@ -1,0 +1,456 @@
+\hypertarget{class_d_l_list}{}\section{D\+L\+List Class Reference}
+\label{class_d_l_list}\index{D\+L\+List@{D\+L\+List}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_d_l_list_ad67c39ec267f25ad501978f8e9557e91}{D\+L\+List} (const u16 \hyperlink{class_d_l_list_a7913658d122e6883ed7ddf3145567d67}{capacity})
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_list}{List} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_d_l_list_af41d427d0901f856b267856007eb0eac}{$\sim$\+D\+L\+List} ()
+\begin{DoxyCompactList}\small\item\em Frees the \hyperlink{class_list}{List}. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_d_l_list_aedbf4ff6aebd168e39d4c1534462c864}{init} (const u16 \hyperlink{class_d_l_list_a7913658d122e6883ed7ddf3145567d67}{capacity})
+\begin{DoxyCompactList}\small\item\em Initializes the list. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_d_l_list_a09f41b245e07d6d57a4d5c7cc0df1ae8}{destroy} ()
+\begin{DoxyCompactList}\small\item\em Destroys the list and it\textquotesingle{}s data. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_d_l_list_a444881340bdf15cb453bc1b2e61246bf}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the list. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_d_l_list_aa22c2c0ef5d27e8a0870e9b86efed78e}{resize} (const u16 new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Changes the capacity of the list. \end{DoxyCompactList}\item 
+u16 \hyperlink{class_d_l_list_a7913658d122e6883ed7ddf3145567d67}{capacity} () const
+\begin{DoxyCompactList}\small\item\em getter of capacity \end{DoxyCompactList}\item 
+u16 \hyperlink{class_d_l_list_a13e8782dda500ed2ef042793139cd244}{length} () const
+\begin{DoxyCompactList}\small\item\em getter of the length \end{DoxyCompactList}\item 
+bool \hyperlink{class_d_l_list_abd76bf71a8021ef4be9f76a32cc679a8}{length\+\_\+debug} () const
+\begin{DoxyCompactList}\small\item\em checks that the length of the list is consistent \end{DoxyCompactList}\item 
+bool \hyperlink{class_d_l_list_a45b7bf2d077487db54b048c61229de0b}{is\+Empty} () const
+\begin{DoxyCompactList}\small\item\em Indicates if the list is empty. \end{DoxyCompactList}\item 
+bool \hyperlink{class_d_l_list_ac070f23fc7a9617809e19c007884f1f0}{is\+Full} () const
+\begin{DoxyCompactList}\small\item\em Indicates if the list is full. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_d_l_list_ab59e7efc3cd0aef304a93d214fb7343a}{head} ()
+\begin{DoxyCompactList}\small\item\em Returns the first element of the list. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_d_l_list_a76dad466eebcb03e5897573a018ff54d}{last} ()
+\begin{DoxyCompactList}\small\item\em Returns the last element of the list. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_d_l_list_ad32250353857bb6a02e1d9148da5eeca}{at} (const u16 position)
+\begin{DoxyCompactList}\small\item\em Returns the element at the specified position. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_d_l_list_ab9afb99a506f5c2edd2a08e20db36778}{insert\+First} (void $\ast$data, const u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the first position of the list. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_d_l_list_a926e2bcf76d4372c1832e79ee1fb3097}{insert\+Last} (void $\ast$data, const u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the last position of the list. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_d_l_list_a7e19cb0bd835bf2d5f8be47119d755b6}{insert\+At} (void $\ast$data, const u16 position, const u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the position of the list indicated. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_d_l_list_a2ca9b602004ecf213e67092d367f6cfe}{extract\+First} ()
+\begin{DoxyCompactList}\small\item\em Extracts the first element of the list and returns it. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_d_l_list_a4e9d658a550a11331950f8b01f0ca43f}{extract\+Last} ()
+\begin{DoxyCompactList}\small\item\em Extracts the last element of the list and returns it. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_d_l_list_a026e0208727f84a6a4781966bf6a21da}{extract\+At} (const u16 position)
+\begin{DoxyCompactList}\small\item\em Extracts the element of the list at the position indicated and returns it. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_d_l_list_a69006862d24e4d69a3dd87b93d5025ef}{concat} (\hyperlink{class_d_l_list}{D\+L\+List} $\ast$src)
+\begin{DoxyCompactList}\small\item\em Concatenates two list storing the result at origin. \end{DoxyCompactList}\item 
+u16 \hyperlink{class_d_l_list_aee1a76258cd2af0af35ff68541810f46}{traverse} (s16(Memory\+Node\+::$\ast$callback)()) const
+\begin{DoxyCompactList}\small\item\em Applies the callback method to the list. \end{DoxyCompactList}\item 
+void \hyperlink{class_d_l_list_aea04194eeedf39bc0682cf459f39f26b}{print} () const
+\begin{DoxyCompactList}\small\item\em Prints the content of the elements of the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_d_l_list_ad67c39ec267f25ad501978f8e9557e91}\label{class_d_l_list_ad67c39ec267f25ad501978f8e9557e91}} 
+\index{D\+L\+List@{D\+L\+List}!D\+L\+List@{D\+L\+List}}
+\index{D\+L\+List@{D\+L\+List}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{D\+L\+List()}{DLList()}}
+{\footnotesize\ttfamily D\+L\+List\+::\+D\+L\+List (\begin{DoxyParamCaption}\item[{const u16}]{capacity }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_list}{List} constructor. 
+
+Base constructor of list
+
+\begin{DoxyReturn}{Returns}
+$\ast$\+List 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_af41d427d0901f856b267856007eb0eac}\label{class_d_l_list_af41d427d0901f856b267856007eb0eac}} 
+\index{D\+L\+List@{D\+L\+List}!````~D\+L\+List@{$\sim$\+D\+L\+List}}
+\index{````~D\+L\+List@{$\sim$\+D\+L\+List}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{$\sim$\+D\+L\+List()}{~DLList()}}
+{\footnotesize\ttfamily D\+L\+List\+::$\sim$\+D\+L\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the \hyperlink{class_list}{List}. 
+
+Resets the content of the \hyperlink{class_list}{List} and frees it. Note that this function calls the reset method.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_d_l_list_ad32250353857bb6a02e1d9148da5eeca}\label{class_d_l_list_ad32250353857bb6a02e1d9148da5eeca}} 
+\index{D\+L\+List@{D\+L\+List}!at@{at}}
+\index{at@{at}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily void $\ast$ D\+L\+List\+::at (\begin{DoxyParamCaption}\item[{const u16}]{position }\end{DoxyParamCaption})}
+
+
+
+Returns the element at the specified position. 
+
+Returns a reference to the element at the indicated position, starting by $\ast$ 0. If the list passed is N\+U\+LL or the list is empty returns null. It also returns N\+U\+LL if position it\textquotesingle{}s greater or equal to the length.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ element of the list at the indicated position 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & position in which the element is located \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d_l_list_a7913658d122e6883ed7ddf3145567d67}\label{class_d_l_list_a7913658d122e6883ed7ddf3145567d67}} 
+\index{D\+L\+List@{D\+L\+List}!capacity@{capacity}}
+\index{capacity@{capacity}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily u16 D\+L\+List\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of capacity 
+
+Returns the maximum number of elemets that can be stored at the list.
+
+\begin{DoxyReturn}{Returns}
+u16 capacity of the list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_a69006862d24e4d69a3dd87b93d5025ef}\label{class_d_l_list_a69006862d24e4d69a3dd87b93d5025ef}} 
+\index{D\+L\+List@{D\+L\+List}!concat@{concat}}
+\index{concat@{concat}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily s16 D\+L\+List\+::concat (\begin{DoxyParamCaption}\item[{\hyperlink{class_d_l_list}{D\+L\+List} $\ast$}]{src }\end{DoxyParamCaption})}
+
+
+
+Concatenates two list storing the result at origin. 
+
+Concatenates the source to the list, in case one of the list has infinite capacity the result list will have infinite capacity, otherwise it will be the result of both capacities added. Notice that the src list will dissapear after the execution. In case the list is null k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List will be returned and in case the the src is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received. If there\textquotesingle{}s a problem during the allocation of the new list k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em src} & list we want to concatenate to our origin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d_l_list_a09f41b245e07d6d57a4d5c7cc0df1ae8}\label{class_d_l_list_a09f41b245e07d6d57a4d5c7cc0df1ae8}} 
+\index{D\+L\+List@{D\+L\+List}!destroy@{destroy}}
+\index{destroy@{destroy}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily s16 D\+L\+List\+::destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the list and it\textquotesingle{}s data. 
+
+Destroys the list and its data. Note that this function calls the reset method. In case the direction to the pointer is null it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Reference\+\_\+\+Received. If the execution went well this function assures that the pointer to list ends as N\+U\+LL
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_a026e0208727f84a6a4781966bf6a21da}\label{class_d_l_list_a026e0208727f84a6a4781966bf6a21da}} 
+\index{D\+L\+List@{D\+L\+List}!extract\+At@{extract\+At}}
+\index{extract\+At@{extract\+At}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{extract\+At()}{extractAt()}}
+{\footnotesize\ttfamily void $\ast$ D\+L\+List\+::extract\+At (\begin{DoxyParamCaption}\item[{const u16}]{position }\end{DoxyParamCaption})}
+
+
+
+Extracts the element of the list at the position indicated and returns it. 
+
+Extracts the element of the list at the position indicated, starting by 0, and removes it from the list. Notice that the data must be freed once you finish using it as it\textquotesingle{}s no longer responsability of the list.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the indicated position of the list 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & position of the element we want to extract \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d_l_list_a2ca9b602004ecf213e67092d367f6cfe}\label{class_d_l_list_a2ca9b602004ecf213e67092d367f6cfe}} 
+\index{D\+L\+List@{D\+L\+List}!extract\+First@{extract\+First}}
+\index{extract\+First@{extract\+First}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{extract\+First()}{extractFirst()}}
+{\footnotesize\ttfamily void $\ast$ D\+L\+List\+::extract\+First (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Extracts the first element of the list and returns it. 
+
+Extracts the first element of the list and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the list.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the first position of the list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_a4e9d658a550a11331950f8b01f0ca43f}\label{class_d_l_list_a4e9d658a550a11331950f8b01f0ca43f}} 
+\index{D\+L\+List@{D\+L\+List}!extract\+Last@{extract\+Last}}
+\index{extract\+Last@{extract\+Last}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{extract\+Last()}{extractLast()}}
+{\footnotesize\ttfamily void $\ast$ D\+L\+List\+::extract\+Last (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Extracts the last element of the list and returns it. 
+
+Extracts the last element of the list and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the list.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the last position of the list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_ab59e7efc3cd0aef304a93d214fb7343a}\label{class_d_l_list_ab59e7efc3cd0aef304a93d214fb7343a}} 
+\index{D\+L\+List@{D\+L\+List}!head@{head}}
+\index{head@{head}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{head()}{head()}}
+{\footnotesize\ttfamily void $\ast$ D\+L\+List\+::head (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the first element of the list. 
+
+Returns a reference to the first node. If the list passed is N\+U\+LL or the list is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ first element of the list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_aedbf4ff6aebd168e39d4c1534462c864}\label{class_d_l_list_aedbf4ff6aebd168e39d4c1534462c864}} 
+\index{D\+L\+List@{D\+L\+List}!init@{init}}
+\index{init@{init}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily s16 D\+L\+List\+::init (\begin{DoxyParamCaption}\item[{const u16}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Initializes the list. 
+
+Initializes the list, this method must only be called from Create as it will assume the pointer passed to it is a valid one created by the Create functionality.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & number of elements that the list can store note that a value of 0 will imply that it has an infinite capacity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d_l_list_a7e19cb0bd835bf2d5f8be47119d755b6}\label{class_d_l_list_a7e19cb0bd835bf2d5f8be47119d755b6}} 
+\index{D\+L\+List@{D\+L\+List}!insert\+At@{insert\+At}}
+\index{insert\+At@{insert\+At}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{insert\+At()}{insertAt()}}
+{\footnotesize\ttfamily s16 D\+L\+List\+::insert\+At (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{const u16}]{position,  }\item[{const u16}]{data\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Inserts the data at the position of the list indicated. 
+
+Inserts the data at the position of the list indicated, starting by 0, and returns the status depending of the result. In case the list is full a k\+Error\+Code\+\_\+\+D\+L\+List\+\_\+\+Is\+\_\+\+Full is returned, if the list is null k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. In case the range is greater than the number of elements stored a k\+Error\+Code\+\_\+\+Out\+\_\+\+Of\+\_\+\+Range\+\_\+\+Index will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+{\em position} & position in which the data will be stored \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d_l_list_ab9afb99a506f5c2edd2a08e20db36778}\label{class_d_l_list_ab9afb99a506f5c2edd2a08e20db36778}} 
+\index{D\+L\+List@{D\+L\+List}!insert\+First@{insert\+First}}
+\index{insert\+First@{insert\+First}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{insert\+First()}{insertFirst()}}
+{\footnotesize\ttfamily s16 D\+L\+List\+::insert\+First (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{const u16}]{data\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Inserts the data at the first position of the list. 
+
+Inserts the data at the first position of the list and returns the status depending of the result. In case the list is full a k\+Error\+Code\+\_\+\+D\+L\+List\+\_\+\+Is\+\_\+\+Full is returned, if the list is null k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. The list makes a copy of the data so the value you store will not be touched unless you modify it through the list.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d_l_list_a926e2bcf76d4372c1832e79ee1fb3097}\label{class_d_l_list_a926e2bcf76d4372c1832e79ee1fb3097}} 
+\index{D\+L\+List@{D\+L\+List}!insert\+Last@{insert\+Last}}
+\index{insert\+Last@{insert\+Last}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{insert\+Last()}{insertLast()}}
+{\footnotesize\ttfamily s16 D\+L\+List\+::insert\+Last (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{const u16}]{data\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Inserts the data at the last position of the list. 
+
+Inserts the data at the last position of the list and returns the status depending of the result. In case the list is full a k\+Error\+Code\+\_\+\+D\+L\+List\+\_\+\+Is\+\_\+\+Full is returned, if the list is null k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. The list makes a copy of the data so the value you store will not be touched unless you modify it through the list.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d_l_list_a45b7bf2d077487db54b048c61229de0b}\label{class_d_l_list_a45b7bf2d077487db54b048c61229de0b}} 
+\index{D\+L\+List@{D\+L\+List}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{is\+Empty()}{isEmpty()}}
+{\footnotesize\ttfamily bool D\+L\+List\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates if the list is empty. 
+
+Indicates if the list is empty
+
+\begin{DoxyReturn}{Returns}
+bool true if the list is empty false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_ac070f23fc7a9617809e19c007884f1f0}\label{class_d_l_list_ac070f23fc7a9617809e19c007884f1f0}} 
+\index{D\+L\+List@{D\+L\+List}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{is\+Full()}{isFull()}}
+{\footnotesize\ttfamily bool D\+L\+List\+::is\+Full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates if the list is full. 
+
+Indicates if the list is full
+
+\begin{DoxyReturn}{Returns}
+bool true if the list is full false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_a76dad466eebcb03e5897573a018ff54d}\label{class_d_l_list_a76dad466eebcb03e5897573a018ff54d}} 
+\index{D\+L\+List@{D\+L\+List}!last@{last}}
+\index{last@{last}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{last()}{last()}}
+{\footnotesize\ttfamily void $\ast$ D\+L\+List\+::last (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the last element of the list. 
+
+Returns a reference to the last node. If the list passed is N\+U\+LL or the list is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ last element of the list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_a13e8782dda500ed2ef042793139cd244}\label{class_d_l_list_a13e8782dda500ed2ef042793139cd244}} 
+\index{D\+L\+List@{D\+L\+List}!length@{length}}
+\index{length@{length}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily u16 D\+L\+List\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of the length 
+
+Returns the current number of elements ($<$= capacity)
+
+\begin{DoxyReturn}{Returns}
+u16 length of the list 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_abd76bf71a8021ef4be9f76a32cc679a8}\label{class_d_l_list_abd76bf71a8021ef4be9f76a32cc679a8}} 
+\index{D\+L\+List@{D\+L\+List}!length\+\_\+debug@{length\+\_\+debug}}
+\index{length\+\_\+debug@{length\+\_\+debug}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{length\+\_\+debug()}{length\_debug()}}
+{\footnotesize\ttfamily bool D\+L\+List\+::length\+\_\+debug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+checks that the length of the list is consistent 
+
+Traverses the number of elements and checks its result with its own lenght
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_aea04194eeedf39bc0682cf459f39f26b}\label{class_d_l_list_aea04194eeedf39bc0682cf459f39f26b}} 
+\index{D\+L\+List@{D\+L\+List}!print@{print}}
+\index{print@{print}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void D\+L\+List\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the content of the elements of the list. 
+
+Prints the content of the elements of the list \mbox{\Hypertarget{class_d_l_list_a444881340bdf15cb453bc1b2e61246bf}\label{class_d_l_list_a444881340bdf15cb453bc1b2e61246bf}} 
+\index{D\+L\+List@{D\+L\+List}!reset@{reset}}
+\index{reset@{reset}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily s16 D\+L\+List\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the list. 
+
+Frees the elements of the list, using the reset method of memory node, and sets the values of the list to it\textquotesingle{}s default. In case a null pointer was passed it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+D\+L\+List
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_d_l_list_aa22c2c0ef5d27e8a0870e9b86efed78e}\label{class_d_l_list_aa22c2c0ef5d27e8a0870e9b86efed78e}} 
+\index{D\+L\+List@{D\+L\+List}!resize@{resize}}
+\index{resize@{resize}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily s16 D\+L\+List\+::resize (\begin{DoxyParamCaption}\item[{const u16}]{new\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Changes the capacity of the list. 
+
+Adjusts the capacity of the list so it can store more elements. If the new size causes a loss of data the function will return an error. Note that a capacity of 0 is an infinite capacity
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+size} & new size for the list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_d_l_list_aee1a76258cd2af0af35ff68541810f46}\label{class_d_l_list_aee1a76258cd2af0af35ff68541810f46}} 
+\index{D\+L\+List@{D\+L\+List}!traverse@{traverse}}
+\index{traverse@{traverse}!D\+L\+List@{D\+L\+List}}
+\subsubsection{\texorpdfstring{traverse()}{traverse()}}
+{\footnotesize\ttfamily uint16\+\_\+t D\+L\+List\+::traverse (\begin{DoxyParamCaption}\item[{s16(Memory\+Node\+::$\ast$)()}]{callback }\end{DoxyParamCaption}) const}
+
+
+
+Applies the callback method to the list. 
+
+Applies a memory node function to the set of elements of the list.
+
+\begin{DoxyReturn}{Returns}
+u16 number of elements traveled 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & function of memory node that will be applied to the set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/include/adt\+\_\+double\+\_\+linked\+\_\+list.\+h\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/src/adt\+\_\+double\+\_\+linked\+\_\+list.\+cc\end{DoxyCompactItemize}

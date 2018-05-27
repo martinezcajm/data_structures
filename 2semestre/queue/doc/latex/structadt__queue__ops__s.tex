@@ -1,0 +1,362 @@
+\hypertarget{structadt__queue__ops__s}{}\section{adt\+\_\+queue\+\_\+ops\+\_\+s Struct Reference}
+\label{structadt__queue__ops__s}\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+s16($\ast$ \hyperlink{structadt__queue__ops__s_acaf2cfe4ce1d1d5acb1f39ebcd56d8a1}{destroy} )(\hyperlink{structadt__queue__s}{Queue} $\ast$$\ast$queue)
+\begin{DoxyCompactList}\small\item\em Initializes the queue. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__queue__ops__s_aa3cfb116ee706ee5dfc066ef075f5182}{reset} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em Resets the queue. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__queue__ops__s_a21c88cc6f73093960ac29db7ff2b4872}{resize} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue, u16 new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Changes the capacity of the queue. \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__queue__ops__s_a20023ce21822af2b1ab21ec25d4050be}{capacity} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em getter of capacity \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__queue__ops__s_aae563dcc78fe992c354c9e1151dfcbbb}{length} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em getter of the length \end{DoxyCompactList}\item 
+bool($\ast$ \hyperlink{structadt__queue__ops__s_a6c8ce700a1008913e4431604abe85532}{length\+\_\+debug} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em checks that the length of the queue is consistent \end{DoxyCompactList}\item 
+bool($\ast$ \hyperlink{structadt__queue__ops__s_a6930a642b3997d5ca00e811a65d5afa4}{is\+Empty} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em Indicates if the queue is empty. \end{DoxyCompactList}\item 
+bool($\ast$ \hyperlink{structadt__queue__ops__s_a81cb36c407e0b1434dbe7050796d4647}{is\+Full} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em Indicates if the queue is full. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__queue__ops__s_afc205ae91759152a7839ca9e8acac2a8}{first} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em Returns the first element of the queue. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__queue__ops__s_acb93c165236a38fe0856dc8f514ad4c1}{last} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em Returns the last element of the queue. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__queue__ops__s_ae57dbd722d5627b92d1b8b3c3b9d7969}{enqueue} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue, void $\ast$data, u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the first position of the queue. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__queue__ops__s_a840fb2130df3abac26f7d8a80d13d2b8}{dequeue} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em Extracts the first element of the queue and returns it. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__queue__ops__s_ae67763f899a58200c76526cec5bd9802}{concat} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue, \hyperlink{structadt__queue__s}{Queue} $\ast$src)
+\begin{DoxyCompactList}\small\item\em Concatenates two queue storing the result at origin. \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__queue__ops__s_aa5fc9dd9e94695d7b543eb3487b5ba70}{traverse} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue, void($\ast$callback)(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$))
+\begin{DoxyCompactList}\small\item\em Applies the callback method to the queue. \end{DoxyCompactList}\item 
+void($\ast$ \hyperlink{structadt__queue__ops__s_a1cebc2ba794814b795e5e10da79c7090}{print} )(\hyperlink{structadt__queue__s}{Queue} $\ast$queue)
+\begin{DoxyCompactList}\small\item\em Prints the content of the elements of the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structadt__queue__ops__s_a20023ce21822af2b1ab21ec25d4050be}\label{structadt__queue__ops__s_a20023ce21822af2b1ab21ec25d4050be}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!capacity@{capacity}}
+\index{capacity@{capacity}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::capacity) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+getter of capacity 
+
+Returns the maximum number of elemets that can be stored at the queue.
+
+\begin{DoxyReturn}{Returns}
+u16 capacity of the queue 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue we wish to get the capacity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_ae67763f899a58200c76526cec5bd9802}\label{structadt__queue__ops__s_ae67763f899a58200c76526cec5bd9802}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!concat@{concat}}
+\index{concat@{concat}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{concat}{concat}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::concat) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue, \hyperlink{structadt__queue__s}{Queue} $\ast$src)}
+
+
+
+Concatenates two queue storing the result at origin. 
+
+Concatenates the source to the queue, in case one of the queue has infinite capacity the result queue will have infinite capacity, otherwise it will be the result of both capacities added. Notice that the src queue won\textquotesingle{}t be modified during the execution. In case the queue is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue will be returned and in case the the src is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received. If there\textquotesingle{}s a problem during the allocation of the new queue k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue that will store the result of the concatenation \\
+\hline
+{\em $\ast$src} & queue we want to concatenate to our origin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_a840fb2130df3abac26f7d8a80d13d2b8}\label{structadt__queue__ops__s_a840fb2130df3abac26f7d8a80d13d2b8}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!dequeue@{dequeue}}
+\index{dequeue@{dequeue}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{dequeue}{dequeue}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::dequeue) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+Extracts the first element of the queue and returns it. 
+
+T\+O\+DO change description Extracts the first element of the queue and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the queue.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the first position of the queue 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_acaf2cfe4ce1d1d5acb1f39ebcd56d8a1}\label{structadt__queue__ops__s_acaf2cfe4ce1d1d5acb1f39ebcd56d8a1}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!destroy@{destroy}}
+\index{destroy@{destroy}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{destroy}{destroy}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::destroy) (\hyperlink{structadt__queue__s}{Queue} $\ast$$\ast$queue)}
+
+
+
+Initializes the queue. 
+
+Initializes the queue, this method must only be called from Create as it will assume the pointer passed to it is a valid one created by the Create functionality.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue we wish to initialize \\
+\hline
+{\em capacity} & number of elements that the queue can store note that a value of 0 will imply that it has an infinite capacity\+Destroys the queue and it\textquotesingle{}s data\\
+\hline
+\end{DoxyParams}
+Destroys the queue and its data. Note that this function calls the reset method. In case the direction to the pointer is null it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Reference\+\_\+\+Received. If the execution went well this function assures that the pointer to queue ends as N\+U\+LL
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$$\ast$queue} & direction to the pointer of the queue we want to destroy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_ae57dbd722d5627b92d1b8b3c3b9d7969}\label{structadt__queue__ops__s_ae57dbd722d5627b92d1b8b3c3b9d7969}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{enqueue}{enqueue}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::enqueue) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue, void $\ast$data, u16 data\+\_\+size)}
+
+
+
+Inserts the data at the first position of the queue. 
+
+T\+O\+DO change description Inserts the data at the first position of the queue and returns the status depending of the result. In case the queue is full a k\+Error\+Code\+\_\+\+Queue\+\_\+\+Is\+\_\+\+Full is returned, if the queue is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. The queue makes a copy of the data so the value you store will not be touched unless you modify it through the queue.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue \\
+\hline
+{\em $\ast$data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_afc205ae91759152a7839ca9e8acac2a8}\label{structadt__queue__ops__s_afc205ae91759152a7839ca9e8acac2a8}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!first@{first}}
+\index{first@{first}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{first}{first}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::first) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+Returns the first element of the queue. 
+
+T\+O\+DO change description\+Returns a reference to the first node. If the queue passed is N\+U\+LL or the queue is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ first element of the queue 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_a6930a642b3997d5ca00e811a65d5afa4}\label{structadt__queue__ops__s_a6930a642b3997d5ca00e811a65d5afa4}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{is\+Empty}{isEmpty}}
+{\footnotesize\ttfamily bool($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::is\+Empty) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+Indicates if the queue is empty. 
+
+Indicates if the queue is empty
+
+\begin{DoxyReturn}{Returns}
+bool true if the queue is empty false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_a81cb36c407e0b1434dbe7050796d4647}\label{structadt__queue__ops__s_a81cb36c407e0b1434dbe7050796d4647}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{is\+Full}{isFull}}
+{\footnotesize\ttfamily bool($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::is\+Full) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+Indicates if the queue is full. 
+
+Indicates if the queue is full
+
+\begin{DoxyReturn}{Returns}
+bool true if the queue is full false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_acb93c165236a38fe0856dc8f514ad4c1}\label{structadt__queue__ops__s_acb93c165236a38fe0856dc8f514ad4c1}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!last@{last}}
+\index{last@{last}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{last}{last}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::last) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+Returns the last element of the queue. 
+
+Returns a reference to the last node. If the queue passed is N\+U\+LL or the queue is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ last element of the queue 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_aae563dcc78fe992c354c9e1151dfcbbb}\label{structadt__queue__ops__s_aae563dcc78fe992c354c9e1151dfcbbb}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!length@{length}}
+\index{length@{length}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::length) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+getter of the length 
+
+Returns the current number of elements ($<$= capacity)
+
+\begin{DoxyReturn}{Returns}
+u16 length of the queue 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue we wish to get the length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_a6c8ce700a1008913e4431604abe85532}\label{structadt__queue__ops__s_a6c8ce700a1008913e4431604abe85532}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!length\+\_\+debug@{length\+\_\+debug}}
+\index{length\+\_\+debug@{length\+\_\+debug}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{length\+\_\+debug}{length\_debug}}
+{\footnotesize\ttfamily bool($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::length\+\_\+debug) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+checks that the length of the queue is consistent 
+
+Traverses the number of elements and checks its result with its own lenght
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue we wish to get the length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_a1cebc2ba794814b795e5e10da79c7090}\label{structadt__queue__ops__s_a1cebc2ba794814b795e5e10da79c7090}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!print@{print}}
+\index{print@{print}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{print}{print}}
+{\footnotesize\ttfamily void($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::print) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+Prints the content of the elements of the queue. 
+
+Prints the content of the elements of the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_aa3cfb116ee706ee5dfc066ef075f5182}\label{structadt__queue__ops__s_aa3cfb116ee706ee5dfc066ef075f5182}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!reset@{reset}}
+\index{reset@{reset}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{reset}{reset}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::reset) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue)}
+
+
+
+Resets the queue. 
+
+Frees the elements of the queue, using the reset method of memory node, and sets the values of the queue to it\textquotesingle{}s default. In case a null pointer was passed it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue we wish to reset \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_a21c88cc6f73093960ac29db7ff2b4872}\label{structadt__queue__ops__s_a21c88cc6f73093960ac29db7ff2b4872}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!resize@{resize}}
+\index{resize@{resize}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{resize}{resize}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::resize) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue, u16 new\+\_\+size)}
+
+
+
+Changes the capacity of the queue. 
+
+Adjusts the capacity of the queue so it can store more elements. If the new size causes a loss of data the function will return an error. Note that a capacity of 0 is an infinite capacity
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue we wish to resuze \\
+\hline
+{\em new\+\_\+size} & new size for the queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__queue__ops__s_aa5fc9dd9e94695d7b543eb3487b5ba70}\label{structadt__queue__ops__s_aa5fc9dd9e94695d7b543eb3487b5ba70}} 
+\index{adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}!traverse@{traverse}}
+\index{traverse@{traverse}!adt\+\_\+queue\+\_\+ops\+\_\+s@{adt\+\_\+queue\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{traverse}{traverse}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+queue\+\_\+ops\+\_\+s\+::traverse) (\hyperlink{structadt__queue__s}{Queue} $\ast$queue, void($\ast$callback)(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$))}
+
+
+
+Applies the callback method to the queue. 
+
+Applies a memory node function to the set of elements of the queue.
+
+\begin{DoxyReturn}{Returns}
+u16 number of elements traveled 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue \\
+\hline
+{\em $\ast$callback} & function of memory node that will be applied to the set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/queue/include/adt\+\_\+queue.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,318 @@
+\hypertarget{structadt__stack__ops__s}{}\section{adt\+\_\+stack\+\_\+ops\+\_\+s Struct Reference}
+\label{structadt__stack__ops__s}\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+s16($\ast$ \hyperlink{structadt__stack__ops__s_ad3a6a6641cf29b37d37eabe475edb80d}{destroy} )(\hyperlink{structadt__stack__s}{Stack} $\ast$$\ast$stack)
+\begin{DoxyCompactList}\small\item\em Initializes the stack. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__stack__ops__s_a947c226930bfa114fdd0daaf41959fab}{reset} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Resets the stack. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__stack__ops__s_a8b7b66eb29da8fb49b3626354a30d3a4}{resize} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack, u16 new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Changes the capacity of the stack. \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__stack__ops__s_af16d5aec35876e8824938765a9001461}{capacity} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em getter of capacity \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__stack__ops__s_ae77aa49422bbfe038dd3f9eb93e14882}{length} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em getter of the length \end{DoxyCompactList}\item 
+bool($\ast$ \hyperlink{structadt__stack__ops__s_ac3315785cb5d870e9cc4eb9c0b1efc79}{is\+Empty} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Indicates if the stack is empty. \end{DoxyCompactList}\item 
+bool($\ast$ \hyperlink{structadt__stack__ops__s_af792db2d70632a11b1ae12af63eb020b}{is\+Full} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Indicates if the stack is full. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__stack__ops__s_ad28b7d3b5744eb99bf08fa0b14f155b3}{first} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Returns the first element of the stack. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__stack__ops__s_a338622d8e3c8f09ecf73d80cb0f59466}{push} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack, void $\ast$data, u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the first position of the stack. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structadt__stack__ops__s_a86683f4cd4288e5ed0eeea63f1e70b34}{pop} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Extracts the first element of the stack and returns it. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structadt__stack__ops__s_a98a720f9a9df992759870c3d71a92c29}{concat} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack, \hyperlink{structadt__stack__s}{Stack} $\ast$src)
+\begin{DoxyCompactList}\small\item\em Concatenates two stack storing the result at origin. \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structadt__stack__ops__s_a87496a132c816759887ab1e3989f77be}{traverse} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack, void($\ast$callback)(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$))
+\begin{DoxyCompactList}\small\item\em Applies the callback method to the stack. \end{DoxyCompactList}\item 
+void($\ast$ \hyperlink{structadt__stack__ops__s_af91bd0c94f3d8638a8ffaba45936372c}{print} )(\hyperlink{structadt__stack__s}{Stack} $\ast$stack)
+\begin{DoxyCompactList}\small\item\em Prints the content of the elements of the stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structadt__stack__ops__s_af16d5aec35876e8824938765a9001461}\label{structadt__stack__ops__s_af16d5aec35876e8824938765a9001461}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!capacity@{capacity}}
+\index{capacity@{capacity}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::capacity) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack)}
+
+
+
+getter of capacity 
+
+Returns the maximum number of elemets that can be stored at the stack.
+
+\begin{DoxyReturn}{Returns}
+u16 capacity of the stack 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack we wish to get the capacity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_a98a720f9a9df992759870c3d71a92c29}\label{structadt__stack__ops__s_a98a720f9a9df992759870c3d71a92c29}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!concat@{concat}}
+\index{concat@{concat}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{concat}{concat}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::concat) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack, \hyperlink{structadt__stack__s}{Stack} $\ast$src)}
+
+
+
+Concatenates two stack storing the result at origin. 
+
+Concatenates the source to the stack, in case one of the stack has infinite capacity the result stack will have infinite capacity, otherwise it will be the result of both capacities added. Notice that the src stack won\textquotesingle{}t be modified during the execution. In case the stack is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue will be returned and in case the the src is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received. If there\textquotesingle{}s a problem during the allocation of the new stack k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack that will store the result of the concatenation \\
+\hline
+{\em $\ast$src} & stack we want to concatenate to our origin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_ad3a6a6641cf29b37d37eabe475edb80d}\label{structadt__stack__ops__s_ad3a6a6641cf29b37d37eabe475edb80d}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!destroy@{destroy}}
+\index{destroy@{destroy}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{destroy}{destroy}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::destroy) (\hyperlink{structadt__stack__s}{Stack} $\ast$$\ast$stack)}
+
+
+
+Initializes the stack. 
+
+Initializes the stack, this method must only be called from Create as it will assume the pointer passed to it is a valid one created by the Create functionality.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack we wish to initialize \\
+\hline
+{\em capacity} & number of elements that the stack can store note that a value of 0 will imply that it has an infinite capacity\+Destroys the stack and it\textquotesingle{}s data\\
+\hline
+\end{DoxyParams}
+Destroys the stack and its data. Note that this function calls the reset method. In case the direction to the pointer is null it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Reference\+\_\+\+Received. If the execution went well this function assures that the pointer to stack ends as N\+U\+LL
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$$\ast$stack} & direction to the pointer of the stack we want to destroy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_ad28b7d3b5744eb99bf08fa0b14f155b3}\label{structadt__stack__ops__s_ad28b7d3b5744eb99bf08fa0b14f155b3}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!first@{first}}
+\index{first@{first}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{first}{first}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::first) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack)}
+
+
+
+Returns the first element of the stack. 
+
+T\+O\+DO change description\+Returns a reference to the first node. If the stack passed is N\+U\+LL or the stack is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ first element of the stack 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_ac3315785cb5d870e9cc4eb9c0b1efc79}\label{structadt__stack__ops__s_ac3315785cb5d870e9cc4eb9c0b1efc79}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{is\+Empty}{isEmpty}}
+{\footnotesize\ttfamily bool($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::is\+Empty) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack)}
+
+
+
+Indicates if the stack is empty. 
+
+Indicates if the stack is empty
+
+\begin{DoxyReturn}{Returns}
+bool true if the stack is empty false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_af792db2d70632a11b1ae12af63eb020b}\label{structadt__stack__ops__s_af792db2d70632a11b1ae12af63eb020b}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{is\+Full}{isFull}}
+{\footnotesize\ttfamily bool($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::is\+Full) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack)}
+
+
+
+Indicates if the stack is full. 
+
+Indicates if the stack is full
+
+\begin{DoxyReturn}{Returns}
+bool true if the stack is full false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_ae77aa49422bbfe038dd3f9eb93e14882}\label{structadt__stack__ops__s_ae77aa49422bbfe038dd3f9eb93e14882}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!length@{length}}
+\index{length@{length}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::length) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack)}
+
+
+
+getter of the length 
+
+Returns the current number of elements ($<$= capacity)
+
+\begin{DoxyReturn}{Returns}
+u16 length of the stack 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack we wish to get the length \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_a86683f4cd4288e5ed0eeea63f1e70b34}\label{structadt__stack__ops__s_a86683f4cd4288e5ed0eeea63f1e70b34}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!pop@{pop}}
+\index{pop@{pop}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{pop}{pop}}
+{\footnotesize\ttfamily void$\ast$($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::pop) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack)}
+
+
+
+Extracts the first element of the stack and returns it. 
+
+T\+O\+DO change description Extracts the first element of the stack and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the stack.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the first position of the stack 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_af91bd0c94f3d8638a8ffaba45936372c}\label{structadt__stack__ops__s_af91bd0c94f3d8638a8ffaba45936372c}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!print@{print}}
+\index{print@{print}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{print}{print}}
+{\footnotesize\ttfamily void($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::print) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack)}
+
+
+
+Prints the content of the elements of the stack. 
+
+Prints the content of the elements of the stack
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_a338622d8e3c8f09ecf73d80cb0f59466}\label{structadt__stack__ops__s_a338622d8e3c8f09ecf73d80cb0f59466}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!push@{push}}
+\index{push@{push}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{push}{push}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::push) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack, void $\ast$data, u16 data\+\_\+size)}
+
+
+
+Inserts the data at the first position of the stack. 
+
+T\+O\+DO change description Inserts the data at the first position of the stack and returns the status depending of the result. In case the stack is full a k\+Error\+Code\+\_\+\+Queue\+\_\+\+Is\+\_\+\+Full is returned, if the stack is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. The stack makes a copy of the data so the value you store will not be touched unless you modify it through the stack.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack \\
+\hline
+{\em $\ast$data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_a947c226930bfa114fdd0daaf41959fab}\label{structadt__stack__ops__s_a947c226930bfa114fdd0daaf41959fab}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!reset@{reset}}
+\index{reset@{reset}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{reset}{reset}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::reset) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack)}
+
+
+
+Resets the stack. 
+
+Frees the elements of the stack, using the reset method of memory node, and sets the values of the stack to it\textquotesingle{}s default. In case a null pointer was passed it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack we wish to reset \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_a8b7b66eb29da8fb49b3626354a30d3a4}\label{structadt__stack__ops__s_a8b7b66eb29da8fb49b3626354a30d3a4}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!resize@{resize}}
+\index{resize@{resize}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{resize}{resize}}
+{\footnotesize\ttfamily s16($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::resize) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack, u16 new\+\_\+size)}
+
+
+
+Changes the capacity of the stack. 
+
+Adjusts the capacity of the stack so it can store more elements. If the new size causes a loss of data the function will return an error. Note that a capacity of 0 is an infinite capacity
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack we wish to resuze \\
+\hline
+{\em new\+\_\+size} & new size for the stack \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structadt__stack__ops__s_a87496a132c816759887ab1e3989f77be}\label{structadt__stack__ops__s_a87496a132c816759887ab1e3989f77be}} 
+\index{adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}!traverse@{traverse}}
+\index{traverse@{traverse}!adt\+\_\+stack\+\_\+ops\+\_\+s@{adt\+\_\+stack\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{traverse}{traverse}}
+{\footnotesize\ttfamily u16($\ast$ adt\+\_\+stack\+\_\+ops\+\_\+s\+::traverse) (\hyperlink{structadt__stack__s}{Stack} $\ast$stack, void($\ast$callback)(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$))}
+
+
+
+Applies the callback method to the stack. 
+
+Applies a memory node function to the set of elements of the stack.
+
+\begin{DoxyReturn}{Returns}
+u16 number of elements traveled 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$stack} & pointer to the stack \\
+\hline
+{\em $\ast$callback} & function of memory node that will be applied to the set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/stack/include/adt\+\_\+stack.\+h\end{DoxyCompactItemize}

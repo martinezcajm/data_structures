@@ -1,0 +1,333 @@
+\hypertarget{structmemory__node__ops__s}{}\section{memory\+\_\+node\+\_\+ops\+\_\+s Struct Reference}
+\label{structmemory__node__ops__s}\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a9b50f77455ae67d99ce92e9fde94ae93}{init} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Initializes the memory node. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a8a9d4846b4b5628d9994467f6f492b81}{reset} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Resets the memory node. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a80866224e48d132a253baccc3543dda3}{free} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$$\ast$node)
+\begin{DoxyCompactList}\small\item\em Frees the memory node. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a51993e6d5aeb1025181ba5ae46e9f0a8}{soft\+\_\+free} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$$\ast$node)
+\begin{DoxyCompactList}\small\item\em Soft free of the memory node it doesn\textquotesingle{}t free the data. \end{DoxyCompactList}\item 
+void $\ast$($\ast$ \hyperlink{structmemory__node__ops__s_a35f5ace76d5fd899597761eef516ba0a}{data} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)
+\begin{DoxyCompactList}\small\item\em getter of data \end{DoxyCompactList}\item 
+u16($\ast$ \hyperlink{structmemory__node__ops__s_aac6e0ccb9192cefc1fc6ec9826a11f90}{size} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)
+\begin{DoxyCompactList}\small\item\em gets the data size \end{DoxyCompactList}\item 
+\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$($\ast$ \hyperlink{structmemory__node__ops__s_a87ce72f198cd7c9df08a90d9cebbdde9}{next} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)
+\begin{DoxyCompactList}\small\item\em gettter of next \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_ab2ec1c03766f20d2d69c37e658c0e4b2}{set\+Next} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, \hyperlink{structmemory__node__s}{Memory\+Node} $\ast$next\+\_\+node)
+\begin{DoxyCompactList}\small\item\em setter of next \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a7b21a53d026216de8e44299e4b6191fb}{set\+Data} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, void $\ast$src, u16 bytes)
+\begin{DoxyCompactList}\small\item\em Sets new data to the memory node. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a25eeed1bed000ce61e20eb1889710be1}{mem\+Set} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, u8 value)
+\begin{DoxyCompactList}\small\item\em Sets all the data to the value passed. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a6e6960186601b2a4dcfec2a33438b15b}{mem\+Copy} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, void $\ast$src, u16 bytes)
+\begin{DoxyCompactList}\small\item\em allocates the data passe by src and sets it to the memory node. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a6cadae4d06b8349242302acc28c2df52}{mem\+Concat} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, void $\ast$src, u16 bytes)
+\begin{DoxyCompactList}\small\item\em Concats the data of the memory with thedata passed at source. \end{DoxyCompactList}\item 
+s16($\ast$ \hyperlink{structmemory__node__ops__s_a4499ba5d3e916cca07fe69339acb9703}{mem\+Mask} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, u8 mask)
+\begin{DoxyCompactList}\small\item\em Applies a mask to the data. \end{DoxyCompactList}\item 
+void($\ast$ \hyperlink{structmemory__node__ops__s_ad5a051d70388c508b600399b0cca0973}{print} )(\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)
+\begin{DoxyCompactList}\small\item\em prints the content of data \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structmemory__node__ops__s_a35f5ace76d5fd899597761eef516ba0a}\label{structmemory__node__ops__s_a35f5ace76d5fd899597761eef516ba0a}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!data@{data}}
+\index{data@{data}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily void$\ast$($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::data) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)}
+
+
+
+getter of data 
+
+Returns a pointer to data. In case a null pointer wass passed it will return null
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ reference to the data of the memory node 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node we wish to get the data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a80866224e48d132a253baccc3543dda3}\label{structmemory__node__ops__s_a80866224e48d132a253baccc3543dda3}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!free@{free}}
+\index{free@{free}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{free}{free}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::free) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$$\ast$node)}
+
+
+
+Frees the memory node. 
+
+Resets the content of the memory node and frees it. Note that this function calls the reset method. In case the direction to the pointer is null it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Reference\+\_\+\+Received. If the execution went well this function assures that the pointer to node ends as N\+U\+LL
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$$\ast$node} & direction to the pointer of the memory node we want to free \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a9b50f77455ae67d99ce92e9fde94ae93}\label{structmemory__node__ops__s_a9b50f77455ae67d99ce92e9fde94ae93}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!init@{init}}
+\index{init@{init}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{init}{init}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::init) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)}
+
+
+
+Initializes the memory node. 
+
+Initializes the memory node, it a the memory node passed is N\+U\+LL it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node we wish to initialize \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a6cadae4d06b8349242302acc28c2df52}\label{structmemory__node__ops__s_a6cadae4d06b8349242302acc28c2df52}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!mem\+Concat@{mem\+Concat}}
+\index{mem\+Concat@{mem\+Concat}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{mem\+Concat}{memConcat}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::mem\+Concat) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, void $\ast$src, u16 bytes)}
+
+
+
+Concats the data of the memory with thedata passed at source. 
+
+Allocates memory for the data result from the concatenation of the memory node data with the data at source. In case a null memory node was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. If the data of the memory node is null a k\+Error\+Code\+\_\+\+Null\+\_\+\+Data will be returned. If the source is null a k\+Warning\+Code\+\_\+\+Strange\+\_\+\+Operation will be returned. If there\textquotesingle{}s an error allocating the memory a k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned. \begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node whose data we wish to concat \\
+\hline
+{\em $\ast$src} & source we want to concat to the data \\
+\hline
+{\em $\ast$bytes} & size of the data to concat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a6e6960186601b2a4dcfec2a33438b15b}\label{structmemory__node__ops__s_a6e6960186601b2a4dcfec2a33438b15b}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!mem\+Copy@{mem\+Copy}}
+\index{mem\+Copy@{mem\+Copy}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{mem\+Copy}{memCopy}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::mem\+Copy) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, void $\ast$src, u16 bytes)}
+
+
+
+allocates the data passe by src and sets it to the memory node. 
+
+Copies the data passed in src and sets the pointer of data to this new data. If a size of 0 bytes is passed a k\+Warning\+Code\+\_\+\+Strange\+\_\+\+Operation will be returned and N\+O\+T\+H\+I\+NG will be done to the node. If the source is null a k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received will be returned. In case a null pointer was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. If the allocation of the new data went wrong it will return a k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node whose data we wish to memcopy \\
+\hline
+{\em $\ast$src} & source of the data that will be copied \\
+\hline
+{\em $\ast$bytes} & size of the new data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a4499ba5d3e916cca07fe69339acb9703}\label{structmemory__node__ops__s_a4499ba5d3e916cca07fe69339acb9703}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!mem\+Mask@{mem\+Mask}}
+\index{mem\+Mask@{mem\+Mask}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{mem\+Mask}{memMask}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::mem\+Mask) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, u8 mask)}
+
+
+
+Applies a mask to the data. 
+
+Applies an and (\&) mask to the data of the memory node byte to byte. In case a null memory node was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. \begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node whose data we wish to apply the mask \\
+\hline
+{\em mask} & mask we want to apply to the data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a25eeed1bed000ce61e20eb1889710be1}\label{structmemory__node__ops__s_a25eeed1bed000ce61e20eb1889710be1}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!mem\+Set@{mem\+Set}}
+\index{mem\+Set@{mem\+Set}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{mem\+Set}{memSet}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::mem\+Set) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, u8 value)}
+
+
+
+Sets all the data to the value passed. 
+
+Applies a memset of the value passed to the data of the memory node. In case a null pointer wass passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node. In case the data of the memory node is null it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Data
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node we wish to memset \\
+\hline
+{\em u8} & value we want to memset to the data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a87ce72f198cd7c9df08a90d9cebbdde9}\label{structmemory__node__ops__s_a87ce72f198cd7c9df08a90d9cebbdde9}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!next@{next}}
+\index{next@{next}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily \hyperlink{structmemory__node__s}{Memory\+Node}$\ast$($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::next) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)}
+
+
+
+gettter of next 
+
+Returns the next Memory\+Node
+
+\begin{DoxyReturn}{Returns}
+Memory\+Node$\ast$ pointer to the next memory node 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node we wish to set the data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_ad5a051d70388c508b600399b0cca0973}\label{structmemory__node__ops__s_ad5a051d70388c508b600399b0cca0973}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!print@{print}}
+\index{print@{print}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{print}{print}}
+{\footnotesize\ttfamily void($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::print) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)}
+
+
+
+prints the content of data 
+
+Prints the data byte to byte in hexadecimal. In case a null memory node was passed it will print The node is null. If data is null it will print The data is null \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node whose data we wish to print \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a8a9d4846b4b5628d9994467f6f492b81}\label{structmemory__node__ops__s_a8a9d4846b4b5628d9994467f6f492b81}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!reset@{reset}}
+\index{reset@{reset}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{reset}{reset}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::reset) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)}
+
+
+
+Resets the memory node. 
+
+Sets the data and size of the memory node to it\textquotesingle{}s default values. In case a null pointer was passed it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node we wish to reset \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a7b21a53d026216de8e44299e4b6191fb}\label{structmemory__node__ops__s_a7b21a53d026216de8e44299e4b6191fb}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!set\+Data@{set\+Data}}
+\index{set\+Data@{set\+Data}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{set\+Data}{setData}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::set\+Data) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, void $\ast$src, u16 bytes)}
+
+
+
+Sets new data to the memory node. 
+
+Resets the old data of the memory node and sets it to it\textquotesingle{}s new value updating it\textquotesingle{}s size with the bytes parameter. In case src is null it will return a k\+Warning\+Code\+\_\+\+Strange\+\_\+\+Operation and W\+ON\textquotesingle{}T reset the old data. In case a null pointer was passed it will return k\+Error\+Code\+\_\+\+Null\+\_\+\+Memory\+\_\+\+Node
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node we wish to set the data \\
+\hline
+{\em $\ast$src} & source of the new data of the memory node \\
+\hline
+{\em $\ast$bytes} & size of the data the memory node will be referencing \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_ab2ec1c03766f20d2d69c37e658c0e4b2}\label{structmemory__node__ops__s_ab2ec1c03766f20d2d69c37e658c0e4b2}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!set\+Next@{set\+Next}}
+\index{set\+Next@{set\+Next}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{set\+Next}{setNext}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::set\+Next) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node, \hyperlink{structmemory__node__s}{Memory\+Node} $\ast$next\+\_\+node)}
+
+
+
+setter of next 
+
+Sets the next Memory\+Node of the Memory\+Node. Take into account that this function won\textquotesingle{}t release the old next Memory\+Node.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node we wish to set the data \\
+\hline
+{\em $\ast$next\+\_\+node} & new pointer to the next memory\+\_\+node \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_aac6e0ccb9192cefc1fc6ec9826a11f90}\label{structmemory__node__ops__s_aac6e0ccb9192cefc1fc6ec9826a11f90}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!size@{size}}
+\index{size@{size}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily u16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::size) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$node)}
+
+
+
+gets the data size 
+
+Returns the size of the data. In case a null pointer wass passed it will return a 0
+
+\begin{DoxyReturn}{Returns}
+u16 size of the data 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$node} & pointer to the node we wish to get the data size \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structmemory__node__ops__s_a51993e6d5aeb1025181ba5ae46e9f0a8}\label{structmemory__node__ops__s_a51993e6d5aeb1025181ba5ae46e9f0a8}} 
+\index{memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}!soft\+\_\+free@{soft\+\_\+free}}
+\index{soft\+\_\+free@{soft\+\_\+free}!memory\+\_\+node\+\_\+ops\+\_\+s@{memory\+\_\+node\+\_\+ops\+\_\+s}}
+\subsubsection{\texorpdfstring{soft\+\_\+free}{soft\_free}}
+{\footnotesize\ttfamily s16($\ast$ memory\+\_\+node\+\_\+ops\+\_\+s\+::soft\+\_\+free) (\hyperlink{structmemory__node__s}{Memory\+Node} $\ast$$\ast$node)}
+
+
+
+Soft free of the memory node it doesn\textquotesingle{}t free the data. 
+
+Frees the memory node without freeing the data. In case the direction to the pointer is null it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Reference\+\_\+\+Received. If the execution went well this function assures that the pointer to node ends as N\+U\+LL.
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$$\ast$node} & direction to the pointer of the memory node we want to soft free \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/list/include/memory\+\_\+node.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,308 @@
+\hypertarget{class_queue}{}\section{Queue Class Reference}
+\label{class_queue}\index{Queue@{Queue}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_queue_a2d54628be4dd884dca80d007cf80ae34}{Queue} (const u16 \hyperlink{class_queue_a5ebe9fb9d055ad459c36142ff64df055}{capacity})
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_queue}{Queue} constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_queue_a00d119db8fa3050da37746e82cbcf94f}{$\sim$\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Frees the \hyperlink{class_queue}{Queue}. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_queue_ad4f19940d14d343cf98a6fc3ba291079}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the queue. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_queue_a47db3b18ecaae98ec954352ef911b171}{resize} (u16 new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Changes the capacity of the queue. \end{DoxyCompactList}\item 
+u16 \hyperlink{class_queue_a5ebe9fb9d055ad459c36142ff64df055}{capacity} () const
+\begin{DoxyCompactList}\small\item\em getter of capacity \end{DoxyCompactList}\item 
+u16 \hyperlink{class_queue_a4a4164d32375aa63b92d2b86963f0cd8}{length} () const
+\begin{DoxyCompactList}\small\item\em getter of the length \end{DoxyCompactList}\item 
+bool \hyperlink{class_queue_a3d8fda7e63d8cf4117cdf1cdc1a144c1}{length\+\_\+debug} () const
+\begin{DoxyCompactList}\small\item\em checks that the length of the queue is consistent \end{DoxyCompactList}\item 
+bool \hyperlink{class_queue_a7614672eed4a720bf0d78d94002bd022}{is\+Empty} () const
+\begin{DoxyCompactList}\small\item\em Indicates if the queue is empty. \end{DoxyCompactList}\item 
+bool \hyperlink{class_queue_a20268d0ce4bb6b9f9a98ad77d30a5a18}{is\+Full} () const
+\begin{DoxyCompactList}\small\item\em Indicates if the queue is full. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_queue_ac416befe32e427c4367d3807b283858a}{first} ()
+\begin{DoxyCompactList}\small\item\em Returns the first element of the queue. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_queue_ae96cdb4a19e958f9c8ed6ee2175edacc}{last} ()
+\begin{DoxyCompactList}\small\item\em Returns the last element of the queue. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_queue_a27a37b0757acf0a4eeee469dd3ab5af9}{enqueue} (void $\ast$data, u16 data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Inserts the data at the first position of the queue. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{class_queue_a30c82e655d4420c27ef5e4ce17fa99e8}{dequeue} ()
+\begin{DoxyCompactList}\small\item\em Extracts the first element of the queue and returns it. \end{DoxyCompactList}\item 
+s16 \hyperlink{class_queue_aa7f9c30742af3cac04fe7ea26793e8ac}{concat} (\hyperlink{class_queue}{Queue} $\ast$src)
+\begin{DoxyCompactList}\small\item\em Concatenates two queue storing the result at origin. \end{DoxyCompactList}\item 
+u16 \hyperlink{class_queue_a0e4e61a3568834e25b36625c883cbd38}{traverse} (s16(Memory\+Node\+::$\ast$callback)()) const
+\begin{DoxyCompactList}\small\item\em Applies the callback method to the queue. \end{DoxyCompactList}\item 
+void \hyperlink{class_queue_a5e5f86661785506b5de5f3e119ff871e}{print} () const
+\begin{DoxyCompactList}\small\item\em Prints the content of the elements of the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_queue_a2d54628be4dd884dca80d007cf80ae34}\label{class_queue_a2d54628be4dd884dca80d007cf80ae34}} 
+\index{Queue@{Queue}!Queue@{Queue}}
+\index{Queue@{Queue}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{Queue()}{Queue()}}
+{\footnotesize\ttfamily Queue\+::\+Queue (\begin{DoxyParamCaption}\item[{const u16}]{capacity }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_queue}{Queue} constructor. 
+
+Base constructor of \hyperlink{class_queue}{Queue}
+
+capacity capacity of the queue we are creating \begin{DoxyReturn}{Returns}
+$\ast$\+Queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_a00d119db8fa3050da37746e82cbcf94f}\label{class_queue_a00d119db8fa3050da37746e82cbcf94f}} 
+\index{Queue@{Queue}!````~Queue@{$\sim$\+Queue}}
+\index{````~Queue@{$\sim$\+Queue}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{$\sim$\+Queue()}{~Queue()}}
+{\footnotesize\ttfamily Queue\+::$\sim$\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the \hyperlink{class_queue}{Queue}. 
+
+Resets the content of the \hyperlink{class_queue}{Queue} and frees it. Note that this function calls the reset method.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_queue_a5ebe9fb9d055ad459c36142ff64df055}\label{class_queue_a5ebe9fb9d055ad459c36142ff64df055}} 
+\index{Queue@{Queue}!capacity@{capacity}}
+\index{capacity@{capacity}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily u16 Queue\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of capacity 
+
+Returns the maximum number of elemets that can be stored at the queue.
+
+\begin{DoxyReturn}{Returns}
+u16 capacity of the queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_aa7f9c30742af3cac04fe7ea26793e8ac}\label{class_queue_aa7f9c30742af3cac04fe7ea26793e8ac}} 
+\index{Queue@{Queue}!concat@{concat}}
+\index{concat@{concat}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily s16 Queue\+::concat (\begin{DoxyParamCaption}\item[{\hyperlink{class_queue}{Queue} $\ast$}]{src }\end{DoxyParamCaption})}
+
+
+
+Concatenates two queue storing the result at origin. 
+
+Concatenates the source to the queue, in case one of the queue has infinite capacity the result queue will have infinite capacity, otherwise it will be the result of both capacities added. Notice that the src queue won\textquotesingle{}t be modified during the execution. In case the queue is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue will be returned and in case the the src is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Pointer\+\_\+\+Parameter\+\_\+\+Received. If there\textquotesingle{}s a problem during the allocation of the new queue k\+Error\+Code\+\_\+\+Error\+\_\+\+Trying\+\_\+\+To\+\_\+\+Allocate\+\_\+\+Memory will be returned.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished concatenation 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em src} & queue we want to concatenate to our origin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_queue_a30c82e655d4420c27ef5e4ce17fa99e8}\label{class_queue_a30c82e655d4420c27ef5e4ce17fa99e8}} 
+\index{Queue@{Queue}!dequeue@{dequeue}}
+\index{dequeue@{dequeue}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{dequeue()}{dequeue()}}
+{\footnotesize\ttfamily void $\ast$ Queue\+::dequeue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Extracts the first element of the queue and returns it. 
+
+T\+O\+DO change description Extracts the first element of the queue and removes it. Notice that the data must be freed once you are finished using it as it\textquotesingle{}s no longer responsability of the queue.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ data at the first position of the queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_a27a37b0757acf0a4eeee469dd3ab5af9}\label{class_queue_a27a37b0757acf0a4eeee469dd3ab5af9}} 
+\index{Queue@{Queue}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{enqueue()}{enqueue()}}
+{\footnotesize\ttfamily s16 Queue\+::enqueue (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{u16}]{data\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Inserts the data at the first position of the queue. 
+
+T\+O\+DO change description Inserts the data at the first position of the queue and returns the status depending of the result. In case the queue is full a k\+Error\+Code\+\_\+\+Queue\+\_\+\+Is\+\_\+\+Full is returned, if the queue is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue and in case the the data is null k\+Error\+Code\+\_\+\+Null\+\_\+\+Data. The queue makes a copy of the data so the value you store will not be touched unless you modify it through the queue.
+
+\begin{DoxyReturn}{Returns}
+s16 status of the operation once finished 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data we wish to store at the position \\
+\hline
+{\em data\+\_\+size} & size of the data we wish to store \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_queue_ac416befe32e427c4367d3807b283858a}\label{class_queue_ac416befe32e427c4367d3807b283858a}} 
+\index{Queue@{Queue}!first@{first}}
+\index{first@{first}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{first()}{first()}}
+{\footnotesize\ttfamily void $\ast$ Queue\+::first (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the first element of the queue. 
+
+T\+O\+DO change description\+Returns a reference to the first node. If the queue passed is N\+U\+LL or the queue is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ first element of the queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_a7614672eed4a720bf0d78d94002bd022}\label{class_queue_a7614672eed4a720bf0d78d94002bd022}} 
+\index{Queue@{Queue}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{is\+Empty()}{isEmpty()}}
+{\footnotesize\ttfamily bool Queue\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates if the queue is empty. 
+
+Indicates if the queue is empty
+
+\begin{DoxyReturn}{Returns}
+bool true if the queue is empty false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_a20268d0ce4bb6b9f9a98ad77d30a5a18}\label{class_queue_a20268d0ce4bb6b9f9a98ad77d30a5a18}} 
+\index{Queue@{Queue}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{is\+Full()}{isFull()}}
+{\footnotesize\ttfamily bool Queue\+::is\+Full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates if the queue is full. 
+
+Indicates if the queue is full
+
+\begin{DoxyReturn}{Returns}
+bool true if the queue is full false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_ae96cdb4a19e958f9c8ed6ee2175edacc}\label{class_queue_ae96cdb4a19e958f9c8ed6ee2175edacc}} 
+\index{Queue@{Queue}!last@{last}}
+\index{last@{last}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{last()}{last()}}
+{\footnotesize\ttfamily void $\ast$ Queue\+::last (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the last element of the queue. 
+
+Returns a reference to the last node. If the queue passed is N\+U\+LL or the queue is empty returns null.
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ last element of the queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_a4a4164d32375aa63b92d2b86963f0cd8}\label{class_queue_a4a4164d32375aa63b92d2b86963f0cd8}} 
+\index{Queue@{Queue}!length@{length}}
+\index{length@{length}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily u16 Queue\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter of the length 
+
+Returns the current number of elements ($<$= capacity)
+
+\begin{DoxyReturn}{Returns}
+u16 length of the queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_a3d8fda7e63d8cf4117cdf1cdc1a144c1}\label{class_queue_a3d8fda7e63d8cf4117cdf1cdc1a144c1}} 
+\index{Queue@{Queue}!length\+\_\+debug@{length\+\_\+debug}}
+\index{length\+\_\+debug@{length\+\_\+debug}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{length\+\_\+debug()}{length\_debug()}}
+{\footnotesize\ttfamily bool Queue\+::length\+\_\+debug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+checks that the length of the queue is consistent 
+
+Traverses the number of elements and checks its result with its own lenght
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_a5e5f86661785506b5de5f3e119ff871e}\label{class_queue_a5e5f86661785506b5de5f3e119ff871e}} 
+\index{Queue@{Queue}!print@{print}}
+\index{print@{print}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Queue\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Prints the content of the elements of the queue. 
+
+Prints the content of the elements of the queue \mbox{\Hypertarget{class_queue_ad4f19940d14d343cf98a6fc3ba291079}\label{class_queue_ad4f19940d14d343cf98a6fc3ba291079}} 
+\index{Queue@{Queue}!reset@{reset}}
+\index{reset@{reset}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily s16 Queue\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the queue. 
+
+Frees the elements of the queue, using the reset method of memory node, and sets the values of the queue to it\textquotesingle{}s default. In case a null pointer was passed it will return a k\+Error\+Code\+\_\+\+Null\+\_\+\+Queue
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_queue_a47db3b18ecaae98ec954352ef911b171}\label{class_queue_a47db3b18ecaae98ec954352ef911b171}} 
+\index{Queue@{Queue}!resize@{resize}}
+\index{resize@{resize}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily s16 Queue\+::resize (\begin{DoxyParamCaption}\item[{u16}]{new\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Changes the capacity of the queue. 
+
+Adjusts the capacity of the queue so it can store more elements. If the new size causes a loss of data the function will return an error. Note that a capacity of 0 is an infinite capacity
+
+\begin{DoxyReturn}{Returns}
+s16 Error\+Code of the execution 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$queue} & pointer to the queue we wish to resuze \\
+\hline
+{\em new\+\_\+size} & new size for the queue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_queue_a0e4e61a3568834e25b36625c883cbd38}\label{class_queue_a0e4e61a3568834e25b36625c883cbd38}} 
+\index{Queue@{Queue}!traverse@{traverse}}
+\index{traverse@{traverse}!Queue@{Queue}}
+\subsubsection{\texorpdfstring{traverse()}{traverse()}}
+{\footnotesize\ttfamily u16 Queue\+::traverse (\begin{DoxyParamCaption}\item[{s16(Memory\+Node\+::$\ast$)()}]{callback }\end{DoxyParamCaption}) const}
+
+
+
+Applies the callback method to the queue. 
+
+Applies a memory node function to the set of elements of the queue.
+
+\begin{DoxyReturn}{Returns}
+u16 number of elements traveled 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & function of memory node that will be applied to the set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/include/adt\+\_\+queue.\+h\item 
+C\+:/\+E\+S\+A\+T/2ab\+\_\+ma\+\_\+martinezcajm/2semestre/tads\+\_\+port/src/adt\+\_\+queue.\+cc\end{DoxyCompactItemize}
