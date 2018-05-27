@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <Windows.h>
 
 #include "memory_node.h"
 #include "adt_list.h"
@@ -15,7 +16,6 @@
 #include "adt_stack.h"
 #include "printer.h"
 #include "memory_manager.h"
-#include "Windows.h"
 
 int test_memory_node()
 {
@@ -39,7 +39,8 @@ int test_memory_node()
   node->print();
   node->memSet('c');
   node->print();
-  char *name = static_cast<char*>(malloc(sizeof(char) * 5));
+  char *name = new char[5];
+  //char *name = static_cast<char*>(malloc(sizeof(char) * 5));
   if (nullptr == name) {
     return 1;
   }
@@ -57,14 +58,16 @@ int test_memory_node()
 
   node2->free_mn();
 
-  char *test = static_cast<char*>(malloc(sizeof(char) * 65535));
+  char *test = new char[65535];
+  //char *test = static_cast<char*>(malloc(sizeof(char) * 65535));
   if (nullptr == test) {
     return 1;
   }
   node->memConcat(test, -1);
   node->memCopy("zero", 0);
 
-  char *big_data = static_cast<char*>(malloc(sizeof(char) * 65535));
+  char *big_data = new char[65535];
+  //char *big_data = static_cast<char*>(malloc(sizeof(char) * 65535));
   if (nullptr == big_data) {
     return 1;
   }
@@ -756,12 +759,12 @@ int test_tads()
 int main()
 {
   MemoryManager::instance();
-  //test_memory_node();
-  //test_vector();
-  //test_list();
-  //test_dllist();
-  //test_queue();
-  //test_stack();
+  test_memory_node();
+  test_vector();
+  test_list();
+  test_dllist();
+  test_queue();
+  test_stack();
   test_printer();
   test_tads();
   return 0;

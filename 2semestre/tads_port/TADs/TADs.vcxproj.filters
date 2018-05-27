@@ -21,6 +21,21 @@
     <ClCompile Include="..\src\adt_list.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\adt_queue.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\adt_double_linked_list.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\adt_stack.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\printer.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\memory_manager.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\adt_vector.h">
@@ -36,6 +51,21 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\include\adt_list.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\adt_queue.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\adt_double_linked_list.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\adt_stack.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\printer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\memory_manager.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

@@ -58,7 +58,8 @@ s16 MemoryNode::reset()
   if(nullptr == data_){
     return kErrorCode_Ok;
   }
-  free(data_);
+  //free(data_);
+  operator delete(data_);
   data_ = nullptr;
   next_ = nullptr;
   prev_ = nullptr;
@@ -193,7 +194,8 @@ s16 MemoryNode::memConcat(void* src, u16 bytes)
   memcpy(aux, data_, size_);
   memcpy(aux + (size_), src, bytes);
   //We have already checked that data is not null.
-  free(data_);
+  operator delete(data_);
+  //free(data_);
   data_ = aux;
   size_ = size_ + bytes;
   return kErrorCode_Ok;

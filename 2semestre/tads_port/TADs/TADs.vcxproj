@@ -75,7 +75,7 @@
     <IntDir>..\build</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\include;$(VC_IncludePath)</IncludePath>
+    <IncludePath>..\include;$(VC_IncludePath);$(WindowsSdkDir)\include;$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>..\bin</OutDir>
     <IntDir>..\build</IntDir>
   </PropertyGroup>
@@ -133,17 +133,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\adt_double_linked_list.cc" />
     <ClCompile Include="..\src\adt_list.cc" />
+    <ClCompile Include="..\src\adt_queue.cc" />
+    <ClCompile Include="..\src\adt_stack.cc" />
     <ClCompile Include="..\src\adt_vector.cc" />
     <ClCompile Include="..\src\main.cc" />
+    <ClCompile Include="..\src\memory_manager.cc" />
     <ClCompile Include="..\src\memory_node.cc" />
+    <ClCompile Include="..\src\printer.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\adt_double_linked_list.h" />
     <ClInclude Include="..\include\adt_list.h" />
+    <ClInclude Include="..\include\adt_queue.h" />
+    <ClInclude Include="..\include\adt_stack.h" />
     <ClInclude Include="..\include\adt_vector.h" />
     <ClInclude Include="..\include\common_def.h" />
+    <ClInclude Include="..\include\memory_manager.h" />
     <ClInclude Include="..\include\memory_node.h" />
     <ClInclude Include="..\include\platform_types.h" />
+    <ClInclude Include="..\include\printer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
