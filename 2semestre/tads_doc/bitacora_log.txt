@@ -1,0 +1,706 @@
+
+Author 	Commit 	Message 	Date 	Builds
+
+
+martinezcajm
+	
+ca69e95
+	
+cleaned simulation loop project and created folders
+
+27/05/2018
+
+
+	
+martinezcajm
+	
+cb4f825
+	
+added doxygen documentation 
+
+27/05/2018
+
+
+
+martinezcajm
+	
+8e65afd
+
+created memory manager, checked release versions.
+
+27/05/2018
+
+
+	
+martinezcajm
+	
+7f52198
+	
+stack ported
+	
+2 days ago
+
+
+
+martinezcajm
+	
+88f1517
+	
+ported double linked list
+
+2 days ago
+
+
+	
+martinezcajm
+	
+014241b
+	
+fixed dll bugs
+
+2 days ago
+	
+	
+	
+martinezcajm
+	
+3bf4ea1
+	
+ported queue
+
+2 days ago
+
+
+	
+martinezcajm
+	
+2db2d69
+	
+some bug fixes in list
+	
+2 days ago
+	
+	
+	
+martinezcajm
+	
+5cb1ef0
+	
+C++ Port of tads project. Already with mem node, vector and list
+
+2018-05-18
+	
+	
+	
+martinezcajm
+	
+e727085
+	
+debug_length of double linked list now also traverse from last. Fixed definition of concat at list and dll. Concat fix at dll.
+	
+2018-05-11
+	
+	
+	
+martinezcajm
+	
+c3be5c0
+	
+double linked list finished
+
+2018-04-26
+	
+	
+	
+martinezcajm
+	
+ebcbcc3
+	
+stack first version
+
+2018-04-26
+	
+	
+	
+martinezcajm
+	
+0af8fca
+	
+minor fix in return of destroy
+	
+2018-04-23
+	
+	
+	
+martinezcajm
+	
+e359a62
+	
+fixed memory leak at destroy
+	
+2018-04-23
+	
+	
+	
+martinezcajm
+	
+569878f
+	
+fixed bug in main calling resize
+
+2018-04-23
+	
+	
+	
+martinezcajm
+	
+349d38a
+	
+bug calling resize
+
+2018-04-23
+	
+	
+	
+martinezcajm
+	
+d5b6c16
+	
+queue first version
+
+2018-04-23
+	
+	
+	
+martinezcajm
+	
+980c04c
+	
+first double link list version
+
+2018-03-09
+	
+	
+	
+martinezcajm
+	
+1c72245
+	
+finished all methods and first test battery
+
+2018-03-05
+	
+	
+	
+martinezcajm
+	
+261d16b
+	
+fixed insert at. Finished extract functions. Main test tried except concat
+
+2018-03-01
+	
+	
+	
+martinezcajm
+	
+8965f27 M
+	
+merge
+	
+2018-02-15
+	
+	
+	
+martinezcajm
+	
+36805a4
+	
+created list and implemented all it's methods except extract and concat
+	
+2018-02-15
+	
+	
+	
+martinezcajm
+	
+b2ea1d5
+	
+New funciton for extract_last, at, extract_first
+	
+2018-01-26
+	
+	
+	
+martinezcajm
+	
+d293bd6
+	
+reduced code of resize
+
+2018-01-25
+	
+	
+	
+martinezcajm
+	
+d4a594e
+	
+resize vector when is smaller
+	
+2018-01-25
+	
+	
+	
+martinezcajm
+	
+643b0ef
+	
+resize when new size is bigger and minor fixes
+	
+2018-01-25
+	
+	
+	
+martinezcajm
+	
+73a8ace
+	
+circular vector added length
+
+2018-01-19
+	
+	
+	
+martinezcajm
+	
+2dc3828
+	
+first commit vector enhancement
+
+2018-01-19
+	
+	
+	
+martinezcajm
+	
+070004e
+	
+updated readme
+	
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+f2adb3b
+	
+fixed battery test
+
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+87d48fd
+	
+fixed ocasional error at battery test, using the known size when reading from extract and at now
+	
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+1d00372
+	
+README.md created online with Bitbucket
+
+
+
+martinezcajm
+	
+19fff78
+	
+Readme added
+
+Branches
+    martinezcajm/readme-added-1513594512702 
+
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+986d9c6
+	
+compilacion_d.bat was outdated so has been removed
+	
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+55b78cf
+	
+fixed concat error
+
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+55c8c44
+	
+fixed issue with resize when new size is lower. Added tests with lower resize
+
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+d31cb09
+	
+added doxigen and comment to main.c
+
+2017-12-18
+
+
+	
+martinezcajm
+	
+f18e653
+	
+doxygen documentation and header comment to main.c
+	
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+74056b2
+	
+reset fix
+	
+2017-12-18
+	
+	
+	
+martinezcajm
+	
+26c55e3
+	
+exe and bat added
+
+2017-12-17
+	
+	
+	
+martinezcajm
+	
+39a21ab
+	
+initialized operations at init vector, battery test externalized
+
+2017-12-17
+	
+	
+	
+martinezcajm
+	
+1e9efdd
+	
+test battery memory node, fixed print and mask. release bat uploaded
+
+2017-12-17
+	
+	
+	
+martinezcajm
+	
+0a9ed4f
+	
+extract at
+
+2017-12-16
+	
+	
+	
+martinezcajm
+	
+fe4e05d
+	
+concat
+	
+2017-12-16
+	
+	
+	
+martinezcajm
+	
+d33639c
+	
+insert At and some fixes
+
+2017-12-16
+	
+	
+	
+martinezcajm
+	
+ea9385e
+	
+resize function
+
+2017-12-16
+	
+	
+	
+martinezcajm
+	
+ea46a50
+	
+fixed intialization at create, created extract methods. Tests at adt_vector.c
+
+2017-12-16
+	
+	
+	
+martinezcajm
+	
+57eaa0e
+	
+Fixed tail, was lenght, now is the index of the next free space. Fixed some other errors at functions
+
+2017-12-06
+	
+	
+	
+martinezcajm
+	
+b275e41
+	
+data queries and insertions added
+
+2017-12-01
+	
+	
+	
+martinezcajm
+	
+ba5ac9f
+	
+added data queries and state queries
+
+2017-11-26
+	
+	
+	
+martinezcajm
+	
+ef76395
+	
+added traverse function, and now destroy uses it to free the memory nodes of the vector
+	
+2017-11-26
+	
+	
+	
+martinezcajm
+	
+e5cf58a
+	
+create, init, destroy and resert functions. Added new eeror to common def
+
+2017-11-26
+	
+	
+	
+martinezcajm
+	
+4a5070a
+	
+functions declaration with empty definition
+	
+2017-11-26
+
+
+	
+martinezcajm
+	
+fcd8842
+	
+first commit vector project
+
+2017-11-26
+
+
+	
+martinezcajm
+	
+f49892e
+	
+Included comments at the top of the files
+
+2017-11-16
+	
+	
+	
+martinezcajm
+	
+82a386d
+	
+removed TODO from createFromRef
+	
+2017-11-16
+	
+	
+	
+martinezcajm
+	
+95bdc9d
+	
+CreateFromRef now checks if the reference passed already had a value
+
+2017-11-16
+	
+	
+	
+martinezcajm
+	
+716dc32
+	
+fixed print and adde comment at header
+
+2017-11-16
+
+
+	
+martinezcajm
+	
+76d158b
+	
+memMask implemented, added comments to memMask in header
+
+2017-11-16
+
+
+	
+martinezcajm
+	
+0dff312
+	
+fix to memconcat and added comments
+	
+2017-11-16
+
+
+	
+martinezcajm
+	
+bd306ac
+	
+more comments. Little fix to memcopy
+	
+2017-11-16
+
+
+	
+martinezcajm
+	
+6196c47
+	
+More comments, little fixes to setData 
+
+martinezcajm
+	
+74e3d6e
+	
+comments to free and reset, free now checks that the pointer to the reference is not null and if now checks if the status of reset was ok
+	
+2017-11-16
+
+
+	
+martinezcajm
+	
+6f2dff2
+	
+added more error message, init removed from ops, changes to init and create from ref, first comments added to the memory_node.h
+
+2017-11-16
+
+
+	
+martinezcajm
+	
+daf002e
+	
+bat file at build
+	
+2017-11-16
+
+
+	
+martinezcajm
+	
+9dfebf4
+	
+removed old folder
+	
+2017-11-16
+
+
+	
+martinezcajm
+	
+0707560
+	
+restructure of folders
+	
+2017-11-16
+
+
+	
+martinezcajm
+	
+1fe475e
+	
+added constructor from reference and test in main
+
+2017-11-10
+
+
+	
+martinezcajm
+	
+595090c
+	
+fixed memcpy, added memset and memconcat
+
+2017-11-03
+
+
+	
+martinezcajm
+	
+6674920
+	
+added free, memCopy. More code errors added to common_def
+	
+2017-11-02
+
+
+	
+martinezcajm
+	
+1b7a6f4
+	
+initial commit 
